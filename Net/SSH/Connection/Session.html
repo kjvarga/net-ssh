@@ -1,0 +1,2237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Net::SSH::Connection::Session</title>
+
+	<link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../lib/net/ssh/connection/session_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/net/ssh/connection/session.rb">lib/net/ssh/connection/session.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+			<div id="namespace-list-section" class="section">
+				<h3 class="section-header">Namespace</h3>
+				<ul class="link-list">
+					
+					<li><span class="type">CLASS</span> <a href="Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000110">::new</a></li>
+					
+					<li><a href="#M000112">#[]</a></li>
+					
+					<li><a href="#M000113">#[]=</a></li>
+					
+					<li><a href="#M000125">#busy?</a></li>
+					
+					<li><a href="#M000180">#channel_close</a></li>
+					
+					<li><a href="#M000172">#channel_data</a></li>
+					
+					<li><a href="#M000179">#channel_eof</a></li>
+					
+					<li><a href="#M000173">#channel_extended_data</a></li>
+					
+					<li><a href="#M000182">#channel_failure</a></li>
+					
+					<li><a href="#M000166">#channel_open</a></li>
+					
+					<li><a href="#M000167">#channel_open_confirmation</a></li>
+					
+					<li><a href="#M000168">#channel_open_failure</a></li>
+					
+					<li><a href="#M000171">#channel_request</a></li>
+					
+					<li><a href="#M000181">#channel_success</a></li>
+					
+					<li><a href="#M000170">#channel_window_adjust</a></li>
+					
+					<li><a href="#M000123">#close</a></li>
+					
+					<li><a href="#M000118">#closed?</a></li>
+					
+					<li><a href="#M000161">#dispatch_incoming_packets</a></li>
+					
+					<li><a href="#M000145">#exec</a></li>
+					
+					<li><a href="#M000148">#exec!</a></li>
+					
+					<li><a href="#M000157">#forward</a></li>
+					
+					<li><a href="#M000162">#get_next_channel_id</a></li>
+					
+					<li><a href="#M000163">#global_request</a></li>
+					
+					<li><a href="#M000114">#host</a></li>
+					
+					<li><a href="#M000155">#listen_to</a></li>
+					
+					<li><a href="#M000129">#loop</a></li>
+					
+					<li><a href="#M000130">#loop_forever</a></li>
+					
+					<li><a href="#M000160">#on_global_request</a></li>
+					
+					<li><a href="#M000159">#on_open_channel</a></li>
+					
+					<li><a href="#M000141">#open_channel</a></li>
+					
+					<li><a href="#M000139">#postprocess</a></li>
+					
+					<li><a href="#M000136">#preprocess</a></li>
+					
+					<li><a href="#M000133">#process</a></li>
+					
+					<li><a href="#M000165">#request_failure</a></li>
+					
+					<li><a href="#M000164">#request_success</a></li>
+					
+					<li><a href="#M000140">#send_global_request</a></li>
+					
+					<li><a href="#M000149">#send_message</a></li>
+					
+					<li><a href="#M000124">#shutdown!</a></li>
+					
+					<li><a href="#M000156">#stop_listening_to</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><a class="include" href="../Authentication.html">Net::SSH::Authentication</a></li>
+				
+				
+				
+					<li><a class="include" href="../../SSH.html">Net::SSH</a></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="../../../README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="../../../THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../Net.html">Net</a></li>
+				
+					<li><a href="../../../Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="../../../Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="../../../Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="../../../Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="../../../Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="../../../Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="../../../Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="../../../Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="../../../Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="../../../Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="../../../Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="../../../Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="../../../OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="../../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="../../../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Net::SSH::Connection::Session</h1>
+
+		<div id="description">
+			<p>
+A session class representing the connection service running on top of the
+<a href="../../SSH.html">SSH</a> transport layer. It manages the creation
+of channels (see <a href="Session.html#M000141">open_channel</a>), and the
+dispatching of messages to the various channels. It also encapsulates the
+<a href="../../SSH.html">SSH</a> event loop (via <a
+href="Session.html#M000129">loop</a> and <a
+href="Session.html#M000133">process</a>), and serves as a central
+point-of-reference for all SSH-related services (e.g. port forwarding,
+SFTP, SCP, etc.).
+</p>
+<p>
+You will rarely (if ever) need to instantiate this class directly; rather,
+you&#8217;ll almost always use <a
+href="../../SSH.html#M000418">Net::SSH.start</a> to initialize a new
+network connection, authenticate a user, and return a new connection
+session, all in one call.
+</p>
+<pre>
+  Net::SSH.start(&quot;localhost&quot;, &quot;user&quot;) do |ssh|
+    # 'ssh' is an instance of Net::SSH::Connection::Session
+    ssh.exec! &quot;/etc/init.d/some_process start&quot;
+  end
+</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="MAP">MAP</a></dt>
+				
+				<dd class="description missing-docs">(Not documented)</dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="transport-attribute-method" class="method-detail">
+				<a name="transport"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">transport</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The underlying transport layer abstraction (see <a
+href="../Transport/Session.html">Net::SSH::Transport::Session</a>).
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="options-attribute-method" class="method-detail">
+				<a name="options"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">options</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The map of options that were used to initialize this instance.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="properties-attribute-method" class="method-detail">
+				<a name="properties"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">properties</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The collection of custom properties for this instance. (See #[] and #[]=).
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000110"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(transport, options={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Create a new connection service instance atop the given transport layer.
+Initializes the listeners to be only the underlying socket object.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 61</span>
+61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">transport</span>, <span class="ruby-identifier">options</span>={})
+62:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">logger</span>
+63: 
+64:       <span class="ruby-ivar">@transport</span> = <span class="ruby-identifier">transport</span>
+65:       <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+66: 
+67:       <span class="ruby-ivar">@channel_id_counter</span> = <span class="ruby-value">-1</span>
+68:       <span class="ruby-ivar">@channels</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">NilChannel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>))
+69:       <span class="ruby-ivar">@listeners</span> = { <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">socket</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span> }
+70:       <span class="ruby-ivar">@pending_requests</span> = []
+71:       <span class="ruby-ivar">@channel_open_handlers</span> = {}
+72:       <span class="ruby-ivar">@on_global_request</span> = {}
+73:       <span class="ruby-ivar">@properties</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:properties</span>] <span class="ruby-operator">||</span> {}).<span class="ruby-identifier">dup</span>
+74:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="--method" class="method-detail ">
+				<a name="M000112"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">[]</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Retrieves a custom property from this instance. This can be used to store
+additional state in applications that must manage multiple <a
+href="../../SSH.html">SSH</a> connections.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 79</span>
+79:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+80:       <span class="ruby-ivar">@properties</span>[<span class="ruby-identifier">key</span>]
+81:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="--method" class="method-detail ">
+				<a name="M000113"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">[]=</span><span
+						class="method-args">(key, value)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sets a custom property for this instance.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 84</span>
+84:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+85:       <span class="ruby-ivar">@properties</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+86:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="busy--method" class="method-detail ">
+				<a name="M000125"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">busy?</span><span
+						class="method-args">(include_invisible=false)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns <tt>true</tt> if there are any channels currently active on this
+session. By default, this will not include &#8220;invisible&#8221; channels
+(such as those created by forwarding ports and such), but if you pass a
+<tt>true</tt> value for <tt>include_invisible</tt>, then those will be
+counted.
+</p>
+<p>
+This can be useful for determining whether the event loop should continue
+to be run.
+</p>
+<pre>
+  ssh.loop { ssh.busy? }
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="busy--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 133</span>
+133:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">busy?</span>(<span class="ruby-identifier">include_invisible</span>=<span class="ruby-keyword kw">false</span>)
+134:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_invisible</span>
+135:         <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">any?</span>
+136:       <span class="ruby-keyword kw">else</span>
+137:         <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">ch</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">ch</span>[<span class="ruby-identifier">:invisible</span>] }
+138:       <span class="ruby-keyword kw">end</span>
+139:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="close-method" class="method-detail ">
+				<a name="M000123"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">close</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Closes the session gracefully, blocking until all channels have
+successfully closed, and then closes the underlying transport layer
+connection.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="close-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 106</span>
+106:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+107:       <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;closing remaining channels (#{channels.length} open)&quot;</span> }
+108:       <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">channel</span><span class="ruby-operator">|</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">close</span> }
+109:       <span class="ruby-identifier">loop</span> { <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">any?</span> }
+110:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">close</span>
+111:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="closed--method" class="method-detail ">
+				<a name="M000118"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">closed?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns true if the underlying transport has been closed. Note that this
+can be a little misleading, since if the remote server has closed the
+connection, the local end will still think it is open until the next
+operation on the socket. Nevertheless, this method can be useful if you
+just want to know if <em>you</em> have closed the connection.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="closed--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 99</span>
+ 99:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">closed?</span>
+100:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">closed?</span>
+101:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="exec-method" class="method-detail ">
+				<a name="M000145"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">exec</span><span
+						class="method-args">(command, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+A convenience method for executing a command and interacting with it. If no
+block is given, all output is printed via $stdout and $stderr. Otherwise,
+the block is called for each data and extended data packet, with three
+arguments: the channel object, a symbol indicating the data type (:stdout
+or :stderr), and the data (as a string).
+</p>
+<p>
+Note that this method returns immediately, and requires an event loop (see
+<a href="Session.html#M000129">Session#loop</a>) in order for the command
+to actually execute.
+</p>
+<p>
+This is effectively identical to calling <a
+href="Session.html#M000141">open_channel</a>, and then <a
+href="Channel.html#M000104">Net::SSH::Connection::Channel#exec</a>, and
+then setting up the channel callbacks. However, for most uses, this will be
+sufficient.
+</p>
+<pre>
+  ssh.exec &quot;grep something /some/files&quot; do |ch, stream, data|
+    if stream == :stderr
+      puts &quot;ERROR: #{data}&quot;
+    else
+      puts data
+    end
+  end
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="exec-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 318</span>
+318:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec</span>(<span class="ruby-identifier">command</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+319:       <span class="ruby-identifier">open_channel</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">channel</span><span class="ruby-operator">|</span>
+320:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-identifier">command</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ch</span>, <span class="ruby-identifier">success</span><span class="ruby-operator">|</span>
+321:           <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;could not execute command: #{command.inspect}&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">success</span>
+322:           
+323:           <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ch2</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+324:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
+325:               <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">ch2</span>, <span class="ruby-identifier">:stdout</span>, <span class="ruby-identifier">data</span>)
+326:             <span class="ruby-keyword kw">else</span>
+327:               <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">print</span>(<span class="ruby-identifier">data</span>)
+328:             <span class="ruby-keyword kw">end</span>
+329:           <span class="ruby-keyword kw">end</span>
+330: 
+331:           <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_extended_data</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ch2</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+332:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>
+333:               <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">ch2</span>, <span class="ruby-identifier">:stderr</span>, <span class="ruby-identifier">data</span>)
+334:             <span class="ruby-keyword kw">else</span>
+335:               <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">print</span>(<span class="ruby-identifier">data</span>)
+336:             <span class="ruby-keyword kw">end</span>
+337:           <span class="ruby-keyword kw">end</span>
+338:         <span class="ruby-keyword kw">end</span>
+339:       <span class="ruby-keyword kw">end</span>
+340:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="exec--method" class="method-detail ">
+				<a name="M000148"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">exec!</span><span
+						class="method-args">(command, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Same as <a href="Session.html#M000145">exec</a>, except this will block
+until the command finishes. Also, if a block is not given, this will return
+all output (stdout and stderr) as a single string.
+</p>
+<pre>
+  matches = ssh.exec!(&quot;grep something /some/files&quot;)
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="exec--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 347</span>
+347:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec!</span>(<span class="ruby-identifier">command</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+348:       <span class="ruby-identifier">block</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ch</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+349:         <span class="ruby-identifier">ch</span>[<span class="ruby-identifier">:result</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;&quot;</span>
+350:         <span class="ruby-identifier">ch</span>[<span class="ruby-identifier">:result</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">data</span>
+351:       <span class="ruby-keyword kw">end</span>
+352: 
+353:       <span class="ruby-identifier">channel</span> = <span class="ruby-identifier">exec</span>(<span class="ruby-identifier">command</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+354:       <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">wait</span>
+355: 
+356:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">channel</span>[<span class="ruby-identifier">:result</span>]
+357:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="forward-method" class="method-detail ">
+				<a name="M000157"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">forward</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns a reference to the <a
+href="../Service/Forward.html">Net::SSH::Service::Forward</a> service,
+which can be used for forwarding ports over <a
+href="../../SSH.html">SSH</a>.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="forward-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 416</span>
+416:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">forward</span>
+417:       <span class="ruby-ivar">@forward</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Service</span><span class="ruby-operator">::</span><span class="ruby-constant">Forward</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+418:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="host-method" class="method-detail ">
+				<a name="M000114"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">host</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the name of the host that was given to the transport layer to
+connect to.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="host-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 90</span>
+90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host</span>
+91:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">host</span>
+92:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="listen-to-method" class="method-detail ">
+				<a name="M000155"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">listen_to</span><span
+						class="method-args">(io, &callback)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Adds an IO object for the event loop to listen to. If a callback is given,
+it will be invoked when the io is ready to be read, otherwise, the io will
+merely have its fill method invoked.
+</p>
+<p>
+Any <tt>io</tt> value passed to this method <em>must</em> have mixed into
+it the <a href="../BufferedIo.html">Net::SSH::BufferedIo</a> functionality,
+typically by calling extend on the object.
+</p>
+<p>
+The following example executes a process on the remote server, opens a
+socket to somewhere, and then pipes data from that socket to the remote
+process&#8217; stdin stream:
+</p>
+<pre>
+  channel = ssh.open_channel do |ch|
+    ch.exec &quot;/some/process/that/wants/input&quot; do |ch, success|
+      abort &quot;can't execute!&quot; unless success
+
+      io = TCPSocket.new(somewhere, port)
+      io.extend(Net::SSH::BufferedIo)
+      ssh.listen_to(io)
+
+      ch.on_process do
+        if io.available &gt; 0
+          ch.send_data(io.read_available)
+        end
+      end
+
+      ch.on_close do
+        ssh.stop_listening_to(io)
+        io.close
+      end
+    end
+  end
+
+  channel.wait
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="listen-to-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 404</span>
+404:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">listen_to</span>(<span class="ruby-identifier">io</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+405:       <span class="ruby-identifier">listeners</span>[<span class="ruby-identifier">io</span>] = <span class="ruby-identifier">callback</span>
+406:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="loop-method" class="method-detail ">
+				<a name="M000129"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">loop</span><span
+						class="method-args">(wait=nil, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+The main event loop. Calls <a href="Session.html#M000133">process</a> until
+<a href="Session.html#M000133">process</a> returns false. If a block is
+given, it is passed to <a href="Session.html#M000133">process</a>,
+otherwise a default proc is used that just returns true if there are any
+channels active (see <a href="Session.html#M000125">busy?</a>). The #
+<tt>wait</tt> parameter is also passed through to <a
+href="Session.html#M000133">process</a> (where it is interpreted as the
+maximum number of seconds to wait for IO.select to return).
+</p>
+<pre>
+  # loop for as long as there are any channels active
+  ssh.loop
+
+  # loop for as long as there are any channels active, but make sure
+  # the event loop runs at least once per 0.1 second
+  ssh.loop(0.1)
+
+  # loop until ctrl-C is pressed
+  int_pressed = false
+  trap(&quot;INT&quot;) { int_pressed = true }
+  ssh.loop(0.1) { not int_pressed }
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="loop-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 158</span>
+158:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">loop</span>(<span class="ruby-identifier">wait</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+159:       <span class="ruby-identifier">running</span> = <span class="ruby-identifier">block</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-identifier">busy?</span> }
+160:       <span class="ruby-identifier">loop_forever</span> { <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">wait</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">running</span>) }
+161:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+				<div class="aliases">
+					Also aliased as: <a href="Session.html#M000130">loop_forever</a>
+				</div>
+				
+			</div>
+
+		
+			<div id="loop-forever-method" class="method-detail method-alias">
+				<a name="M000130"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">loop_forever</span><span
+						class="method-args">(wait=nil, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Alias for <a href="Session.html#M000129">loop</a>
+</p>
+					
+
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="on-global-request-method" class="method-detail ">
+				<a name="M000160"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">on_global_request</span><span
+						class="method-args">(type, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Registers a handler to be invoked when the server sends a global request of
+the given type. The callback receives the request data as the first
+parameter, and true/false as the second (indicating whether a response is
+required). If the callback sends the response, it should return :sent.
+Otherwise, if it returns true, REQUEST_SUCCESS will be sent, and if it
+returns false, REQUEST_FAILURE will be sent.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="on-global-request-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 440</span>
+440:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_global_request</span>(<span class="ruby-identifier">type</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+441:       <span class="ruby-identifier">old</span>, <span class="ruby-ivar">@on_global_request</span>[<span class="ruby-identifier">type</span>] = <span class="ruby-ivar">@on_global_request</span>[<span class="ruby-identifier">type</span>], <span class="ruby-identifier">block</span>
+442:       <span class="ruby-identifier">old</span>
+443:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="on-open-channel-method" class="method-detail ">
+				<a name="M000159"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">on_open_channel</span><span
+						class="method-args">(type, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Registers a handler to be invoked when the server wants to open a channel
+on the client. The callback receives the connection object, the new channel
+object, and the packet itself as arguments, and should raise <a
+href="../ChannelOpenFailed.html">ChannelOpenFailed</a> if it is unable to
+open the channel for some reason. Otherwise, the channel will be opened and
+a confirmation message sent to the server.
+</p>
+<p>
+This is used by the <a
+href="../Service/Forward.html">Net::SSH::Service::Forward</a> service to
+open a channel when a remote forwarded port receives a connection. However,
+you are welcome to register handlers for other channel types, as needed.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="on-open-channel-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 430</span>
+430:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">on_open_channel</span>(<span class="ruby-identifier">type</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+431:       <span class="ruby-identifier">channel_open_handlers</span>[<span class="ruby-identifier">type</span>] = <span class="ruby-identifier">block</span>
+432:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="open-channel-method" class="method-detail ">
+				<a name="M000141"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">open_channel</span><span
+						class="method-args">(type="session", *extra, &on_confirm)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Requests that a new channel be opened. By default, the channel will be of
+type &#8220;session&#8221;, but if you know what you&#8217;re doing you can
+select any of the channel types supported by the <a
+href="../../SSH.html">SSH</a> protocol. The <tt>extra</tt> parameters must
+be even in number and conform to the same format as described for <a
+href="../Buffer.html#M000053">Net::SSH::Buffer.from</a>. If a callback is
+given, it will be invoked when the server confirms that the channel opened
+successfully. The sole parameter for the callback is the channel object
+itself.
+</p>
+<p>
+In general, you&#8217;ll use <a
+href="Session.html#M000141">open_channel</a> without any arguments; the
+only time you&#8217;d want to set the channel type or pass additional
+initialization data is if you were implementing an <a
+href="../../SSH.html">SSH</a> extension.
+</p>
+<pre>
+  channel = ssh.open_channel do |ch|
+    ch.exec &quot;grep something /some/files&quot; do |ch, success|
+      ...
+    end
+  end
+
+  channel.wait
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="open-channel-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 286</span>
+286:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_channel</span>(<span class="ruby-identifier">type</span>=<span class="ruby-value str">&quot;session&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">extra</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">on_confirm</span>)
+287:       <span class="ruby-identifier">local_id</span> = <span class="ruby-identifier">get_next_channel_id</span>
+288:       <span class="ruby-identifier">channel</span> = <span class="ruby-constant">Channel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">local_id</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">on_confirm</span>)
+289: 
+290:       <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">CHANNEL_OPEN</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">local_id</span>,
+291:         <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>,
+292:         <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_packet_size</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">extra</span>)
+293:       <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">msg</span>)
+294: 
+295:       <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">local_id</span>] = <span class="ruby-identifier">channel</span>
+296:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="postprocess-method" class="method-detail ">
+				<a name="M000139"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">postprocess</span><span
+						class="method-args">(readers, writers)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This is called internally as part of <a
+href="Session.html#M000133">process</a>. It loops over the given arrays of
+reader IO&#8217;s and writer IO&#8217;s, processing them as needed, and
+then calls <a
+href="../Transport/Session.html#M000385">Net::SSH::Transport::Session#rekey_as_needed</a>
+to allow the transport layer to rekey. Then returns true.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="postprocess-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 222</span>
+222:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">postprocess</span>(<span class="ruby-identifier">readers</span>, <span class="ruby-identifier">writers</span>)
+223:       <span class="ruby-constant">Array</span>(<span class="ruby-identifier">readers</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">reader</span><span class="ruby-operator">|</span>
+224:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">listeners</span>[<span class="ruby-identifier">reader</span>]
+225:           <span class="ruby-identifier">listeners</span>[<span class="ruby-identifier">reader</span>].<span class="ruby-identifier">call</span>(<span class="ruby-identifier">reader</span>)
+226:         <span class="ruby-keyword kw">else</span>
+227:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">fill</span>.<span class="ruby-identifier">zero?</span>
+228:             <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">close</span>
+229:             <span class="ruby-identifier">stop_listening_to</span>(<span class="ruby-identifier">reader</span>)
+230:           <span class="ruby-keyword kw">end</span>
+231:         <span class="ruby-keyword kw">end</span>
+232:       <span class="ruby-keyword kw">end</span>
+233: 
+234:       <span class="ruby-constant">Array</span>(<span class="ruby-identifier">writers</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">writer</span><span class="ruby-operator">|</span>
+235:         <span class="ruby-identifier">writer</span>.<span class="ruby-identifier">send_pending</span>
+236:       <span class="ruby-keyword kw">end</span>
+237: 
+238:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">rekey_as_needed</span>
+239: 
+240:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+241:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="preprocess-method" class="method-detail ">
+				<a name="M000136"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">preprocess</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This is called internally as part of <a
+href="Session.html#M000133">process</a>. It dispatches any available
+incoming packets, and then runs <a
+href="Channel.html#M000122">Net::SSH::Connection::Channel#process</a> for
+any active channels. If a block is given, it is invoked at the start of the
+method and again at the end, and if the block ever returns false, this
+method returns false. Otherwise, it returns true.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="preprocess-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 210</span>
+210:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">preprocess</span>
+211:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>)
+212:       <span class="ruby-identifier">dispatch_incoming_packets</span>
+213:       <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">id</span>, <span class="ruby-identifier">channel</span><span class="ruby-operator">|</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">process</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">closing?</span> }
+214:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>)
+215:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
+216:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="process-method" class="method-detail ">
+				<a name="M000133"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">process</span><span
+						class="method-args">(wait=nil, &block)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+The core of the event loop. It processes a single iteration of the event
+loop. If a block is given, it should return false when the processing
+should abort, which causes <a href="Session.html#M000133">process</a> to
+return false. Otherwise, <a href="Session.html#M000133">process</a> returns
+true. The session itself is yielded to the block as its only argument.
+</p>
+<p>
+If <tt>wait</tt> is nil (the default), this method will block until any of
+the monitored IO objects are ready to be read from or written to. If you
+want it to not block, you can pass 0, or you can pass any other numeric
+value to indicate that it should block for no more than that many seconds.
+Passing 0 is a good way to poll the connection, but if you do it too
+frequently it can make your CPU quite busy!
+</p>
+<p>
+This will also cause all active channels to be processed once each (see <a
+href="Channel.html#M000128">Net::SSH::Connection::Channel#on_process</a>).
+</p>
+<pre>
+  # process multiple Net::SSH connections in parallel
+  connections = [
+    Net::SSH.start(&quot;host1&quot;, ...),
+    Net::SSH.start(&quot;host2&quot;, ...)
+  ]
+
+  connections.each do |ssh|
+    ssh.exec &quot;grep something /in/some/files&quot;
+  end
+
+  condition = Proc.new { |s| s.busy? }
+
+  loop do
+    connections.delete_if { |ssh| !ssh.process(0.1, &amp;condition) }
+    break if connections.empty?
+  end
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="process-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 195</span>
+195:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">wait</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+196:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">preprocess</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+197: 
+198:       <span class="ruby-identifier">r</span> = <span class="ruby-identifier">listeners</span>.<span class="ruby-identifier">keys</span>
+199:       <span class="ruby-identifier">w</span> = <span class="ruby-identifier">r</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">w2</span><span class="ruby-operator">|</span> <span class="ruby-identifier">w2</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:pending_write?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">w2</span>.<span class="ruby-identifier">pending_write?</span> }
+200:       <span class="ruby-identifier">readers</span>, <span class="ruby-identifier">writers</span>, = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">select</span>(<span class="ruby-identifier">r</span>, <span class="ruby-identifier">w</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">wait</span>)
+201: 
+202:       <span class="ruby-identifier">postprocess</span>(<span class="ruby-identifier">readers</span>, <span class="ruby-identifier">writers</span>)
+203:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="send-global-request-method" class="method-detail ">
+				<a name="M000140"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_global_request</span><span
+						class="method-args">(type, *extra, &callback)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Send a global request of the given type. The <tt>extra</tt> parameters must
+be even in number, and conform to the same format as described for <a
+href="../Buffer.html#M000053">Net::SSH::Buffer.from</a>. If a callback is
+not specified, the request will not require a response from the server,
+otherwise the server is required to respond and indicate whether the
+request was successful or not. This success or failure is indicated by the
+callback being invoked, with the first parameter being true or false
+(success, or failure), and the second being the packet itself.
+</p>
+<p>
+Generally, <a href="../../SSH.html">Net::SSH</a> will manage global
+requests that need to be sent (e.g. port forward requests and such are
+handled in the <a
+href="../Service/Forward.html">Net::SSH::Service::Forward</a> class, for
+instance). However, there may be times when you need to send a global
+request that isn&#8217;t explicitly handled by <a
+href="../../SSH.html">Net::SSH</a>, and so this method is available to you.
+</p>
+<pre>
+  ssh.send_global_request(&quot;keep-alive@openssh.com&quot;)
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="send-global-request-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 259</span>
+259:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_global_request</span>(<span class="ruby-identifier">type</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">extra</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+260:       <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;sending global request #{type}&quot;</span> }
+261:       <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">GLOBAL_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-operator">!</span><span class="ruby-identifier">callback</span>.<span class="ruby-identifier">nil?</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">extra</span>)
+262:       <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">msg</span>)
+263:       <span class="ruby-identifier">pending_requests</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">callback</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">callback</span>
+264:       <span class="ruby-keyword kw">self</span>
+265:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="send-message-method" class="method-detail ">
+				<a name="M000149"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_message</span><span
+						class="method-args">(message)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Enqueues a message to be sent to the server as soon as the socket is
+available for writing. Most programs will never need to call this, but if
+you are implementing an extension to the <a href="../../SSH.html">SSH</a>
+protocol, or if you need to send a packet that <a
+href="../../SSH.html">Net::SSH</a> does not directly support, you can use
+this to send it.
+</p>
+<pre>
+ ssh.send_message(Buffer.from(:byte, REQUEST_SUCCESS).to_s)
+</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="send-message-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 366</span>
+366:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">message</span>)
+367:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">enqueue_message</span>(<span class="ruby-identifier">message</span>)
+368:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="shutdown--method" class="method-detail ">
+				<a name="M000124"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">shutdown!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Performs a &#8220;hard&#8221; shutdown of the connection. In general, this
+should never be done, but it might be necessary (in a rescue clause, for
+instance, when the connection needs to close but you don&#8217;t know the
+status of the underlying protocol&#8217;s state).
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="shutdown--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 117</span>
+117:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shutdown!</span>
+118:       <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">shutdown!</span>
+119:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="stop-listening-to-method" class="method-detail ">
+				<a name="M000156"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">stop_listening_to</span><span
+						class="method-args">(io)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Removes the given io object from the listeners collection, so that the
+event loop will no longer monitor it.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="stop-listening-to-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 410</span>
+410:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stop_listening_to</span>(<span class="ruby-identifier">io</span>)
+411:       <span class="ruby-identifier">listeners</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">io</span>)
+412:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="channel-close-method" class="method-detail ">
+				<a name="M000180"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_close</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-close-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 568</span>
+568:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_close</span>(<span class="ruby-identifier">packet</span>)
+569:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_close: #{packet[:local_id]}&quot;</span> }
+570: 
+571:         <span class="ruby-identifier">channel</span> = <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]]
+572:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">close</span>
+573: 
+574:         <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>])
+575:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_close</span>
+576:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-data-method" class="method-detail ">
+				<a name="M000172"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_data</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-data-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 553</span>
+553:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_data</span>(<span class="ruby-identifier">packet</span>)
+554:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_data: #{packet[:local_id]} #{packet[:data].length}b&quot;</span> }
+555:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_data</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data</span>])
+556:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-eof-method" class="method-detail ">
+				<a name="M000179"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_eof</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-eof-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 563</span>
+563:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_eof</span>(<span class="ruby-identifier">packet</span>)
+564:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_eof: #{packet[:local_id]}&quot;</span> }
+565:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_eof</span>
+566:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-extended-data-method" class="method-detail ">
+				<a name="M000173"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_extended_data</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-extended-data-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 558</span>
+558:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_extended_data</span>(<span class="ruby-identifier">packet</span>)
+559:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_extended_data: #{packet[:local_id]} #{packet[:data_type]} #{packet[:data].length}b&quot;</span> }
+560:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_extended_data</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data_type</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data</span>])
+561:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-failure-method" class="method-detail ">
+				<a name="M000182"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_failure</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-failure-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 583</span>
+583:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_failure</span>(<span class="ruby-identifier">packet</span>)
+584:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_failure: #{packet[:local_id]}&quot;</span> }
+585:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_failure</span>
+586:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-open-method" class="method-detail ">
+				<a name="M000166"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_open</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Called when the server wants to open a channel. If no registered channel
+handler exists for the given channel type, CHANNEL_OPEN_FAILURE is
+returned, otherwise the callback is invoked and everything proceeds
+accordingly.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-open-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 501</span>
+501:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_open</span>(<span class="ruby-identifier">packet</span>)
+502:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel open #{packet[:channel_type]}&quot;</span> }
+503: 
+504:         <span class="ruby-identifier">local_id</span> = <span class="ruby-identifier">get_next_channel_id</span>
+505:         <span class="ruby-identifier">channel</span> = <span class="ruby-constant">Channel</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:channel_type</span>], <span class="ruby-identifier">local_id</span>)
+506:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:remote_id</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:window_size</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:packet_size</span>])
+507: 
+508:         <span class="ruby-identifier">callback</span> = <span class="ruby-identifier">channel_open_handlers</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:channel_type</span>]]
+509: 
+510:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">callback</span>
+511:           <span class="ruby-keyword kw">begin</span>
+512:             <span class="ruby-identifier">callback</span>[<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">channel</span>, <span class="ruby-identifier">packet</span>]
+513:           <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">ChannelOpenFailed</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+514:             <span class="ruby-identifier">failure</span> = [<span class="ruby-identifier">err</span>.<span class="ruby-identifier">code</span>, <span class="ruby-identifier">err</span>.<span class="ruby-identifier">reason</span>]
+515:           <span class="ruby-keyword kw">else</span>
+516:             <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">local_id</span>] = <span class="ruby-identifier">channel</span>
+517:             <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">CHANNEL_OPEN_CONFIRMATION</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_id</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_id</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_packet_size</span>)
+518:           <span class="ruby-keyword kw">end</span>
+519:         <span class="ruby-keyword kw">else</span>
+520:           <span class="ruby-identifier">failure</span> = [<span class="ruby-value">3</span>, <span class="ruby-node">&quot;unknown channel type #{channel.type}&quot;</span>]
+521:         <span class="ruby-keyword kw">end</span>
+522: 
+523:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">failure</span>
+524:           <span class="ruby-identifier">error</span> { <span class="ruby-identifier">failure</span>.<span class="ruby-identifier">inspect</span> }
+525:           <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">CHANNEL_OPEN_FAILURE</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_id</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">failure</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">failure</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>)
+526:         <span class="ruby-keyword kw">end</span>
+527: 
+528:         <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">msg</span>)
+529:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-open-confirmation-method" class="method-detail ">
+				<a name="M000167"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_open_confirmation</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-open-confirmation-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 531</span>
+531:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_open_confirmation</span>(<span class="ruby-identifier">packet</span>)
+532:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_open_confirmation: #{packet[:local_id]} #{packet[:remote_id]} #{packet[:window_size]} #{packet[:packet_size]}&quot;</span> }
+533:         <span class="ruby-identifier">channel</span> = <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]]
+534:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:remote_id</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:window_size</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:packet_size</span>])
+535:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-open-failure-method" class="method-detail ">
+				<a name="M000168"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_open_failure</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-open-failure-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 537</span>
+537:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_open_failure</span>(<span class="ruby-identifier">packet</span>)
+538:         <span class="ruby-identifier">error</span> { <span class="ruby-node">&quot;channel_open_failed: #{packet[:local_id]} #{packet[:reason_code]} #{packet[:description]}&quot;</span> }
+539:         <span class="ruby-identifier">channel</span> = <span class="ruby-identifier">channels</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>])
+540:         <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_failed</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:reason_code</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:description</span>])
+541:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-request-method" class="method-detail ">
+				<a name="M000171"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_request</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-request-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 548</span>
+548:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_request</span>(<span class="ruby-identifier">packet</span>)
+549:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_request: #{packet[:local_id]} #{packet[:request]} #{packet[:want_reply]}&quot;</span> }
+550:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_request</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:request</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:want_reply</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:request_data</span>])
+551:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-success-method" class="method-detail ">
+				<a name="M000181"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_success</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-success-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 578</span>
+578:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_success</span>(<span class="ruby-identifier">packet</span>)
+579:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_success: #{packet[:local_id]}&quot;</span> }
+580:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_success</span>
+581:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="channel-window-adjust-method" class="method-detail ">
+				<a name="M000170"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">channel_window_adjust</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="channel-window-adjust-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 543</span>
+543:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">channel_window_adjust</span>(<span class="ruby-identifier">packet</span>)
+544:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;channel_window_adjust: #{packet[:local_id]} +#{packet[:extra_bytes]}&quot;</span> }
+545:         <span class="ruby-identifier">channels</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]].<span class="ruby-identifier">do_window_adjust</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:extra_bytes</span>])
+546:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="dispatch-incoming-packets-method" class="method-detail ">
+				<a name="M000161"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">dispatch_incoming_packets</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Read all pending packets from the connection and dispatch them as
+appropriate. Returns as soon as there are no more pending packets.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="dispatch-incoming-packets-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 449</span>
+449:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dispatch_incoming_packets</span>
+450:         <span class="ruby-keyword kw">while</span> <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">poll_message</span>
+451:           <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">MAP</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>)
+452:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;unexpected response #{packet.type} (#{packet.inspect})&quot;</span>
+453:           <span class="ruby-keyword kw">end</span>
+454: 
+455:           <span class="ruby-identifier">send</span>(<span class="ruby-constant">MAP</span>[<span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>], <span class="ruby-identifier">packet</span>)
+456:         <span class="ruby-keyword kw">end</span>
+457:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="get-next-channel-id-method" class="method-detail ">
+				<a name="M000162"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_next_channel_id</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the next available channel id to be assigned, and increments the
+counter.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-next-channel-id-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 461</span>
+461:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_next_channel_id</span>
+462:         <span class="ruby-ivar">@channel_id_counter</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+463:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="global-request-method" class="method-detail ">
+				<a name="M000163"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">global_request</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Invoked when a global request is received. The registered global request
+callback will be invoked, if one exists, and the necessary reply returned.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="global-request-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 468</span>
+468:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">global_request</span>(<span class="ruby-identifier">packet</span>)
+469:         <span class="ruby-identifier">info</span> { <span class="ruby-node">&quot;global request received: #{packet[:request_type]} #{packet[:want_reply]}&quot;</span> }
+470:         <span class="ruby-identifier">callback</span> = <span class="ruby-ivar">@on_global_request</span>[<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:request_type</span>]]
+471:         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">callback</span> <span class="ruby-value">? </span><span class="ruby-identifier">callback</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:request_data</span>], <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:want_reply</span>]) <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+472: 
+473:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">:sent</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">true</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword kw">false</span>
+474:           <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;expected global request handler for `#{packet[:request_type]}' to return true, false, or :sent, but got #{result.inspect}&quot;</span>
+475:         <span class="ruby-keyword kw">end</span>
+476: 
+477:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:want_reply</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">:sent</span>
+478:           <span class="ruby-identifier">msg</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-identifier">result</span> <span class="ruby-value">? </span><span class="ruby-constant">REQUEST_SUCCESS</span> <span class="ruby-operator">:</span> <span class="ruby-constant">REQUEST_FAILURE</span>)
+479:           <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">msg</span>)
+480:         <span class="ruby-keyword kw">end</span>
+481:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="request-failure-method" class="method-detail ">
+				<a name="M000165"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">request_failure</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Invokes the next pending request callback with <tt>false</tt>.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="request-failure-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 491</span>
+491:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_failure</span>(<span class="ruby-identifier">packet</span>)
+492:         <span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;global request failure&quot;</span> }
+493:         <span class="ruby-identifier">callback</span> = <span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">shift</span>
+494:         <span class="ruby-identifier">callback</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">packet</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">callback</span>
+495:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="request-success-method" class="method-detail ">
+				<a name="M000164"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">request_success</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Invokes the next pending request callback with <tt>true</tt>.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="request-success-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/connection/session.rb, line 484</span>
+484:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">request_success</span>(<span class="ruby-identifier">packet</span>)
+485:         <span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;global request success&quot;</span> }
+486:         <span class="ruby-identifier">callback</span> = <span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">shift</span>
+487:         <span class="ruby-identifier">callback</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">packet</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">callback</span>
+488:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

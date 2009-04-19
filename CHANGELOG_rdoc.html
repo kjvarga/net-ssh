@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: CHANGELOG.rdoc [Net-ssh]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="./THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./Net.html">Net</a></li>
+				
+					<li><a href="./Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="./Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="./Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="./Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="./Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="./Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="./Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="./Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="./Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="./Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="./Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="./Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="./Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="./Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="./Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="./Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="./Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="./Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="./Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="./Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="./Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="./Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="./Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="./Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="./Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="./Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="./Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="./Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="./Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="./Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="./Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="./Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="./Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="./Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="./Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="./Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="./Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="./Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="./Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="./Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="./Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="./Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="./Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="./Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="./Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="./Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="./Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="./Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="./Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="./Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="./Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="./Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="./OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="./OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="./OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="./OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="./OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="./OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="./OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h3>(unreleased)</h3>
+<ul>
+<li>Use unbuffered reads when negotiating the protocol version [Steven Hazel]
+
+</li>
+</ul>
+<h3>2.0.11 / 24 Feb 2009</h3>
+<ul>
+<li>Add :key_data option for specifying raw private keys in PEM format [Alex
+Holems, Andrew Babkin]
+
+</li>
+</ul>
+<h3>2.0.10 / 4 Feb 2009</h3>
+<ul>
+<li>Added <a href="Net/SSH.html#M000419">Net::SSH.configuration_for</a> to make
+it easier to query the SSH configuration file(s) [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.9 / 1 Feb 2009</h3>
+<ul>
+<li>Specifying non-nil user argument overrides user in .ssh/config [Jamis Buck]
+
+</li>
+<li>Ignore requests for non-existent channels (workaround ssh server bug)
+[Jamis Buck]
+
+</li>
+<li>Add terminate! method for hard shutdown scenarios [Jamis Buck]
+
+</li>
+<li>Revert to pre-2.0.7 key-loading behavior by default, but load private-key
+if public-key doesn&#8217;t exist [Jamis Buck]
+
+</li>
+<li>Make sure :passphrase option gets passed to key manager [Bob Cotton]
+
+</li>
+</ul>
+<h3>2.0.8 / 29 December 2008</h3>
+<ul>
+<li>Fix private key change from 2.0.7 so that keys are loaded just-in-time,
+avoiding unecessary prompts from encrypted keys. [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.7 / 29 December 2008</h3>
+<ul>
+<li>Make key manager use private keys instead of requiring public key to exist
+[arilerner@mac.com]
+
+</li>
+<li>Fix failing tests [arilerner@mac.com]
+
+</li>
+<li>Don&#8217;t include pageant when running under JRuby [Angel N. Sciortino]
+
+</li>
+</ul>
+<h3>2.0.6 / 6 December 2008</h3>
+<ul>
+<li>Update the Manifest file so that the gem includes all necessary files
+[Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.5 / 6 December 2008</h3>
+<ul>
+<li>Make the Pageant interface comply with more of the Socket interface to
+avoid related errors [Jamis Buck]
+
+</li>
+<li>Don&#8217;t busy-wait on session close for remaining channels to close
+[Will Bryant]
+
+</li>
+<li>Ruby 1.9 compatibility [Jamis Buck]
+
+</li>
+<li>Fix Cipher#final to correctly flag a need for a cipher reset [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.4 / 27 Aug 2008</h3>
+<ul>
+<li>Added Connection::Session#closed? and Transport::Session#closed? [Jamis
+Buck]
+
+</li>
+<li>Numeric host names in .ssh/config are now parsed correct [Yanko Ivanov]
+
+</li>
+<li>Make sure the error raised when a public key file is malformed is more
+informative than a MethodMissing error [Jamis Buck]
+
+</li>
+<li>Cipher#reset is now called after Cipher#final, with the last n bytes used
+as the next initialization vector [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.3 / 27 Jun 2008</h3>
+<ul>
+<li>Make <a href="Net/SSH/Version.html">Net::SSH::Version</a> comparable [Brian
+Candler]
+
+</li>
+<li>Fix errors in port forwarding when a channel could not be opened due to a
+typo in the exception name [Matthew Todd]
+
+</li>
+<li>Use chomp instead of strip when cleaning the version string reported by the
+remote host, so that trailing whitespace is preserved (this is to play nice
+with servers like Mocana SSH) [Timo Gatsonides]
+
+</li>
+<li>Correctly parse ssh_config entries with eq-sign delimiters [Jamis Buck]
+
+</li>
+<li>Ignore malformed ssh_config entries [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.2 / 29 May 2008</h3>
+<ul>
+<li>Make sure the agent client understands both RSA &#8220;identities
+answers&#8221; [Jamis Buck]
+
+</li>
+<li>Fixed key truncation bug that caused hmacs other than SHA1 to fail with
+&#8220;corrupt hmac&#8221; errors [Jamis Buck]
+
+</li>
+<li>Fix detection and loading of public keys when the keys don&#8217;t actually
+exist [David Dollar]
+
+</li>
+</ul>
+<h3>2.0.1 / 5 May 2008</h3>
+<ul>
+<li>Teach <a href="Net/SSH.html">Net::SSH</a> about a handful of default key
+names [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0.0 / 1 May 2008</h3>
+<ul>
+<li>Allow the :verbose argument to accept symbols (:debug, etc.) as well as
+Logger level constants (Logger::DEBUG, etc.) [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0 Preview Release 4 (1.99.3) / 19 Apr 2008</h3>
+<ul>
+<li>Make sure HOME is set to something sane, even on OS&#8217;s that
+don&#8217;t set it by default [Jamis Buck]
+
+</li>
+<li>Add a :passphrase option to specify the passphrase to use with private keys
+[Francis Sullivan]
+
+</li>
+<li>Open a new auth agent connection for every auth-agent channel request
+[Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0 Preview Release 3 (1.99.2) / 10 Apr 2008</h3>
+<ul>
+<li>Session properties [Jamis Buck]
+
+</li>
+<li>Make channel open failure work with a callback so that failures can be
+handled similarly to successes [Jamis Buck]
+
+</li>
+</ul>
+<h3>2.0 Preview Release 2 (1.99.1) / 22 Mar 2008</h3>
+<ul>
+<li>Partial support for ~/.ssh/config (and related) SSH configuration files
+[Daniel J. Berger, Jamis Buck]
+
+</li>
+<li>Added <a href="Net/SSH/Test.html">Net::SSH::Test</a> to facilitate testing
+complex SSH state machines [Jamis Buck]
+
+</li>
+<li>Reworked Net::SSH::Prompt to use conditionally-selected modules [Jamis
+Buck, suggested by James Rosen]
+
+</li>
+<li>Added Channel#eof? and Channel#eof! [Jamis Buck]
+
+</li>
+<li>Fixed bug in strict host key verifier on cache miss [Mike Timm]
+
+</li>
+</ul>
+<h3>2.0 Preview Release 1 (1.99.0) / 21 Aug 2007</h3>
+<ul>
+<li>First preview release of <a href="Net/SSH.html">Net::SSH</a> v2
+
+</li>
+</ul>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

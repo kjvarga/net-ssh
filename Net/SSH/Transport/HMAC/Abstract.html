@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Net::SSH::Transport::HMAC::Abstract</title>
+
+	<link rel="stylesheet" href="../../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../../lib/net/ssh/transport/hmac/abstract_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/net/ssh/transport/hmac/abstract.rb">lib/net/ssh/transport/hmac/abstract.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000316">::digest_class</a></li>
+					
+					<li><a href="#M000313">::key_length</a></li>
+					
+					<li><a href="#M000314">::mac_length</a></li>
+					
+					<li><a href="#M000320">::new</a></li>
+					
+					<li><a href="#M000322">#digest</a></li>
+					
+					<li><a href="#M000319">#digest_class</a></li>
+					
+					<li><a href="#M000321">#key=</a></li>
+					
+					<li><a href="#M000317">#key_length</a></li>
+					
+					<li><a href="#M000318">#mac_length</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../../CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="../../../../README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="../../../../THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../../Net.html">Net</a></li>
+				
+					<li><a href="../../../../Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="../../../../Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="../../../../Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="../../../../Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="../../../../Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="../../../../Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="../../../../Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="../../../../Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="../../../../Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="../../../../Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="../../../../Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="../../../../Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="../../../../Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="../../../../Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="../../../../Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="../../../../Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="../../../../Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="../../../../Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="../../../../Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="../../../../Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="../../../../Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="../../../../Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="../../../../Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="../../../../Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="../../../../Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="../../../../Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="../../../../Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="../../../../Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="../../../../Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="../../../../Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="../../../../OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="../../../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="../../../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="../../../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="../../../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="../../../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="../../../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="../../../../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Net::SSH::Transport::HMAC::Abstract</h1>
+
+		<div id="description">
+			<p>
+The base class of all OpenSSL-based <a href="../HMAC.html">HMAC</a>
+algorithm wrappers.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="key-attribute-method" class="method-detail">
+				<a name="key"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">key</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The key in use for this instance.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="digest-class-method" class="method-detail ">
+				<a name="M000316"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">digest_class</span><span
+						class="method-args">(*v)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="digest-class-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 33</span>
+33:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest_class</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+34:         <span class="ruby-ivar">@digest_class</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@digest_class</span>)
+35:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+36:           <span class="ruby-ivar">@digest_class</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">digest_class</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@digest_class</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:digest_class</span>)
+37:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@digest_class</span>
+38:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+39:           <span class="ruby-ivar">@digest_class</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+40:         <span class="ruby-keyword kw">else</span>
+41:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+42:         <span class="ruby-keyword kw">end</span>
+43:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="key-length-method" class="method-detail ">
+				<a name="M000313"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">key_length</span><span
+						class="method-args">(*v)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="key-length-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 9</span>
+ 9:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_length</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+10:         <span class="ruby-ivar">@key_length</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@key_length</span>)
+11:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+12:           <span class="ruby-ivar">@key_length</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">key_length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@key_length</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:key_length</span>)
+13:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@key_length</span>
+14:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+15:           <span class="ruby-ivar">@key_length</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+16:         <span class="ruby-keyword kw">else</span>
+17:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+18:         <span class="ruby-keyword kw">end</span>
+19:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="mac-length-method" class="method-detail ">
+				<a name="M000314"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">mac_length</span><span
+						class="method-args">(*v)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="mac-length-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 21</span>
+21:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mac_length</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+22:         <span class="ruby-ivar">@mac_length</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@mac_length</span>)
+23:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+24:           <span class="ruby-ivar">@mac_length</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">mac_length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@mac_length</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:mac_length</span>)
+25:           <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@mac_length</span>
+26:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+27:           <span class="ruby-ivar">@mac_length</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+28:         <span class="ruby-keyword kw">else</span>
+29:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+30:         <span class="ruby-keyword kw">end</span>
+31:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000320"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(key=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 61</span>
+61:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword kw">nil</span>)
+62:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>
+63:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="digest-method" class="method-detail ">
+				<a name="M000322"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">digest</span><span
+						class="method-args">(data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Compute the <a href="../HMAC.html">HMAC</a> digest for the given data
+string.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="digest-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest</span>(<span class="ruby-identifier">data</span>)
+73:       <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">digest_class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">data</span>)[<span class="ruby-value">0</span>,<span class="ruby-identifier">mac_length</span>]
+74:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="digest-class-method" class="method-detail ">
+				<a name="M000319"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">digest_class</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="digest-class-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 54</span>
+54:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest_class</span>
+55:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">digest_class</span>
+56:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="key--method" class="method-detail ">
+				<a name="M000321"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">key=</span><span
+						class="method-args">(value)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sets the key to the given value, truncating it so that it is the correct
+length.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="key--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key=</span>(<span class="ruby-identifier">value</span>)
+68:       <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">value</span> <span class="ruby-value">? </span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">key_length</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+69:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="key-length-method" class="method-detail ">
+				<a name="M000317"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">key_length</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="key-length-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 46</span>
+46:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_length</span>
+47:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">key_length</span>
+48:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="mac-length-method" class="method-detail ">
+				<a name="M000318"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">mac_length</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p class="missing-docs">(Not documented)</p>
+					
+
+					
+					<div class="method-source-code"
+						id="mac-length-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 50</span>
+50:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mac_length</span>
+51:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">mac_length</span>
+52:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

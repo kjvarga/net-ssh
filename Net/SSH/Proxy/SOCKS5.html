@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Net::SSH::Proxy::SOCKS5</title>
+
+	<link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../lib/net/ssh/proxy/socks5_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/net/ssh/proxy/socks5.rb">lib/net/ssh/proxy/socks5.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000217">::new</a></li>
+					
+					<li><a href="#M000219">#negotiate_password</a></li>
+					
+					<li><a href="#M000218">#open</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="../../../README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="../../../THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../Net.html">Net</a></li>
+				
+					<li><a href="../../../Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="../../../Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="../../../Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="../../../Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="../../../Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="../../../Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="../../../Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="../../../Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="../../../Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="../../../Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="../../../Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="../../../Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="../../../OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="../../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="../../../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Net::SSH::Proxy::SOCKS5</h1>
+
+		<div id="description">
+			<p>
+An implementation of a <a href="SOCKS5.html">SOCKS5</a> proxy. To use it,
+instantiate it, then pass the instantiated object via the :proxy key to <a
+href="../../SSH.html#M000418">Net::SSH.start</a>:
+</p>
+<pre>
+  require 'net/ssh/proxy/socks5'
+
+  proxy = Net::SSH::Proxy::SOCKS5.new('proxy.host', proxy_port,
+    :user =&gt; 'user', :password =&gt; &quot;password&quot;)
+  Net::SSH.start('host', 'user', :proxy =&gt; proxy) do |ssh|
+    ...
+  end
+</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="VERSION">VERSION</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS protocol version used by this class
+</p></dd>
+				
+			
+				<dt><a name="METHOD_NO_AUTH">METHOD_NO_AUTH</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS authentication type for requests without authentication
+</p></dd>
+				
+			
+				<dt><a name="METHOD_PASSWD">METHOD_PASSWD</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS authentication type for requests via username/password
+</p></dd>
+				
+			
+				<dt><a name="METHOD_NONE">METHOD_NONE</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS authentication type for when there are no supported
+authentication methods.
+</p></dd>
+				
+			
+				<dt><a name="CMD_CONNECT">CMD_CONNECT</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS packet type for requesting a proxy connection.
+</p></dd>
+				
+			
+				<dt><a name="ATYP_IPV4">ATYP_IPV4</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS address type for connections via IP address.
+</p></dd>
+				
+			
+				<dt><a name="ATYP_DOMAIN">ATYP_DOMAIN</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS address type for connections via domain name.
+</p></dd>
+				
+			
+				<dt><a name="SUCCESS">SUCCESS</a></dt>
+				
+				<dd class="description"><p>
+The SOCKS response code for a successful operation.
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="proxy-host-attribute-method" class="method-detail">
+				<a name="proxy_host"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">proxy_host</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The proxy&#8217;s host name or IP address
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="proxy-port-attribute-method" class="method-detail">
+				<a name="proxy_port"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">proxy_port</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The proxy&#8217;s port number
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="options-attribute-method" class="method-detail">
+				<a name="options"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">options</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The map of options given at initialization
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000217"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(proxy_host, proxy_port=1080, options={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Create a new proxy connection to the given proxy host and port. Optionally,
+:user and :password options may be given to identify the username and
+password with which to authenticate.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/proxy/socks5.rb, line 57</span>
+57:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">proxy_host</span>, <span class="ruby-identifier">proxy_port</span>=<span class="ruby-value">1080</span>, <span class="ruby-identifier">options</span>={})
+58:           <span class="ruby-ivar">@proxy_host</span> = <span class="ruby-identifier">proxy_host</span>
+59:           <span class="ruby-ivar">@proxy_port</span> = <span class="ruby-identifier">proxy_port</span>
+60:           <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+61:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="open-method" class="method-detail ">
+				<a name="M000218"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">open</span><span
+						class="method-args">(host, port)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Return a new socket connected to the given host and port via the proxy that
+was requested when the socket factory was instantiated.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="open-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/proxy/socks5.rb, line 65</span>
+ 65:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>)
+ 66:           <span class="ruby-identifier">socket</span> = <span class="ruby-constant">TCPSocket</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">proxy_host</span>, <span class="ruby-identifier">proxy_port</span>)
+ 67: 
+ 68:           <span class="ruby-identifier">methods</span> = [<span class="ruby-constant">METHOD_NO_AUTH</span>]
+ 69:           <span class="ruby-identifier">methods</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">METHOD_PASSWD</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>]
+ 70: 
+ 71:           <span class="ruby-identifier">packet</span> = [<span class="ruby-constant">VERSION</span>, <span class="ruby-identifier">methods</span>.<span class="ruby-identifier">size</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">methods</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;C*&quot;</span>)
+ 72:           <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">packet</span>, <span class="ruby-value">0</span>
+ 73: 
+ 74:           <span class="ruby-identifier">version</span>, <span class="ruby-identifier">method</span> = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;CC&quot;</span>)
+ 75:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">version</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">VERSION</span>
+ 76:             <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
+ 77:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Proxy</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;invalid SOCKS version (#{version})&quot;</span>
+ 78:           <span class="ruby-keyword kw">end</span>
+ 79: 
+ 80:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">method</span> <span class="ruby-operator">==</span> <span class="ruby-constant">METHOD_NONE</span>
+ 81:             <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
+ 82:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Proxy</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-value str">&quot;no supported authorization methods&quot;</span>
+ 83:           <span class="ruby-keyword kw">end</span>
+ 84: 
+ 85:           <span class="ruby-identifier">negotiate_password</span>(<span class="ruby-identifier">socket</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">method</span> <span class="ruby-operator">==</span> <span class="ruby-constant">METHOD_PASSWD</span>
+ 86: 
+ 87:           <span class="ruby-identifier">packet</span> = [<span class="ruby-constant">VERSION</span>, <span class="ruby-constant">CMD_CONNECT</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;C*&quot;</span>)
+ 88: 
+ 89:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">host</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^(\d+)\.(\d+)\.(\d+)\.(\d+)$/</span>
+ 90:             <span class="ruby-identifier">packet</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-constant">ATYP_IPV4</span>, <span class="ruby-identifier">$1</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">$2</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">$3</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">$4</span>.<span class="ruby-identifier">to_i</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;C*&quot;</span>)
+ 91:           <span class="ruby-keyword kw">else</span>
+ 92:             <span class="ruby-identifier">packet</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-constant">ATYP_DOMAIN</span>, <span class="ruby-identifier">host</span>.<span class="ruby-identifier">length</span>, <span class="ruby-identifier">host</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;CCA*&quot;</span>)
+ 93:           <span class="ruby-keyword kw">end</span>
+ 94: 
+ 95:           <span class="ruby-identifier">packet</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">port</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;n&quot;</span>)
+ 96:           <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">packet</span>, <span class="ruby-value">0</span>
+ 97: 
+ 98:           <span class="ruby-identifier">version</span>, <span class="ruby-identifier">reply</span>, = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;C*&quot;</span>)
+ 99:           <span class="ruby-identifier">len</span> = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">getbyte</span>(<span class="ruby-value">0</span>)
+100:           <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-identifier">len</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>)
+101: 
+102:           <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">reply</span> <span class="ruby-operator">==</span> <span class="ruby-constant">SUCCESS</span>
+103:             <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
+104:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ConnectError</span>, <span class="ruby-node">&quot;#{reply}&quot;</span>
+105:           <span class="ruby-keyword kw">end</span>
+106: 
+107:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">socket</span>
+108:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="negotiate-password-method" class="method-detail ">
+				<a name="M000219"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">negotiate_password</span><span
+						class="method-args">(socket)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Simple username/password negotiation with the <a
+href="SOCKS5.html">SOCKS5</a> server.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="negotiate-password-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/proxy/socks5.rb, line 113</span>
+113:           <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negotiate_password</span>(<span class="ruby-identifier">socket</span>)
+114:             <span class="ruby-identifier">packet</span> = [<span class="ruby-value">0x01</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>].<span class="ruby-identifier">length</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:user</span>],
+115:               <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>].<span class="ruby-identifier">length</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:password</span>]].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;CCA*CA*&quot;</span>)
+116:             <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">send</span> <span class="ruby-identifier">packet</span>, <span class="ruby-value">0</span>
+117: 
+118:             <span class="ruby-identifier">version</span>, <span class="ruby-identifier">status</span> = <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">recv</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;CC&quot;</span>)
+119: 
+120:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">status</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">SUCCESS</span>
+121:               <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span>
+122:               <span class="ruby-identifier">raise</span> <span class="ruby-constant">UnauthorizedError</span>, <span class="ruby-value str">&quot;could not authorize user&quot;</span>
+123:             <span class="ruby-keyword kw">end</span>
+124:           <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

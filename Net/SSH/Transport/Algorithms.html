@@ -1,0 +1,1516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Net::SSH::Transport::Algorithms</title>
+
+	<link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../lib/net/ssh/transport/algorithms_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/net/ssh/transport/algorithms.rb">lib/net/ssh/transport/algorithms.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000297">::allowed_packet?</a></li>
+					
+					<li><a href="#M000298">::new</a></li>
+					
+					<li><a href="#M000301">#[]</a></li>
+					
+					<li><a href="#M000300">#accept_kexinit</a></li>
+					
+					<li><a href="#M000303">#allow?</a></li>
+					
+					<li><a href="#M000309">#build_client_algorithm_packet</a></li>
+					
+					<li><a href="#M000315">#exchange_keys</a></li>
+					
+					<li><a href="#M000304">#initialized?</a></li>
+					
+					<li><a href="#M000312">#kex_byte_requirement</a></li>
+					
+					<li><a href="#M000311">#negotiate</a></li>
+					
+					<li><a href="#M000310">#negotiate_algorithms</a></li>
+					
+					<li><a href="#M000323">#normalize_compression_name</a></li>
+					
+					<li><a href="#M000308">#parse_server_algorithm_packet</a></li>
+					
+					<li><a href="#M000302">#pending?</a></li>
+					
+					<li><a href="#M000307">#prepare_preferred_algorithms!</a></li>
+					
+					<li><a href="#M000306">#proceed!</a></li>
+					
+					<li><a href="#M000299">#rekey!</a></li>
+					
+					<li><a href="#M000305">#send_kexinit</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><a class="include" href="../Authentication.html">Net::SSH::Authentication</a></li>
+				
+				
+				
+					<li><a class="include" href="../../SSH.html">Net::SSH</a></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="../../../README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="../../../THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../Net.html">Net</a></li>
+				
+					<li><a href="../../../Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="../../../Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="../../../Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="../../../Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="../../../Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="../../../Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="../../../Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="../../../Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="../../../Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="../../../Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="../../../Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="../../../Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="../../../OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="../../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="../../../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Net::SSH::Transport::Algorithms</h1>
+
+		<div id="description">
+			<p>
+Implements the higher-level logic behind an <a
+href="../../SSH.html">SSH</a> key-exchange. It handles both the initial
+exchange, as well as subsequent re-exchanges (as needed). It also
+encapsulates the negotiation of the algorithms, and provides a single point
+of access to the negotiated algorithms.
+</p>
+<p>
+You will never instantiate or reference this directly. It is used
+internally by the transport layer.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="ALGORITHMS">ALGORITHMS</a></dt>
+				
+				<dd class="description"><p>
+Define the default algorithms, in order of preference, supported by <a
+href="../../SSH.html">Net::SSH</a>.
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="session-attribute-method" class="method-detail">
+				<a name="session"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">session</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The underlying transport layer session that supports this object
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="options-attribute-method" class="method-detail">
+				<a name="options"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">options</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The hash of options used to initialize this object
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="kex-attribute-method" class="method-detail">
+				<a name="kex"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">kex</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The kex algorithm to use settled on between the client and server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="host-key-attribute-method" class="method-detail">
+				<a name="host_key"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">host_key</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of host key that will be used for this session.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="encryption-client-attribute-method" class="method-detail">
+				<a name="encryption_client"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">encryption_client</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of the cipher to use to encrypt packets sent from the client to
+the server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="encryption-server-attribute-method" class="method-detail">
+				<a name="encryption_server"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">encryption_server</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of the cipher to use to decrypt packets arriving from the server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="hmac-client-attribute-method" class="method-detail">
+				<a name="hmac_client"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">hmac_client</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of <a href="HMAC.html">HMAC</a> to use to sign packets sent by the
+client.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="hmac-server-attribute-method" class="method-detail">
+				<a name="hmac_server"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">hmac_server</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of <a href="HMAC.html">HMAC</a> to use to validate packets
+arriving from the server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="compression-client-attribute-method" class="method-detail">
+				<a name="compression_client"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">compression_client</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of compression to use to compress packets being sent by the
+client.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="compression-server-attribute-method" class="method-detail">
+				<a name="compression_server"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">compression_server</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The type of compression to use to decompress packets arriving from the
+server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="language-client-attribute-method" class="method-detail">
+				<a name="language_client"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">language_client</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The language that will be used in messages sent by the client.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="language-server-attribute-method" class="method-detail">
+				<a name="language_server"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">language_server</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The language that will be used in messages sent from the server.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="algorithms-attribute-method" class="method-detail">
+				<a name="algorithms"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">algorithms</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The hash of algorithms preferred by the client, which will be told to the
+server during algorithm negotiation.
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="session-id-attribute-method" class="method-detail">
+				<a name="session_id"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">session_id</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The session-id for this session, as decided during the initial key
+exchange.
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="allowed-packet--method" class="method-detail ">
+				<a name="M000297"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">allowed_packet?</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns true if the given packet can be processed during a key-exchange.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="allowed-packet--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 81</span>
+81:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">allowed_packet?</span>(<span class="ruby-identifier">packet</span>)
+82:       ( <span class="ruby-value">1</span><span class="ruby-operator">..</span> <span class="ruby-value">4</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>) <span class="ruby-operator">||</span>
+83:       ( <span class="ruby-value">6</span><span class="ruby-operator">..</span><span class="ruby-value">19</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>) <span class="ruby-operator">||</span>
+84:       (<span class="ruby-value">21</span><span class="ruby-operator">..</span><span class="ruby-value">49</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>)
+85:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000298"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(session, options={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Instantiates a new <a href="Algorithms.html">Algorithms</a> object, and
+prepares the hash of preferred algorithms based on the options parameter
+and the <a href="Algorithms.html#ALGORITHMS">ALGORITHMS</a> constant.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 89</span>
+89:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">session</span>, <span class="ruby-identifier">options</span>={})
+90:       <span class="ruby-ivar">@session</span> = <span class="ruby-identifier">session</span>
+91:       <span class="ruby-ivar">@logger</span> = <span class="ruby-identifier">session</span>.<span class="ruby-identifier">logger</span>
+92:       <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+93:       <span class="ruby-ivar">@algorithms</span> = {}
+94:       <span class="ruby-ivar">@pending</span> = <span class="ruby-ivar">@initialized</span> = <span class="ruby-keyword kw">false</span>
+95:       <span class="ruby-ivar">@client_packet</span> = <span class="ruby-ivar">@server_packet</span> = <span class="ruby-keyword kw">nil</span>
+96:       <span class="ruby-identifier">prepare_preferred_algorithms!</span>
+97:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="--method" class="method-detail ">
+				<a name="M000301"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">[]</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+A convenience method for accessing the list of preferred types for a
+specific algorithm (see <a
+href="Algorithms.html#algorithms">algorithms</a>).
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 126</span>
+126:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+127:       <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">key</span>]
+128:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="accept-kexinit-method" class="method-detail ">
+				<a name="M000300"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">accept_kexinit</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Called by the transport layer when a KEXINIT packet is recieved, indicating
+that the server wants to exchange keys. This can be spontaneous, or it can
+be in response to a client-initiated rekey request (see <a
+href="Algorithms.html#M000299">rekey!</a>). Either way, this will block
+until the key exchange completes.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="accept-kexinit-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 113</span>
+113:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">packet</span>)
+114:       <span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;got KEXINIT from server&quot;</span> }
+115:       <span class="ruby-ivar">@server_data</span> = <span class="ruby-identifier">parse_server_algorithm_packet</span>(<span class="ruby-identifier">packet</span>)
+116:       <span class="ruby-ivar">@server_packet</span> = <span class="ruby-ivar">@server_data</span>[<span class="ruby-identifier">:raw</span>]
+117:       <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">pending?</span>
+118:         <span class="ruby-identifier">send_kexinit</span>
+119:       <span class="ruby-keyword kw">else</span>
+120:         <span class="ruby-identifier">proceed!</span>
+121:       <span class="ruby-keyword kw">end</span>
+122:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="allow--method" class="method-detail ">
+				<a name="M000303"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">allow?</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns true if no exchange is pending, and otherwise returns true or false
+depending on whether the given packet is of a type that is allowed during a
+key exchange.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="allow--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 142</span>
+142:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">allow?</span>(<span class="ruby-identifier">packet</span>)
+143:       <span class="ruby-operator">!</span><span class="ruby-identifier">pending?</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Algorithms</span>.<span class="ruby-identifier">allowed_packet?</span>(<span class="ruby-identifier">packet</span>)
+144:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="initialized--method" class="method-detail ">
+				<a name="M000304"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">initialized?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns true if the algorithms have been negotiated at all.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="initialized--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 147</span>
+147:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialized?</span>
+148:       <span class="ruby-ivar">@initialized</span>
+149:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="pending--method" class="method-detail ">
+				<a name="M000302"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">pending?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns <tt>true</tt> if a key-exchange is pending. This will be true from
+the moment either the client or server requests the key exchange, until the
+exchange completes. While an exchange is pending, only a limited number of
+packets are allowed, so event processing essentially stops during this
+period.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="pending--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 135</span>
+135:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pending?</span>
+136:       <span class="ruby-ivar">@pending</span>
+137:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="rekey--method" class="method-detail ">
+				<a name="M000299"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">rekey!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Request a rekey operation. This will return immediately, and does not
+actually perform the rekey operation. It does cause the session to change
+state, however&#8212;until the key exchange finishes, no new packets will
+be processed.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="rekey--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 103</span>
+103:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rekey!</span>
+104:       <span class="ruby-ivar">@client_packet</span> = <span class="ruby-ivar">@server_packet</span> = <span class="ruby-keyword kw">nil</span>
+105:       <span class="ruby-ivar">@initialized</span> = <span class="ruby-keyword kw">false</span>
+106:       <span class="ruby-identifier">send_kexinit</span>
+107:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="private-instance-method-details" class="method-section section">
+			<h3 class="section-header">Private Instance Methods</h3>
+
+		
+			<div id="build-client-algorithm-packet-method" class="method-detail ">
+				<a name="M000309"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">build_client_algorithm_packet</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Given the <a href="Algorithms.html#algorithms">algorithms</a> map of
+preferred algorithm types, this constructs a KEXINIT packet to send to the
+server. It does not actually send it, it simply builds the packet and
+returns it.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="build-client-algorithm-packet-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 250</span>
+250:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_client_algorithm_packet</span>
+251:         <span class="ruby-identifier">kex</span>         = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:kex</span>        ].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+252:         <span class="ruby-identifier">host_key</span>    = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:host_key</span>   ].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+253:         <span class="ruby-identifier">encryption</span>  = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:encryption</span> ].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+254:         <span class="ruby-identifier">hmac</span>        = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:hmac</span>       ].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+255:         <span class="ruby-identifier">compression</span> = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:compression</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+256:         <span class="ruby-identifier">language</span>    = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:language</span>   ].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+257: 
+258:         <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">KEXINIT</span>,
+259:           <span class="ruby-identifier">:long</span>, [<span class="ruby-identifier">rand</span>(<span class="ruby-value">0x</span><span class="ruby-constant">FFFFFFFF</span>), <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x</span><span class="ruby-constant">FFFFFFFF</span>), <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x</span><span class="ruby-constant">FFFFFFFF</span>), <span class="ruby-identifier">rand</span>(<span class="ruby-value">0x</span><span class="ruby-constant">FFFFFFFF</span>)],
+260:           <span class="ruby-identifier">:string</span>, [<span class="ruby-identifier">kex</span>, <span class="ruby-identifier">host_key</span>, <span class="ruby-identifier">encryption</span>, <span class="ruby-identifier">encryption</span>, <span class="ruby-identifier">hmac</span>, <span class="ruby-identifier">hmac</span>],
+261:           <span class="ruby-identifier">:string</span>, [<span class="ruby-identifier">compression</span>, <span class="ruby-identifier">compression</span>, <span class="ruby-identifier">language</span>, <span class="ruby-identifier">language</span>],
+262:           <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">0</span>)
+263:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="exchange-keys-method" class="method-detail ">
+				<a name="M000315"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">exchange_keys</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Instantiates one of the <a href="Kex.html">Transport::Kex</a> classes
+(based on the negotiated kex algorithm), and uses it to exchange keys.
+Then, the ciphers and HMACs are initialized and fed to the transport layer,
+to be used in further communication with the server.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="exchange-keys-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 321</span>
+321:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exchange_keys</span>
+322:         <span class="ruby-identifier">debug</span> { <span class="ruby-value str">&quot;exchanging keys&quot;</span> }
+323: 
+324:         <span class="ruby-identifier">algorithm</span> = <span class="ruby-constant">Kex</span><span class="ruby-operator">::</span><span class="ruby-constant">MAP</span>[<span class="ruby-identifier">kex</span>].<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">session</span>,
+325:           <span class="ruby-identifier">:client_version_string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">ServerVersion</span><span class="ruby-operator">::</span><span class="ruby-constant">PROTO_VERSION</span>,
+326:           <span class="ruby-identifier">:server_version_string</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">server_version</span>.<span class="ruby-identifier">version</span>,
+327:           <span class="ruby-identifier">:server_algorithm_packet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@server_packet</span>,
+328:           <span class="ruby-identifier">:client_algorithm_packet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@client_packet</span>,
+329:           <span class="ruby-identifier">:need_bytes</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">kex_byte_requirement</span>,
+330:           <span class="ruby-identifier">:logger</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">logger</span>)
+331:         <span class="ruby-identifier">result</span> = <span class="ruby-identifier">algorithm</span>.<span class="ruby-identifier">exchange_keys</span>
+332: 
+333:         <span class="ruby-identifier">secret</span>   = <span class="ruby-identifier">result</span>[<span class="ruby-identifier">:shared_secret</span>].<span class="ruby-identifier">to_ssh</span>
+334:         <span class="ruby-identifier">hash</span>     = <span class="ruby-identifier">result</span>[<span class="ruby-identifier">:session_id</span>]
+335:         <span class="ruby-identifier">digester</span> = <span class="ruby-identifier">result</span>[<span class="ruby-identifier">:hashing_algorithm</span>]
+336: 
+337:         <span class="ruby-ivar">@session_id</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">hash</span>
+338: 
+339:         <span class="ruby-identifier">key</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">salt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">digester</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">secret</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">hash</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">salt</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@session_id</span>) }
+340:         
+341:         <span class="ruby-identifier">iv_client</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;A&quot;</span>]
+342:         <span class="ruby-identifier">iv_server</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;B&quot;</span>]
+343:         <span class="ruby-identifier">key_client</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;C&quot;</span>]
+344:         <span class="ruby-identifier">key_server</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;D&quot;</span>]
+345:         <span class="ruby-identifier">mac_key_client</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;E&quot;</span>]
+346:         <span class="ruby-identifier">mac_key_server</span> = <span class="ruby-identifier">key</span>[<span class="ruby-value str">&quot;F&quot;</span>]
+347: 
+348:         <span class="ruby-identifier">parameters</span> = { <span class="ruby-identifier">:iv</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">iv_client</span>, <span class="ruby-identifier">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">key_client</span>, <span class="ruby-identifier">:shared</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">secret</span>,
+349:           <span class="ruby-identifier">:hash</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">hash</span>, <span class="ruby-identifier">:digester</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">digester</span> }
+350:         
+351:         <span class="ruby-identifier">cipher_client</span> = <span class="ruby-constant">CipherFactory</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">encryption_client</span>, <span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:encrypt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>))
+352:         <span class="ruby-identifier">cipher_server</span> = <span class="ruby-constant">CipherFactory</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">encryption_server</span>, <span class="ruby-identifier">parameters</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:iv</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">iv_server</span>, <span class="ruby-identifier">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">key_server</span>, <span class="ruby-identifier">:decrypt</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>))
+353: 
+354:         <span class="ruby-identifier">mac_client</span> = <span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">hmac_client</span>, <span class="ruby-identifier">mac_key_client</span>)
+355:         <span class="ruby-identifier">mac_server</span> = <span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">hmac_server</span>, <span class="ruby-identifier">mac_key_server</span>)
+356: 
+357:         <span class="ruby-identifier">session</span>.<span class="ruby-identifier">configure_client</span> <span class="ruby-identifier">:cipher</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cipher_client</span>, <span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">mac_client</span>,
+358:           <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">normalize_compression_name</span>(<span class="ruby-identifier">compression_client</span>),
+359:           <span class="ruby-identifier">:compression_level</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:compression_level</span>],
+360:           <span class="ruby-identifier">:rekey_limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_limit</span>],
+361:           <span class="ruby-identifier">:max_packets</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_packet_limit</span>],
+362:           <span class="ruby-identifier">:max_blocks</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_blocks_limit</span>]
+363: 
+364:         <span class="ruby-identifier">session</span>.<span class="ruby-identifier">configure_server</span> <span class="ruby-identifier">:cipher</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cipher_server</span>, <span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">mac_server</span>,
+365:           <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">normalize_compression_name</span>(<span class="ruby-identifier">compression_server</span>),
+366:           <span class="ruby-identifier">:rekey_limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_limit</span>],
+367:           <span class="ruby-identifier">:max_packets</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_packet_limit</span>],
+368:           <span class="ruby-identifier">:max_blocks</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:rekey_blocks_limit</span>]
+369: 
+370:         <span class="ruby-ivar">@initialized</span> = <span class="ruby-keyword kw">true</span>
+371:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="kex-byte-requirement-method" class="method-detail ">
+				<a name="M000312"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">kex_byte_requirement</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Considers the sizes of the keys and block-sizes for the selected ciphers,
+and the lengths of the hmacs, and returns the largest as the byte
+requirement for the key-exchange algorithm.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="kex-byte-requirement-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 305</span>
+305:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">kex_byte_requirement</span>
+306:         <span class="ruby-identifier">sizes</span> = [<span class="ruby-value">8</span>] <span class="ruby-comment cmt"># require at least 8 bytes</span>
+307: 
+308:         <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">CipherFactory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-identifier">encryption_client</span>))
+309:         <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">CipherFactory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-identifier">encryption_server</span>))
+310: 
+311:         <span class="ruby-identifier">sizes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">key_length</span>(<span class="ruby-identifier">hmac_client</span>)
+312:         <span class="ruby-identifier">sizes</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">key_length</span>(<span class="ruby-identifier">hmac_server</span>)
+313: 
+314:         <span class="ruby-identifier">sizes</span>.<span class="ruby-identifier">max</span>
+315:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="negotiate-method" class="method-detail ">
+				<a name="M000311"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">negotiate</span><span
+						class="method-args">(algorithm)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Negotiates a single algorithm based on the preferences reported by the
+server and those set by the client. This is called by <a
+href="Algorithms.html#M000310">negotiate_algorithms</a>.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="negotiate-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 292</span>
+292:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">algorithm</span>)
+293:         <span class="ruby-identifier">match</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">algorithm</span>].<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@server_data</span>[<span class="ruby-identifier">algorithm</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">item</span>) }
+294: 
+295:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">nil?</span>
+296:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;could not settle on #{algorithm} algorithm&quot;</span>
+297:         <span class="ruby-keyword kw">end</span>
+298: 
+299:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">match</span>
+300:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="negotiate-algorithms-method" class="method-detail ">
+				<a name="M000310"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">negotiate_algorithms</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Given the parsed server KEX packet, and the client&#8217;s preferred
+algorithm lists in <a href="Algorithms.html#algorithms">algorithms</a>,
+determine which preferred algorithms each has in common and set those as
+the selected algorithms. If, for any algorithm, no type can be settled on,
+an exception is raised.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="negotiate-algorithms-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 269</span>
+269:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negotiate_algorithms</span>
+270:         <span class="ruby-ivar">@kex</span>                = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:kex</span>)
+271:         <span class="ruby-ivar">@host_key</span>           = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:host_key</span>)
+272:         <span class="ruby-ivar">@encryption_client</span>  = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:encryption_client</span>)
+273:         <span class="ruby-ivar">@encryption_server</span>  = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:encryption_server</span>)
+274:         <span class="ruby-ivar">@hmac_client</span>        = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:hmac_client</span>)
+275:         <span class="ruby-ivar">@hmac_server</span>        = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:hmac_server</span>)
+276:         <span class="ruby-ivar">@compression_client</span> = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:compression_client</span>)
+277:         <span class="ruby-ivar">@compression_server</span> = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:compression_server</span>)
+278:         <span class="ruby-ivar">@language_client</span>    = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:language_client</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;&quot;</span>
+279:         <span class="ruby-ivar">@language_server</span>    = <span class="ruby-identifier">negotiate</span>(<span class="ruby-identifier">:language_server</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-value str">&quot;&quot;</span>
+280: 
+281:         <span class="ruby-identifier">debug</span> <span class="ruby-keyword kw">do</span>
+282:           <span class="ruby-value str">&quot;negotiated:\n&quot;</span> <span class="ruby-operator">+</span>
+283:             [<span class="ruby-identifier">:kex</span>, <span class="ruby-identifier">:host_key</span>, <span class="ruby-identifier">:encryption_server</span>, <span class="ruby-identifier">:encryption_client</span>, <span class="ruby-identifier">:hmac_client</span>, <span class="ruby-identifier">:hmac_server</span>, <span class="ruby-identifier">:compression_client</span>, <span class="ruby-identifier">:compression_server</span>, <span class="ruby-identifier">:language_client</span>, <span class="ruby-identifier">:language_server</span>].<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+284:               <span class="ruby-node">&quot;* #{key}: #{instance_variable_get(&quot;@#{key}&quot;)}&quot;</span>
+285:             <span class="ruby-keyword kw">end</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+286:         <span class="ruby-keyword kw">end</span>
+287:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="normalize-compression-name-method" class="method-detail ">
+				<a name="M000323"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">normalize_compression_name</span><span
+						class="method-args">(name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Given the <a href="../../SSH.html">SSH</a> name for some compression
+algorithm, return a normalized name as a symbol.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="normalize-compression-name-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 375</span>
+375:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">normalize_compression_name</span>(<span class="ruby-identifier">name</span>)
+376:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">name</span>
+377:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;none&quot;</span>             <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">false</span>
+378:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;zlib&quot;</span>             <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">:standard</span>
+379:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;zlib@openssh.com&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">:delayed</span>
+380:         <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;unknown compression type `#{name}'&quot;</span>
+381:         <span class="ruby-keyword kw">end</span>
+382:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="parse-server-algorithm-packet-method" class="method-detail ">
+				<a name="M000308"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_server_algorithm_packet</span><span
+						class="method-args">(packet)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Parses a KEXINIT packet from the server.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="parse-server-algorithm-packet-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 223</span>
+223:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_server_algorithm_packet</span>(<span class="ruby-identifier">packet</span>)
+224:         <span class="ruby-identifier">data</span> = { <span class="ruby-identifier">:raw</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">content</span> }
+225: 
+226:         <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">16</span>) <span class="ruby-comment cmt"># skip the cookie value</span>
+227: 
+228:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:kex</span>]                = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+229:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:host_key</span>]           = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+230:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:encryption_client</span>]  = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+231:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:encryption_server</span>]  = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+232:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:hmac_client</span>]        = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+233:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:hmac_server</span>]        = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+234:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:compression_client</span>] = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+235:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:compression_server</span>] = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+236:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:language_client</span>]    = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+237:         <span class="ruby-identifier">data</span>[<span class="ruby-identifier">:language_server</span>]    = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+238: 
+239:         <span class="ruby-comment cmt"># TODO: if first_kex_packet_follows, we need to try to skip the</span>
+240:         <span class="ruby-comment cmt"># actual kexinit stuff and try to guess what the server is doing...</span>
+241:         <span class="ruby-comment cmt"># need to read more about this scenario.</span>
+242:         <span class="ruby-identifier">first_kex_packet_follows</span> = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_bool</span>
+243: 
+244:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+245:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="prepare-preferred-algorithms--method" class="method-detail ">
+				<a name="M000307"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">prepare_preferred_algorithms!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Prepares the list of preferred algorithms, based on the options hash that
+was given when the object was constructed, and the <a
+href="Algorithms.html#ALGORITHMS">ALGORITHMS</a> constant. Also, when
+determining the <a href="Algorithms.html#host_key">host_key</a> type to
+use, the known hosts files are examined to see if the host has ever sent a
+<a href="Algorithms.html#host_key">host_key</a> before, and if so, that key
+type is used as the preferred type for communicating with this server.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="prepare-preferred-algorithms--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 182</span>
+182:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_preferred_algorithms!</span>
+183:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:compression</span>] = <span class="ruby-node">%w(zlib@openssh.com zlib)</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:compression</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword kw">true</span>
+184: 
+185:         <span class="ruby-constant">ALGORITHMS</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">algorithm</span>, <span class="ruby-identifier">list</span><span class="ruby-operator">|</span>
+186:           <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">algorithm</span>] = <span class="ruby-identifier">list</span>.<span class="ruby-identifier">dup</span>
+187: 
+188:           <span class="ruby-comment cmt"># apply the preferred algorithm order, if any</span>
+189:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">algorithm</span>]
+190:             <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">algorithm</span>] = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">algorithm</span>]).<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">uniq</span>
+191:             <span class="ruby-identifier">invalid</span> = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">algorithm</span>].<span class="ruby-identifier">detect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-constant">ALGORITHMS</span>[<span class="ruby-identifier">algorithm</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>) }
+192:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-node">&quot;unsupported #{algorithm} algorithm: `#{invalid}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">invalid</span>
+193: 
+194:             <span class="ruby-comment cmt"># make sure all of our supported algorithms are tacked onto the</span>
+195:             <span class="ruby-comment cmt"># end, so that if the user tries to give a list of which none are</span>
+196:             <span class="ruby-comment cmt"># supported, we can still proceed.</span>
+197:             <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">algorithm</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">algorithm</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>) }
+198:           <span class="ruby-keyword kw">end</span>
+199:         <span class="ruby-keyword kw">end</span>
+200: 
+201:         <span class="ruby-comment cmt"># for convention, make sure our list has the same keys as the server</span>
+202:         <span class="ruby-comment cmt"># list</span>
+203: 
+204:         <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:encryption_client</span> ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:encryption_server</span> ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:encryption</span>]
+205:         <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:hmac_client</span>       ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:hmac_server</span>       ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:hmac</span>]
+206:         <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:compression_client</span>] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:compression_server</span>] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:compression</span>]
+207:         <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:language_client</span>   ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:language_server</span>   ] = <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:language</span>]
+208: 
+209:         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">:host_key</span>)
+210:           <span class="ruby-comment cmt"># make sure the host keys are specified in preference order, where any</span>
+211:           <span class="ruby-comment cmt"># existing known key for the host has preference.</span>
+212: 
+213:           <span class="ruby-identifier">existing_keys</span> = <span class="ruby-constant">KnownHosts</span>.<span class="ruby-identifier">search_for</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:host_key_alias</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_as_string</span>, <span class="ruby-identifier">options</span>)
+214:           <span class="ruby-identifier">host_keys</span> = <span class="ruby-identifier">existing_keys</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">ssh_type</span> }.<span class="ruby-identifier">uniq</span>
+215:           <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:host_key</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+216:             <span class="ruby-identifier">host_keys</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">host_keys</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+217:           <span class="ruby-keyword kw">end</span>
+218:           <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:host_key</span>] = <span class="ruby-identifier">host_keys</span>
+219:         <span class="ruby-keyword kw">end</span>
+220:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="proceed--method" class="method-detail ">
+				<a name="M000306"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">proceed!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+After both client and server have sent their KEXINIT packets, this will do
+the algorithm negotiation and key exchange. Once both finish, the object
+leaves the pending state and the method returns.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="proceed--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 169</span>
+169:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">proceed!</span>
+170:         <span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;negotiating algorithms&quot;</span> }
+171:         <span class="ruby-identifier">negotiate_algorithms</span>
+172:         <span class="ruby-identifier">exchange_keys</span>
+173:         <span class="ruby-ivar">@pending</span> = <span class="ruby-keyword kw">false</span>
+174:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="send-kexinit-method" class="method-detail ">
+				<a name="M000305"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">send_kexinit</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sends a KEXINIT packet to the server. If a server KEXINIT has already been
+received, this will then invoke <a
+href="Algorithms.html#M000306">proceed!</a> to proceed with the key
+exchange, otherwise it returns immediately (but sets the object to the
+pending state).
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="send-kexinit-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/transport/algorithms.rb, line 157</span>
+157:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_kexinit</span>
+158:         <span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;sending KEXINIT&quot;</span> }
+159:         <span class="ruby-ivar">@pending</span> = <span class="ruby-keyword kw">true</span>
+160:         <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">build_client_algorithm_packet</span>
+161:         <span class="ruby-ivar">@client_packet</span> = <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">to_s</span>
+162:         <span class="ruby-identifier">session</span>.<span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">packet</span>)
+163:         <span class="ruby-identifier">proceed!</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@server_packet</span>
+164:       <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

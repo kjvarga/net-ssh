@@ -1,0 +1,914 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Net::SSH::Authentication::KeyManager</title>
+
+	<link rel="stylesheet" href="../../../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../../../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../../../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../../../lib/net/ssh/authentication/key_manager_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/net/ssh/authentication/key_manager.rb">lib/net/ssh/authentication/key_manager.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#M000015">::new</a></li>
+					
+					<li><a href="#M000018">#add</a></li>
+					
+					<li><a href="#M000019">#add_key_data</a></li>
+					
+					<li><a href="#M000028">#agent</a></li>
+					
+					<li><a href="#M000016">#clear!</a></li>
+					
+					<li><a href="#M000021">#each_identity</a></li>
+					
+					<li><a href="#M000020">#finish</a></li>
+					
+					<li><a href="#M000022">#sign</a></li>
+					
+					<li><a href="#M000027">#use_agent=</a></li>
+					
+					<li><a href="#M000025">#use_agent?</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><a class="include" href="../../SSH.html">Net::SSH</a></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../../../CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+				
+					<li class="file"><a href="../../../README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="../../../THANKS_rdoc.html">THANKS.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../../../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../../../Net.html">Net</a></li>
+				
+					<li><a href="../../../Net/SSH.html">Net::SSH</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+				
+					<li><a href="../../../Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+				
+					<li><a href="../../../Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+				
+					<li><a href="../../../Net/SSH/Config.html">Net::SSH::Config</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+				
+					<li><a href="../../../Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+				
+					<li><a href="../../../Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+				
+					<li><a href="../../../Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+				
+					<li><a href="../../../Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+				
+					<li><a href="../../../Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+				
+					<li><a href="../../../Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+				
+					<li><a href="../../../Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+				
+					<li><a href="../../../Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+				
+					<li><a href="../../../Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+				
+					<li><a href="../../../Net/SSH/Service.html">Net::SSH::Service</a></li>
+				
+					<li><a href="../../../Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+				
+					<li><a href="../../../Net/SSH/Test.html">Net::SSH::Test</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+				
+					<li><a href="../../../Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+				
+					<li><a href="../../../Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+				
+					<li><a href="../../../Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+				
+					<li><a href="../../../Net/SSH/Version.html">Net::SSH::Version</a></li>
+				
+					<li><a href="../../../OpenSSL.html">OpenSSL</a></li>
+				
+					<li><a href="../../../OpenSSL/BN.html">OpenSSL::BN</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+				
+					<li><a href="../../../OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+				
+					<li><a href="../../../String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Net::SSH::Authentication::KeyManager</h1>
+
+		<div id="description">
+			<p>
+This class encapsulates all operations done by clients on a user&#8217;s
+private keys. In practice, the client should never need a reference to a
+private key; instead, they grab a list of &#8220;identities&#8221; (public
+keys) that are available from the <a href="KeyManager.html">KeyManager</a>,
+and then use the <a href="KeyManager.html">KeyManager</a> to do various
+private key operations using those identities.
+</p>
+<p>
+The <a href="KeyManager.html">KeyManager</a> also uses the <a
+href="Agent.html">Agent</a> class to encapsulate the ssh-agent. Thus, from
+a client&#8217;s perspective it is completely hidden whether an identity
+comes from the ssh-agent or from a file on disk.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="key-files-attribute-method" class="method-detail">
+				<a name="key_files"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">key_files</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The list of user key files that will be examined
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="key-data-attribute-method" class="method-detail">
+				<a name="key_data"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">key_data</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The list of user key data that will be examined
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="known-identities-attribute-method" class="method-detail">
+				<a name="known_identities"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">known_identities</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The map of loaded identities
+</p>
+				
+				</div>
+			</div>
+			
+			<div id="options-attribute-method" class="method-detail">
+				<a name="options"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">options</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				<p>
+The map of options that were passed to the key-manager
+</p>
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="M000015"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(logger, options={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Create a new <a href="KeyManager.html">KeyManager</a>. By default, the
+manager will use the ssh-agent (if it is running).
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 41</span>
+41:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">logger</span>, <span class="ruby-identifier">options</span>={})
+42:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">logger</span>
+43:           <span class="ruby-ivar">@key_files</span> = []
+44:           <span class="ruby-ivar">@key_data</span> = []
+45:           <span class="ruby-ivar">@use_agent</span> = <span class="ruby-keyword kw">true</span>
+46:           <span class="ruby-ivar">@known_identities</span> = {}
+47:           <span class="ruby-ivar">@agent</span> = <span class="ruby-keyword kw">nil</span>
+48:           <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+49:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="add-method" class="method-detail ">
+				<a name="M000018"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add</span><span
+						class="method-args">(key_file)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Add the given key_file to the list of key files that will be used.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 63</span>
+63:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">key_file</span>)
+64:           <span class="ruby-identifier">key_files</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">key_file</span>)).<span class="ruby-identifier">uniq!</span>
+65:           <span class="ruby-keyword kw">self</span>
+66:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="add-key-data-method" class="method-detail ">
+				<a name="M000019"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">add_key_data</span><span
+						class="method-args">(key_data_)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Add the given key_file to the list of keys that will be used.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="add-key-data-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 69</span>
+69:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_key_data</span>(<span class="ruby-identifier">key_data_</span>)
+70:           <span class="ruby-identifier">key_data</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">key_data_</span>).<span class="ruby-identifier">uniq!</span>
+71:           <span class="ruby-keyword kw">self</span>
+72:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="agent-method" class="method-detail ">
+				<a name="M000028"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">agent</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns an <a href="Agent.html">Agent</a> instance to use for communicating
+with an <a href="../../SSH.html">SSH</a> agent process. Returns nil if use
+of an <a href="../../SSH.html">SSH</a> agent has been disabled, or if the
+agent is otherwise not available.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="agent-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 182</span>
+182:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">agent</span>
+183:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">use_agent?</span>
+184:           <span class="ruby-ivar">@agent</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Agent</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">logger</span>)
+185:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">AgentNotAvailable</span>
+186:           <span class="ruby-ivar">@use_agent</span> = <span class="ruby-keyword kw">false</span>
+187:           <span class="ruby-keyword kw">nil</span>
+188:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="clear--method" class="method-detail ">
+				<a name="M000016"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">clear!</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Clear all knowledge of any loaded user keys. This also clears the list of
+default identity files that are to be loaded, thus making it appropriate to
+use if a client wishes to NOT use the default identity files.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="clear--source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 55</span>
+55:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear!</span>
+56:           <span class="ruby-identifier">key_files</span>.<span class="ruby-identifier">clear</span>
+57:           <span class="ruby-identifier">key_data</span>.<span class="ruby-identifier">clear</span>
+58:           <span class="ruby-identifier">known_identities</span>.<span class="ruby-identifier">clear</span>
+59:           <span class="ruby-keyword kw">self</span>
+60:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="each-identity-method" class="method-detail ">
+				<a name="M000021"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">each_identity</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Iterates over all available identities (public keys) known to this manager.
+As it finds one, it will then yield it to the caller. The origin of the
+identities may be from files on disk or from an ssh-agent. Note that
+identities from an ssh-agent are always listed first in the array, with
+other identities coming after.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="each-identity-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 93</span>
+ 93:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each_identity</span>
+ 94:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">agent</span>
+ 95:             <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+ 96:               <span class="ruby-identifier">known_identities</span>[<span class="ruby-identifier">key</span>] = { <span class="ruby-identifier">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:agent</span> }
+ 97:               <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>
+ 98:             <span class="ruby-keyword kw">end</span>
+ 99:           <span class="ruby-keyword kw">end</span>
+100:           
+101:           <span class="ruby-identifier">key_files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+102:             <span class="ruby-identifier">public_key_file</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.pub&quot;</span>
+103:             <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">public_key_file</span>)
+104:               <span class="ruby-keyword kw">begin</span>
+105:                 <span class="ruby-identifier">key</span> = <span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_public_key</span>(<span class="ruby-identifier">public_key_file</span>)
+106:                 <span class="ruby-identifier">known_identities</span>[<span class="ruby-identifier">key</span>] = { <span class="ruby-identifier">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:file</span>, <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span> }
+107:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>
+108:               <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+109:                 <span class="ruby-identifier">error</span> { <span class="ruby-node">&quot;could not load public key file `#{public_key_file}': #{e.class} (#{e.message})&quot;</span> }
+110:               <span class="ruby-keyword kw">end</span>
+111:             <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+112:               <span class="ruby-keyword kw">begin</span>
+113:                 <span class="ruby-identifier">private_key</span> = <span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:passphrase</span>])
+114:                 <span class="ruby-identifier">key</span> = <span class="ruby-identifier">private_key</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:public_key</span>)
+115:                 <span class="ruby-identifier">known_identities</span>[<span class="ruby-identifier">key</span>] = { <span class="ruby-identifier">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:file</span>, <span class="ruby-identifier">:file</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">file</span>, <span class="ruby-identifier">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">private_key</span> }
+116:                 <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>
+117:               <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+118:                 <span class="ruby-identifier">error</span> { <span class="ruby-node">&quot;could not load private key file `#{file}': #{e.class} (#{e.message})&quot;</span> }
+119:               <span class="ruby-keyword kw">end</span>
+120:             <span class="ruby-keyword kw">end</span>
+121:           <span class="ruby-keyword kw">end</span>
+122: 
+123:           <span class="ruby-identifier">key_data</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span>
+124:             <span class="ruby-identifier">private_key</span> = <span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_data_private_key</span>(<span class="ruby-identifier">data</span>)
+125:             <span class="ruby-identifier">key</span> = <span class="ruby-identifier">private_key</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">:public_key</span>)
+126:             <span class="ruby-identifier">known_identities</span>[<span class="ruby-identifier">key</span>] = { <span class="ruby-identifier">:from</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:key_data</span>, <span class="ruby-identifier">:data</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">data</span>, <span class="ruby-identifier">:key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">private_key</span> }
+127:             <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">key</span>
+128:           <span class="ruby-keyword kw">end</span>
+129: 
+130:           <span class="ruby-keyword kw">self</span>
+131:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="finish-method" class="method-detail ">
+				<a name="M000020"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">finish</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+This is used as a hint to the <a href="KeyManager.html">KeyManager</a>
+indicating that the agent connection is no longer needed. Any other open
+resources may be closed at this time.
+</p>
+<p>
+Calling this does NOT indicate that the <a
+href="KeyManager.html">KeyManager</a> will no longer be used. Identities
+may still be requested and operations done on loaded identities, in which
+case, the agent will be automatically reconnected. This method simply
+allows the client connection to be closed when it will not be used in the
+immediate future.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="finish-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 83</span>
+83:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finish</span>
+84:           <span class="ruby-ivar">@agent</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@agent</span>
+85:           <span class="ruby-ivar">@agent</span> = <span class="ruby-keyword kw">nil</span>
+86:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="sign-method" class="method-detail ">
+				<a name="M000022"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">sign</span><span
+						class="method-args">(identity, data)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sign the given data, using the corresponding private key of the given
+identity. If the identity was originally obtained from an ssh-agent, then
+the ssh-agent will be used to sign the data, otherwise the private key for
+the identity will be loaded from disk (if it hasn&#8217;t been loaded
+already) and will then be used to sign the data.
+</p>
+<p>
+Regardless of the identity&#8217;s origin or who does the signing, this
+will always return the signature in an SSH2-specified &#8220;signature
+blob&#8221; format.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="sign-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 142</span>
+142:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign</span>(<span class="ruby-identifier">identity</span>, <span class="ruby-identifier">data</span>)
+143:           <span class="ruby-identifier">info</span> = <span class="ruby-identifier">known_identities</span>[<span class="ruby-identifier">identity</span>] <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">KeyManagerError</span>, <span class="ruby-value str">&quot;the given identity is unknown to the key manager&quot;</span>
+144: 
+145:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:key</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:from</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:file</span>
+146:             <span class="ruby-keyword kw">begin</span>
+147:               <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:key</span>] = <span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-identifier">info</span>[<span class="ruby-identifier">:file</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:passphrase</span>])
+148:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span> 
+149:               <span class="ruby-identifier">raise</span> <span class="ruby-constant">KeyManagerError</span>, <span class="ruby-node">&quot;the given identity is known, but the private key could not be loaded: #{e.class} (#{e.message})&quot;</span>
+150:             <span class="ruby-keyword kw">end</span>
+151:           <span class="ruby-keyword kw">end</span>
+152: 
+153:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:key</span>]
+154:             <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:string</span>, <span class="ruby-identifier">identity</span>.<span class="ruby-identifier">ssh_type</span>,
+155:               <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:key</span>].<span class="ruby-identifier">ssh_do_sign</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_s</span>)).<span class="ruby-identifier">to_s</span>
+156:           <span class="ruby-keyword kw">end</span>
+157: 
+158:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">info</span>[<span class="ruby-identifier">:from</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:agent</span>
+159:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">KeyManagerError</span>, <span class="ruby-value str">&quot;the agent is no longer available&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">agent</span>
+160:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">identity</span>, <span class="ruby-identifier">data</span>.<span class="ruby-identifier">to_s</span>)
+161:           <span class="ruby-keyword kw">end</span>
+162: 
+163:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">KeyManagerError</span>, <span class="ruby-node">&quot;[BUG] can't determine identity origin (#{info.inspect})&quot;</span>
+164:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="use-agent--method" class="method-detail ">
+				<a name="M000027"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">use_agent=</span><span
+						class="method-args">(use_agent)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Toggles whether the ssh-agent will be used or not. If true, an attempt will
+be made to use the ssh-agent. If false, any existing connection to an agent
+is closed and the agent will not be used.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="use-agent--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 174</span>
+174:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">use_agent=</span>(<span class="ruby-identifier">use_agent</span>)
+175:           <span class="ruby-identifier">finish</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">use_agent</span>
+176:           <span class="ruby-ivar">@use_agent</span> = <span class="ruby-identifier">use_agent</span>
+177:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+			<div id="use-agent--method" class="method-detail ">
+				<a name="M000025"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">use_agent?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Identifies whether the ssh-agent will be used or not.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="use-agent--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/net/ssh/authentication/key_manager.rb, line 167</span>
+167:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">use_agent?</span>
+168:           <span class="ruby-ivar">@use_agent</span>
+169:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

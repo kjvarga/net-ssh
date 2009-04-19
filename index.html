@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Net-ssh</title>
+
+	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+
+	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="indexpage">
+
+	
+	<h1>Net-ssh</h1>
+
+	
+	<div id="main">
+		
+<ul>
+<li><a href="http://net-ssh.rubyforge.org/ssh">net-ssh.rubyforge.org/ssh</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION:</h2>
+<p>
+<a href="Net/SSH.html">Net::SSH</a> is a pure-Ruby implementation of the
+SSH2 client protocol. It allows you to write programs that invoke and
+interact with processes on remote servers, via SSH2.
+</p>
+<h2>FEATURES:</h2>
+<ul>
+<li>Execute processes on remote servers and capture their output
+
+</li>
+<li>Run multiple processes in parallel over a single SSH connection
+
+</li>
+<li>Support for SSH subsystems
+
+</li>
+<li>Forward local and remote ports via an SSH connection
+
+</li>
+</ul>
+<h2>SYNOPSIS:</h2>
+<p>
+In a nutshell:
+</p>
+<pre>
+  require 'net/ssh'
+
+  Net::SSH.start('host', 'user', :password =&gt; &quot;password&quot;) do |ssh|
+    # capture all stderr and stdout output from a remote process
+    output = ssh.exec!(&quot;hostname&quot;)
+
+    # capture only stdout matching a particular pattern
+    stdout = &quot;&quot;
+    ssh.exec!(&quot;ls -l /home/jamis&quot;) do |channel, stream, data|
+      stdout &lt;&lt; data if stream == :stdout
+    end
+    puts stdout
+
+    # run multiple processes in parallel to completion
+    ssh.exec &quot;sed ...&quot;
+    ssh.exec &quot;awk ...&quot;
+    ssh.exec &quot;rm -rf ...&quot;
+    ssh.loop
+
+    # open a new channel and configure a minimal set of callbacks, then run
+    # the event loop until the channel finishes (closes)
+    channel = ssh.open_channel do |ch|
+      ch.exec &quot;/usr/local/bin/ruby /path/to/file.rb&quot; do |ch, success|
+        raise &quot;could not execute command&quot; unless success
+
+        # &quot;on_data&quot; is called when the process writes something to stdout
+        ch.on_data do |c, data|
+          $STDOUT.print data
+        end
+
+        # &quot;on_extended_data&quot; is called when the process writes something to stderr
+        ch.on_extended_data do |c, type, data|
+          $STDERR.print data
+        end
+
+        ch.on_close { puts &quot;done!&quot; }
+      end
+    end
+
+    channel.wait
+
+    # forward connections on local port 1234 to port 80 of www.capify.org
+    ssh.forward.local(1234, &quot;www.capify.org&quot;, 80)
+    ssh.loop { true }
+  end
+</pre>
+<p>
+See <a href="Net/SSH.html">Net::SSH</a> for more documentation, and links
+to further information.
+</p>
+<h2>REQUIREMENTS:</h2>
+<p>
+The only requirement you might be missing is the <a
+href="OpenSSL.html">OpenSSL</a> bindings for Ruby. These are built by
+default on most platforms, but you can verify that they&#8217;re built and
+installed on your system by running the following command line:
+</p>
+<pre>
+  ruby -ropenssl -e 'puts OpenSSL::OPENSSL_VERSION'
+</pre>
+<p>
+If that spits out something like &#8220;<a href="OpenSSL.html">OpenSSL</a>
+0.9.8g 19 Oct 2007&#8221;, then you&#8217;re set. If you get an error, then
+you&#8217;ll need to see about rebuilding ruby with <a
+href="OpenSSL.html">OpenSSL</a> support, or (if your platform supports it)
+installing the <a href="OpenSSL.html">OpenSSL</a> bindings separately.
+</p>
+<p>
+Additionally: if you are going to be having <a
+href="Net/SSH.html">Net::SSH</a> prompt you for things like passwords or
+certificate passphrases, you&#8217;ll want to have either the Highline
+(recommended) or Termios (unix systems only) gem installed, so that the
+passwords don&#8217;t echo in clear text.
+</p>
+<p>
+Lastly, if you want to run the tests or use any of the Rake tasks,
+you&#8217;ll need:
+</p>
+<ul>
+<li>Echoe (for the Rakefile)
+
+</li>
+<li>Mocha (for the tests)
+
+</li>
+</ul>
+<h2>INSTALL:</h2>
+<ul>
+<li>gem install net-ssh (might need sudo privileges)
+
+</li>
+</ul>
+<h2>LICENSE:</h2>
+<p>
+(The MIT License)
+</p>
+<p>
+Copyright &#169; 2008 Jamis Buck <jamis@37signals.com>
+</p>
+<p>
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+&#8216;Software&#8217;), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+</p>
+<p>
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+</p>
+<p>
+THE SOFTWARE IS PROVIDED &#8216;AS IS&#8217;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
+</p>
+
+	</div>
+	
+
+	
+	
+	<h2>Files</h2>
+	<ul>
+		
+			<li class="file"><a href="CHANGELOG_rdoc.html">CHANGELOG.rdoc</a></li>
+		
+			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
+		
+			<li class="file"><a href="THANKS_rdoc.html">THANKS.rdoc</a></li>
+		
+	</ul>
+	
+
+	<h2>Classes/Modules</h2>
+	<ul>
+		
+		<li class="module"><a href="Net.html">Net</a></li>
+		
+		<li class="module"><a href="Net/SSH.html">Net::SSH</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication.html">Net::SSH::Authentication</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Agent.html">Net::SSH::Authentication::Agent</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication/Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/AgentError.html">Net::SSH::Authentication::AgentError</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/AgentNotAvailable.html">Net::SSH::Authentication::AgentNotAvailable</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication/Constants.html">Net::SSH::Authentication::Constants</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/KeyManager.html">Net::SSH::Authentication::KeyManager</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/KeyManagerError.html">Net::SSH::Authentication::KeyManagerError</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication/Methods.html">Net::SSH::Authentication::Methods</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Methods/Abstract.html">Net::SSH::Authentication::Methods::Abstract</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Methods/Hostbased.html">Net::SSH::Authentication::Methods::Hostbased</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Methods/KeyboardInteractive.html">Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Methods/Password.html">Net::SSH::Authentication::Methods::Password</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Methods/Publickey.html">Net::SSH::Authentication::Methods::Publickey</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication/Pageant.html">Net::SSH::Authentication::Pageant</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Pageant/Socket.html">Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+		<li class="module"><a href="Net/SSH/Authentication/Pageant/Win.html">Net::SSH::Authentication::Pageant::Win</a></li>
+		
+		<li class="class"><a href="Net/SSH/Authentication/Session.html">Net::SSH::Authentication::Session</a></li>
+		
+		<li class="class"><a href="Net/SSH/AuthenticationFailed.html">Net::SSH::AuthenticationFailed</a></li>
+		
+		<li class="class"><a href="Net/SSH/Buffer.html">Net::SSH::Buffer</a></li>
+		
+		<li class="module"><a href="Net/SSH/BufferedIo.html">Net::SSH::BufferedIo</a></li>
+		
+		<li class="class"><a href="Net/SSH/ChannelOpenFailed.html">Net::SSH::ChannelOpenFailed</a></li>
+		
+		<li class="class"><a href="Net/SSH/ChannelRequestFailed.html">Net::SSH::ChannelRequestFailed</a></li>
+		
+		<li class="class"><a href="Net/SSH/Config.html">Net::SSH::Config</a></li>
+		
+		<li class="module"><a href="Net/SSH/Connection.html">Net::SSH::Connection</a></li>
+		
+		<li class="class"><a href="Net/SSH/Connection/Channel.html">Net::SSH::Connection::Channel</a></li>
+		
+		<li class="module"><a href="Net/SSH/Connection/Constants.html">Net::SSH::Connection::Constants</a></li>
+		
+		<li class="class"><a href="Net/SSH/Connection/Session.html">Net::SSH::Connection::Session</a></li>
+		
+		<li class="class"><a href="Net/SSH/Connection/Session/NilChannel.html">Net::SSH::Connection::Session::NilChannel</a></li>
+		
+		<li class="module"><a href="Net/SSH/Connection/Term.html">Net::SSH::Connection::Term</a></li>
+		
+		<li class="class"><a href="Net/SSH/Disconnect.html">Net::SSH::Disconnect</a></li>
+		
+		<li class="class"><a href="Net/SSH/Exception.html">Net::SSH::Exception</a></li>
+		
+		<li class="class"><a href="Net/SSH/HostKeyMismatch.html">Net::SSH::HostKeyMismatch</a></li>
+		
+		<li class="class"><a href="Net/SSH/KeyFactory.html">Net::SSH::KeyFactory</a></li>
+		
+		<li class="class"><a href="Net/SSH/KnownHosts.html">Net::SSH::KnownHosts</a></li>
+		
+		<li class="module"><a href="Net/SSH/Loggable.html">Net::SSH::Loggable</a></li>
+		
+		<li class="class"><a href="Net/SSH/Packet.html">Net::SSH::Packet</a></li>
+		
+		<li class="module"><a href="Net/SSH/PromptMethods.html">Net::SSH::PromptMethods</a></li>
+		
+		<li class="module"><a href="Net/SSH/PromptMethods/Clear.html">Net::SSH::PromptMethods::Clear</a></li>
+		
+		<li class="module"><a href="Net/SSH/PromptMethods/Highline.html">Net::SSH::PromptMethods::Highline</a></li>
+		
+		<li class="module"><a href="Net/SSH/PromptMethods/Termios.html">Net::SSH::PromptMethods::Termios</a></li>
+		
+		<li class="module"><a href="Net/SSH/Proxy.html">Net::SSH::Proxy</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/ConnectError.html">Net::SSH::Proxy::ConnectError</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/Error.html">Net::SSH::Proxy::Error</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/HTTP.html">Net::SSH::Proxy::HTTP</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/SOCKS4.html">Net::SSH::Proxy::SOCKS4</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/SOCKS5.html">Net::SSH::Proxy::SOCKS5</a></li>
+		
+		<li class="class"><a href="Net/SSH/Proxy/UnauthorizedError.html">Net::SSH::Proxy::UnauthorizedError</a></li>
+		
+		<li class="module"><a href="Net/SSH/Service.html">Net::SSH::Service</a></li>
+		
+		<li class="class"><a href="Net/SSH/Service/Forward.html">Net::SSH::Service::Forward</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test.html">Net::SSH::Test</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/Channel.html">Net::SSH::Test::Channel</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions.html">Net::SSH::Test::Extensions</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions/BufferedIo.html">Net::SSH::Test::Extensions::BufferedIo</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions/Channel.html">Net::SSH::Test::Extensions::Channel</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions/IO.html">Net::SSH::Test::Extensions::IO</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions/IO/ClassMethods.html">Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+		
+		<li class="module"><a href="Net/SSH/Test/Extensions/PacketStream.html">Net::SSH::Test::Extensions::PacketStream</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/Kex.html">Net::SSH::Test::Kex</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/LocalPacket.html">Net::SSH::Test::LocalPacket</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/Packet.html">Net::SSH::Test::Packet</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/RemotePacket.html">Net::SSH::Test::RemotePacket</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/Script.html">Net::SSH::Test::Script</a></li>
+		
+		<li class="class"><a href="Net/SSH/Test/Socket.html">Net::SSH::Test::Socket</a></li>
+		
+		<li class="module"><a href="Net/SSH/Transport.html">Net::SSH::Transport</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/Algorithms.html">Net::SSH::Transport::Algorithms</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/CipherFactory.html">Net::SSH::Transport::CipherFactory</a></li>
+		
+		<li class="module"><a href="Net/SSH/Transport/Constants.html">Net::SSH::Transport::Constants</a></li>
+		
+		<li class="module"><a href="Net/SSH/Transport/HMAC.html">Net::SSH::Transport::HMAC</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/Abstract.html">Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/MD5.html">Net::SSH::Transport::HMAC::MD5</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/MD5_96.html">Net::SSH::Transport::HMAC::MD5_96</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/None.html">Net::SSH::Transport::HMAC::None</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/SHA1.html">Net::SSH::Transport::HMAC::SHA1</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/HMAC/SHA1_96.html">Net::SSH::Transport::HMAC::SHA1_96</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/IdentityCipher.html">Net::SSH::Transport::IdentityCipher</a></li>
+		
+		<li class="module"><a href="Net/SSH/Transport/Kex.html">Net::SSH::Transport::Kex</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html">Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+		
+		<li class="module"><a href="Net/SSH/Transport/PacketStream.html">Net::SSH::Transport::PacketStream</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/ServerVersion.html">Net::SSH::Transport::ServerVersion</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a></li>
+		
+		<li class="class"><a href="Net/SSH/Transport/State.html">Net::SSH::Transport::State</a></li>
+		
+		<li class="module"><a href="Net/SSH/Verifiers.html">Net::SSH::Verifiers</a></li>
+		
+		<li class="class"><a href="Net/SSH/Verifiers/Lenient.html">Net::SSH::Verifiers::Lenient</a></li>
+		
+		<li class="class"><a href="Net/SSH/Verifiers/Null.html">Net::SSH::Verifiers::Null</a></li>
+		
+		<li class="class"><a href="Net/SSH/Verifiers/Strict.html">Net::SSH::Verifiers::Strict</a></li>
+		
+		<li class="class"><a href="Net/SSH/Version.html">Net::SSH::Version</a></li>
+		
+		<li class="module"><a href="OpenSSL.html">OpenSSL</a></li>
+		
+		<li class="class"><a href="OpenSSL/BN.html">OpenSSL::BN</a></li>
+		
+		<li class="module"><a href="OpenSSL/PKey.html">OpenSSL::PKey</a></li>
+		
+		<li class="class"><a href="OpenSSL/PKey/DH.html">OpenSSL::PKey::DH</a></li>
+		
+		<li class="class"><a href="OpenSSL/PKey/DSA.html">OpenSSL::PKey::DSA</a></li>
+		
+		<li class="class"><a href="OpenSSL/PKey/PKey.html">OpenSSL::PKey::PKey</a></li>
+		
+		<li class="class"><a href="OpenSSL/PKey/RSA.html">OpenSSL::PKey::RSA</a></li>
+		
+		<li class="class"><a href="String.html">String</a></li>
+		
+	</ul>
+
+	<h2>Methods</h2>
+	<ul>
+		
+			<li><a href="Net/SSH/Version.html#M000413">::[] &mdash; Net::SSH::Version</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000193">::add &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000297">::allowed_packet? &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000327">::block_size &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH.html#M000419">::configuration_for &mdash; Net::SSH</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000000">::connect &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000330">::decrypt &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000073">::default_files &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000316">::digest_class &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000329">::encrypt &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000362">::extended &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000332">::final &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000074">::for &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000053">::from &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC.html#M000325">::get &mdash; Net::SSH::Transport::HMAC</a></li>
+		
+			<li><a href="Net/SSH/Transport/CipherFactory.html#M000294">::get &mdash; Net::SSH::Transport::CipherFactory</a></li>
+		
+			<li><a href="Net/SSH/KeyFactory.html#M000185">::get &mdash; Net::SSH::KeyFactory</a></li>
+		
+			<li><a href="Net/SSH/Transport/CipherFactory.html#M000295">::get_lengths &mdash; Net::SSH::Transport::CipherFactory</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000192">::hostfiles &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000096">::interpret_size &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000334">::iv= &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000328">::iv_len &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000313">::key_length &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC.html#M000326">::key_length &mdash; Net::SSH::Transport::HMAC</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000079">::load &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/KeyFactory.html#M000187">::load_data_private_key &mdash; Net::SSH::KeyFactory</a></li>
+		
+			<li><a href="Net/SSH/KeyFactory.html#M000189">::load_data_public_key &mdash; Net::SSH::KeyFactory</a></li>
+		
+			<li><a href="Net/SSH/KeyFactory.html#M000186">::load_private_key &mdash; Net::SSH::KeyFactory</a></li>
+		
+			<li><a href="Net/SSH/KeyFactory.html#M000188">::load_public_key &mdash; Net::SSH::KeyFactory</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000314">::mac_length &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/CipherFactory.html#M000296">::make_key &mdash; Net::SSH::Transport::CipherFactory</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000333">::name &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000375">::new &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Packet.html#M000208">::new &mdash; Net::SSH::Packet</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000336">::new &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000110">::new &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000036">::new &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000222">::new &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000220">::new &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000198">::new &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/Test/Kex.html#M000246">::new &mdash; Net::SSH::Test::Kex</a></li>
+		
+			<li><a href="Net/SSH/Transport/ServerVersion.html#M000372">::new &mdash; Net::SSH::Transport::ServerVersion</a></li>
+		
+			<li><a href="Net/SSH/Test/LocalPacket.html#M000255">::new &mdash; Net::SSH::Test::LocalPacket</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000039">::new &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000001">::new &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000379">::new &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000015">::new &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000320">::new &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Version.html#M000414">::new &mdash; Net::SSH::Version</a></li>
+		
+			<li><a href="Net/SSH/Test/Packet.html#M000261">::new &mdash; Net::SSH::Test::Packet</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000058">::new &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Proxy/HTTP.html#M000211">::new &mdash; Net::SSH::Proxy::HTTP</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000269">::new &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Proxy/SOCKS5.html#M000217">::new &mdash; Net::SSH::Proxy::SOCKS5</a></li>
+		
+			<li><a href="Net/SSH/Test/Socket.html#M000271">::new &mdash; Net::SSH::Test::Socket</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000101">::new &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session/NilChannel.html#M000108">::new &mdash; Net::SSH::Connection::Session::NilChannel</a></li>
+		
+			<li><a href="Net/SSH/ChannelOpenFailed.html#M000169">::new &mdash; Net::SSH::ChannelOpenFailed</a></li>
+		
+			<li><a href="Net/SSH/Proxy/SOCKS4.html#M000214">::new &mdash; Net::SSH::Proxy::SOCKS4</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000298">::new &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Abstract.html#M000012">::new &mdash; Net::SSH::Authentication::Methods::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000038">::open &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000095">::pattern2regex &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/Packet.html#M000204">::register &mdash; Net::SSH::Packet</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000335">::reset &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000190">::search_for &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000191">::search_in &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH.html#M000418">::start &mdash; Net::SSH</a></li>
+		
+			<li><a href="Net/SSH/Transport/CipherFactory.html#M000293">::supported? &mdash; Net::SSH::Transport::CipherFactory</a></li>
+		
+			<li><a href="Net/SSH/Config.html#M000083">::translate &mdash; Net::SSH::Config</a></li>
+		
+			<li><a href="Net/SSH/Transport/IdentityCipher.html#M000331">::update &mdash; Net::SSH::Transport::IdentityCipher</a></li>
+		
+			<li><a href="Net/SSH/Version.html#M000415">#<=> &mdash; Net::SSH::Version</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000062">#== &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000112">#[] &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Packet.html#M000209">#[] &mdash; Net::SSH::Packet</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000301">#[] &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000174">#[] &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000102">#[] &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000103">#[]= &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000113">#[]= &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000300">#accept_kexinit &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000115">#active? &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000225">#active_locals &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000239">#active_remotes &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000018">#add &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000202">#add &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000019">#add_key_data &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000240">#agent &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000028">#agent &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000011">#agent_failed &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000007">#agent_socket_factory &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000303">#allow? &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000075">#append &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Test.html#M000289">#assert_scripted &mdash; Net::SSH::Test</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000244">#auth_agent_channel &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Password.html#M000031">#authenticate &mdash; Net::SSH::Authentication::Methods::Password</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Publickey.html#M000032">#authenticate &mdash; Net::SSH::Authentication::Methods::Publickey</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/KeyboardInteractive.html#M000030">#authenticate &mdash; Net::SSH::Authentication::Methods::KeyboardInteractive</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000037">#authenticate &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Hostbased.html#M000023">#authenticate &mdash; Net::SSH::Authentication::Methods::Hostbased</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Hostbased.html#M000026">#authenticate_with &mdash; Net::SSH::Authentication::Methods::Hostbased</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Publickey.html#M000035">#authenticate_with &mdash; Net::SSH::Authentication::Methods::Publickey</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000060">#available &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000052">#available &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000365">#available_for_read? &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000309">#build_client_algorithm_packet &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Publickey.html#M000033">#build_request &mdash; Net::SSH::Authentication::Methods::Publickey</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Hostbased.html#M000029">#build_request &mdash; Net::SSH::Authentication::Methods::Hostbased</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000340">#build_signature_buffer &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html#M000346">#build_signature_buffer &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000125">#busy? &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000224">#cancel_local &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000232">#cancel_remote &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000180">#channel_close &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000172">#channel_data &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000179">#channel_eof &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000173">#channel_extended_data &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000182">#channel_failure &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000166">#channel_open &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000167">#channel_open_confirmation &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000168">#channel_open_failure &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000171">#channel_request &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000181">#channel_success &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000170">#channel_window_adjust &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000397">#cleanup &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000369">#cleanup &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000071">#clear! &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000016">#clear! &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000363">#client_name &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000046">#close &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000378">#close &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000005">#close &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000119">#close &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000123">#close &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000377">#closed? &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000047">#closed? &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000118">#closed? &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000117">#closing? &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000394">#compress &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000393">#compression? &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000389">#compressor &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html#M000341">#compute_need_bits &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000402">#configure_client &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000405">#configure_server &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000002">#connect! &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Test.html#M000287">#connection &mdash; Net::SSH::Test</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000072">#consume! &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000194">#debug &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000395">#decompress &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000390">#decompressor &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/None.html#M000324">#digest &mdash; Net::SSH::Transport::HMAC::None</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000322">#digest &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000319">#digest_class &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000161">#dispatch_incoming_packets &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000152">#do_close &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000151">#do_eof &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000150">#do_extended_data &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000153">#do_failure &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000143">#do_open_failed &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000154">#do_success &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000021">#each_identity &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000063">#empty? &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000054">#enqueue &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000401">#enqueue_message &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000368">#enqueue_packet &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000106">#env &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000121">#eof! &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000120">#eof? &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000065">#eof? &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000197">#error &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000337">#exchange_keys &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Test/Kex.html#M000247">#exchange_keys &mdash; Net::SSH::Test::Kex</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000315">#exchange_keys &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000104">#exec &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000145">#exec &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000148">#exec! &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000043">#expect_message &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000201">#facility &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000200">#fatal &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000050">#fill &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000387">#final_cipher &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000175">#fingerprint &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="OpenSSL/PKey/PKey.html#M000352">#fingerprint &mdash; OpenSSL::PKey::PKey</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000020">#finish &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000157">#forward &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000243">#forwarded_tcpip &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000348">#generate_key_fingerprint &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000339">#get_message_types &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html#M000345">#get_message_types &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000162">#get_next_channel_id &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroup1SHA1.html#M000338">#get_parameters &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroup1SHA1</a></li>
+		
+			<li><a href="Net/SSH/Transport/Kex/DiffieHellmanGroupExchangeSHA1.html#M000344">#get_parameters &mdash; Net::SSH::Transport::Kex::DiffieHellmanGroupExchangeSHA1</a></li>
+		
+			<li><a href="String.html#M000216">#getbyte &mdash; String</a></li>
+		
+			<li><a href="Net/SSH/Test/Socket.html#M000276">#getpeername &mdash; Net::SSH::Test::Socket</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000273">#gets &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000290">#gets_channel_close &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000284">#gets_channel_data &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000286">#gets_channel_eof &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000285">#gets_channel_request &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000241">#gets_close &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000236">#gets_data &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000238">#gets_eof &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000237">#gets_exit_status &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000163">#global_request &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000406">#hint &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000114">#host &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000176">#host &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000376">#host_as_string &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Hostbased.html#M000024">#hostname &mdash; Net::SSH::Authentication::Methods::Hostbased</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000004">#identities &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/PacketStream.html#M000249">#idle! &mdash; Net::SSH::Test::Extensions::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000370">#if_needs_rekey? &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000388">#increment &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000195">#info &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000070">#initialize_buffered_io &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000371">#initialize_ssh &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000304">#initialized? &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000228">#inject_remote_delay! &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000068">#input &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Test/Packet.html#M000264">#instantiate! &mdash; Net::SSH::Test::Packet</a></li>
+		
+			<li><a href="Net/SSH/Packet.html#M000210">#instantiate! &mdash; Net::SSH::Packet</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000178">#ip &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000312">#kex_byte_requirement &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000183">#key &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000321">#key= &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000045">#key_data &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000317">#key_length &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000044">#keys &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/KnownHosts.html#M000199">#keys_for &mdash; Net::SSH::KnownHosts</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000059">#length &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000155">#listen_to &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000221">#local &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Test/Packet.html#M000263">#local? &mdash; Net::SSH::Test::Packet</a></li>
+		
+			<li><a href="Net/SSH/Test/LocalPacket.html#M000256">#local? &mdash; Net::SSH::Test::LocalPacket</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000223">#local_id &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000129">#loop &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000130">#loop_forever &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Loggable.html#M000196">#lwarn &mdash; Net::SSH::Loggable</a></li>
+		
+			<li><a href="Net/SSH/Transport/HMAC/Abstract.html#M000318">#mac_length &mdash; Net::SSH::Transport::HMAC::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session/NilChannel.html#M000109">#method_missing &mdash; Net::SSH::Connection::Session::NilChannel</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000403">#needs_rekey? &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000311">#negotiate &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000003">#negotiate! &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Transport/ServerVersion.html#M000373">#negotiate! &mdash; Net::SSH::Transport::ServerVersion</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000310">#negotiate_algorithms &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Proxy/SOCKS5.html#M000219">#negotiate_password &mdash; Net::SSH::Proxy::SOCKS5</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000291">#next &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Session.html#M000040">#next_message &mdash; Net::SSH::Authentication::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000391">#next_message &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000366">#next_packet &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000323">#normalize_compression_name &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000131">#on_close &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000126">#on_data &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000132">#on_eof &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000127">#on_extended_data &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000160">#on_global_request &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000159">#on_open_channel &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000134">#on_open_failed &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000128">#on_process &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000135">#on_request &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Proxy/SOCKS5.html#M000218">#open &mdash; Net::SSH::Proxy::SOCKS5</a></li>
+		
+			<li><a href="Net/SSH/Proxy/SOCKS4.html#M000215">#open &mdash; Net::SSH::Proxy::SOCKS4</a></li>
+		
+			<li><a href="Net/SSH/Test/Socket.html#M000275">#open &mdash; Net::SSH::Test::Socket</a></li>
+		
+			<li><a href="Net/SSH/Proxy/HTTP.html#M000212">#open &mdash; Net::SSH::Proxy::HTTP</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000141">#open_channel &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000270">#opens_channel &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000069">#output &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Proxy/HTTP.html#M000213">#parse_response &mdash; Net::SSH::Proxy::HTTP</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000308">#parse_server_algorithm_packet &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000386">#peer &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000364">#peer_ip &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000302">#pending? &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000055">#pending_write? &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000392">#poll_message &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000374">#poll_next_packet &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000177">#port &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000139">#postprocess &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000242">#prepare_client &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000307">#prepare_preferred_algorithms! &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000136">#preprocess &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000306">#proceed! &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Test/LocalPacket.html#M000257">#process &mdash; Net::SSH::Test::LocalPacket</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000133">#process &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000292">#process &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000122">#process &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/RemotePacket.html#M000267">#process &mdash; Net::SSH::Test::RemotePacket</a></li>
+		
+			<li><a href="Net/SSH/Verifiers/Strict.html#M000412">#process_cache_miss &mdash; Net::SSH::Verifiers::Strict</a></li>
+		
+			<li><a href="Net/SSH/PromptMethods/Termios.html#M000205">#prompt &mdash; Net::SSH::PromptMethods::Termios</a></li>
+		
+			<li><a href="Net/SSH/PromptMethods/Highline.html#M000203">#prompt &mdash; Net::SSH::PromptMethods::Highline</a></li>
+		
+			<li><a href="Net/SSH/PromptMethods/Clear.html#M000207">#prompt &mdash; Net::SSH::PromptMethods::Clear</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000399">#push &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000078">#read &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000048">#read &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000080">#read! &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000051">#read_available &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000087">#read_bignum &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000086">#read_bool &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000090">#read_buffer &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000084">#read_byte &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000081">#read_int64 &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000088">#read_key &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000089">#read_keyblob &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000082">#read_long &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000009">#read_packet &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000085">#read_string &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000077">#read_to &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Test/Socket.html#M000277">#recv &mdash; Net::SSH::Test::Socket</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000299">#rekey! &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000384">#rekey! &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000385">#rekey_as_needed &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000076">#remainder_as_buffer &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/HostKeyMismatch.html#M000184">#remember_host! &mdash; Net::SSH::HostKeyMismatch</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000226">#remote &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Test/Packet.html#M000262">#remote? &mdash; Net::SSH::Test::Packet</a></li>
+		
+			<li><a href="Net/SSH/Test/RemotePacket.html#M000266">#remote? &mdash; Net::SSH::Test::RemotePacket</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000227">#remote_id &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Service/Forward.html#M000231">#remote_to &mdash; Net::SSH::Service::Forward</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000165">#request_failure &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000107">#request_pty &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000164">#request_success &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000396">#reset! &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000064">#reset! &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/BufferedIo.html#M000245">#select_for_read? &mdash; Net::SSH::Test::Extensions::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/IO/ClassMethods.html#M000260">#select_for_test &mdash; Net::SSH::Test::Extensions::IO::ClassMethods</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000407">#select_host_key_verifier &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000041">#send &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000010">#send_and_wait &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000137">#send_channel_request &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000111">#send_data &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/Channel.html#M000254">#send_data_for_test &mdash; Net::SSH::Test::Extensions::Channel</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000140">#send_global_request &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Algorithms.html#M000305">#send_kexinit &mdash; Net::SSH::Transport::Algorithms</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000400">#send_message &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000149">#send_message &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Abstract.html#M000014">#send_message &mdash; Net::SSH::Authentication::Methods::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/PacketStream.html#M000367">#send_packet &mdash; Net::SSH::Transport::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000008">#send_packet &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000056">#send_pending &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Pageant/Socket.html#M000042">#send_query &mdash; Net::SSH::Authentication::Pageant::Socket</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Publickey.html#M000034">#send_request &mdash; Net::SSH::Authentication::Methods::Publickey</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000272">#sends &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000283">#sends_channel_close &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000279">#sends_channel_data &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000280">#sends_channel_eof &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Script.html#M000278">#sends_channel_request &mdash; Net::SSH::Test::Script</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000235">#sends_close &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000233">#sends_data &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000234">#sends_eof &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000229">#sends_exec &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Channel.html#M000230">#sends_subsystem &mdash; Net::SSH::Test::Channel</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000383">#service_request &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Abstract.html#M000013">#session_id &mdash; Net::SSH::Authentication::Methods::Abstract</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000380">#set &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/PromptMethods/Termios.html#M000206">#set_echo &mdash; Net::SSH::PromptMethods::Termios</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000124">#shutdown! &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000382">#shutdown! &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Agent.html#M000006">#sign &mdash; Net::SSH::Authentication::Agent</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000022">#sign &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Test.html#M000282">#socket &mdash; Net::SSH::Test</a></li>
+		
+			<li><a href="OpenSSL/PKey/DSA.html#M000361">#ssh_do_sign &mdash; OpenSSL::PKey::DSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/RSA.html#M000357">#ssh_do_sign &mdash; OpenSSL::PKey::RSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/DSA.html#M000360">#ssh_do_verify &mdash; OpenSSL::PKey::DSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/RSA.html#M000356">#ssh_do_verify &mdash; OpenSSL::PKey::RSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/RSA.html#M000354">#ssh_type &mdash; OpenSSL::PKey::RSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/DSA.html#M000358">#ssh_type &mdash; OpenSSL::PKey::DSA</a></li>
+		
+			<li><a href="Net/SSH/Connection/Session.html#M000156">#stop_listening_to &mdash; Net::SSH::Connection::Session</a></li>
+		
+			<li><a href="Net/SSH/Test.html#M000281">#story &mdash; Net::SSH::Test</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000105">#subsystem &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/PacketStream.html#M000250">#test_available_for_read? &mdash; Net::SSH::Test::Extensions::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/PacketStream.html#M000251">#test_enqueue_packet &mdash; Net::SSH::Test::Extensions::PacketStream</a></li>
+		
+			<li><a href="Net/SSH/Test/Extensions/PacketStream.html#M000252">#test_poll_next_packet &mdash; Net::SSH::Test::Extensions::PacketStream</a></li>
+		
+			<li><a href="OpenSSL/PKey/DSA.html#M000359">#to_blob &mdash; OpenSSL::PKey::DSA</a></li>
+		
+			<li><a href="OpenSSL/PKey/RSA.html#M000355">#to_blob &mdash; OpenSSL::PKey::RSA</a></li>
+		
+			<li><a href="Net/SSH/Version.html#M000417">#to_i &mdash; Net::SSH::Version</a></li>
+		
+			<li><a href="Net/SSH/Test/RemotePacket.html#M000268">#to_s &mdash; Net::SSH::Test::RemotePacket</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000061">#to_s &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Version.html#M000416">#to_s &mdash; Net::SSH::Version</a></li>
+		
+			<li><a href="OpenSSL/BN.html#M000351">#to_ssh &mdash; OpenSSL::BN</a></li>
+		
+			<li><a href="Net/SSH/Test.html#M000288">#transport &mdash; Net::SSH::Test</a></li>
+		
+			<li><a href="Net/SSH/Verifiers/Lenient.html#M000409">#tunnelled? &mdash; Net::SSH::Verifiers::Lenient</a></li>
+		
+			<li><a href="Net/SSH/Test/Packet.html#M000265">#types &mdash; Net::SSH::Test::Packet</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000381">#update_cipher &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000158">#update_local_window_size &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Transport/State.html#M000404">#update_next_iv &mdash; Net::SSH::Transport::State</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000027">#use_agent= &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Authentication/KeyManager.html#M000025">#use_agent? &mdash; Net::SSH::Authentication::KeyManager</a></li>
+		
+			<li><a href="Net/SSH/Authentication/Methods/Abstract.html#M000017">#userauth_request &mdash; Net::SSH::Authentication::Methods::Abstract</a></li>
+		
+			<li><a href="OpenSSL/PKey/DH.html#M000353">#valid? &mdash; OpenSSL::PKey::DH</a></li>
+		
+			<li><a href="Net/SSH/Verifiers/Strict.html#M000411">#verify &mdash; Net::SSH::Verifiers::Strict</a></li>
+		
+			<li><a href="Net/SSH/Verifiers/Lenient.html#M000408">#verify &mdash; Net::SSH::Verifiers::Lenient</a></li>
+		
+			<li><a href="Net/SSH/Verifiers/Null.html#M000410">#verify &mdash; Net::SSH::Verifiers::Null</a></li>
+		
+			<li><a href="Net/SSH/Connection/Channel.html#M000116">#wait &mdash; Net::SSH::Connection::Channel</a></li>
+		
+			<li><a href="Net/SSH/Transport/Session.html#M000398">#wait &mdash; Net::SSH::Transport::Session</a></li>
+		
+			<li><a href="Net/SSH/BufferedIo.html#M000057">#wait_for_pending_sends &mdash; Net::SSH::BufferedIo</a></li>
+		
+			<li><a href="Net/SSH/Test/Socket.html#M000274">#write &mdash; Net::SSH::Test::Socket</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000091">#write &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000099">#write_bignum &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000098">#write_bool &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000094">#write_byte &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000092">#write_int64 &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000100">#write_key &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000093">#write_long &mdash; Net::SSH::Buffer</a></li>
+		
+			<li><a href="Net/SSH/Buffer.html#M000097">#write_string &mdash; Net::SSH::Buffer</a></li>
+		
+	</ul>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
