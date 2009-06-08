@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Transport::HMAC::Abstract</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Transport::HMAC::Abstract 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../../files/lib/net/ssh/transport/hmac/abstract_rb.html">lib/net/ssh/transport/hmac/abstract.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The base class of all OpenSSL-based <a href="../HMAC.html">HMAC</a>
+algorithm wrappers.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000322">digest</a>,</li>
+                
+                <li><a href="#M000315">digest_class</a>,</li>
+                
+                <li><a href="#M000319">digest_class</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000321">key=</a>,</li>
+                
+                <li><a href="#M000316">key_length</a>,</li>
+                
+                <li><a href="#M000311">key_length</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000317">mac_length</a>,</li>
+                
+                <li><a href="#M000312">mac_length</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000320">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>key</td>
+            <td class='attr-desc'><p>
+The key in use for this instance.
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000315">
+                    
+                    <a name="M000315"></a><b>digest_class</b>(*v)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000315_source')" id="l_M000315_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000315_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 33</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest_class</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+        <span class="ruby-ivar">@digest_class</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@digest_class</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-ivar">@digest_class</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">digest_class</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@digest_class</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:digest_class</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@digest_class</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+          <span class="ruby-ivar">@digest_class</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000311">
+                    
+                    <a name="M000311"></a><b>key_length</b>(*v)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000311_source')" id="l_M000311_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000311_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 9</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_length</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+        <span class="ruby-ivar">@key_length</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@key_length</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-ivar">@key_length</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">key_length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@key_length</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:key_length</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@key_length</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+          <span class="ruby-ivar">@key_length</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000312">
+                    
+                    <a name="M000312"></a><b>mac_length</b>(*v)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000312_source')" id="l_M000312_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000312_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 21</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mac_length</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">v</span>)
+        <span class="ruby-ivar">@mac_length</span> = <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword kw">defined?</span>(<span class="ruby-ivar">@mac_length</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-ivar">@mac_length</span> = <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">mac_length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@mac_length</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">superclass</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:mac_length</span>)
+          <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@mac_length</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+          <span class="ruby-ivar">@mac_length</span> = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;wrong number of arguments (#{v.length} for 1)&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000320">
+                    
+                    <a name="M000320"></a><b>new</b>(key=nil)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000320_source')" id="l_M000320_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L61" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000320_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 61</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000322">
+                    
+                    <a name="M000322"></a><b>digest</b>(data)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Compute the <a href="../HMAC.html">HMAC</a> digest for the given data
+string.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000322_source')" id="l_M000322_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000322_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest</span>(<span class="ruby-identifier">data</span>)
+      <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">HMAC</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-identifier">digest_class</span>.<span class="ruby-identifier">new</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">data</span>)[<span class="ruby-value">0</span>,<span class="ruby-identifier">mac_length</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000319">
+                    
+                    <a name="M000319"></a><b>digest_class</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000319_source')" id="l_M000319_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000319_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 54</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">digest_class</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">digest_class</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000321">
+                    
+                    <a name="M000321"></a><b>key=</b>(value)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Sets the key to the given value, truncating it so that it is the correct
+length.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000321_source')" id="l_M000321_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000321_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 67</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key=</span>(<span class="ruby-identifier">value</span>)
+      <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">value</span> <span class="ruby-value">? </span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">key_length</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000316">
+                    
+                    <a name="M000316"></a><b>key_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000316_source')" id="l_M000316_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000316_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key_length</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">key_length</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000317">
+                    
+                    <a name="M000317"></a><b>mac_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000317_source')" id="l_M000317_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/hmac/abstract.rb#L50" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000317_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/hmac/abstract.rb, line 50</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mac_length</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">mac_length</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

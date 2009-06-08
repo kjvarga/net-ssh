@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ConfigTable::MetaConfigEnvironment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ConfigTable::MetaConfigEnvironment 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/setup_rb.html">setup.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000502">add_bool_config</a>,</li>
+                
+                <li><a href="#M000501">add_config</a>,</li>
+                
+                <li><a href="#M000503">add_path_config</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000498">bool_config?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000497">config?</a>,</li>
+                
+                <li><a href="#M000496">config_names</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000507">declare_packages</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000495">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000506">packages</a>,</li>
+                
+                <li><a href="#M000499">path_config?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000505">remove_config</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000504">set_config_default</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000500">value_config?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000495">
+                    
+                    <a name="M000495"></a><b>new</b>(config, installer)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000495_source')" id="l_M000495_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L474" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000495_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 474</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">installer</span>)
+      <span class="ruby-ivar">@config</span> = <span class="ruby-identifier">config</span>
+      <span class="ruby-ivar">@installer</span> = <span class="ruby-identifier">installer</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000502">
+                    
+                    <a name="M000502"></a><b>add_bool_config</b>(name, default, desc)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000502_source')" id="l_M000502_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L503" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000502_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 503</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_bool_config</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">desc</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">add</span> <span class="ruby-constant">BoolItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'yes/no'</span>, <span class="ruby-identifier">default</span> <span class="ruby-value">? </span><span class="ruby-value str">'yes'</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'no'</span>, <span class="ruby-identifier">desc</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000501">
+                    
+                    <a name="M000501"></a><b>add_config</b>(item)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000501_source')" id="l_M000501_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L499" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000501_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 499</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_config</span>(<span class="ruby-identifier">item</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">item</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000503">
+                    
+                    <a name="M000503"></a><b>add_path_config</b>(name, default, desc)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000503_source')" id="l_M000503_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L507" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000503_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 507</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_path_config</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">desc</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">add</span> <span class="ruby-constant">PathItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value str">'path'</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">desc</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000498">
+                    
+                    <a name="M000498"></a><b>bool_config?</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000498_source')" id="l_M000498_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L487" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000498_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 487</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bool_config?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">config_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'bool'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000497">
+                    
+                    <a name="M000497"></a><b>config?</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000497_source')" id="l_M000497_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L483" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000497_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 483</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000496">
+                    
+                    <a name="M000496"></a><b>config_names</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000496_source')" id="l_M000496_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L479" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000496_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 479</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_names</span>
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">names</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000507">
+                    
+                    <a name="M000507"></a><b>declare_packages</b>(list)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+For only multipackage
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000507_source')" id="l_M000507_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L526" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000507_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 526</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">declare_packages</span>(<span class="ruby-identifier">list</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-value str">'[setup.rb fatal] multi-package metaconfig API declare_packages() called for single-package; contact application package vendor'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@installer</span>
+      <span class="ruby-ivar">@installer</span>.<span class="ruby-identifier">packages</span> = <span class="ruby-identifier">list</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000506">
+                    
+                    <a name="M000506"></a><b>packages</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+For only multipackage
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000506_source')" id="l_M000506_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L520" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000506_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 520</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">packages</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-value str">'[setup.rb fatal] multi-package metaconfig API packages() called for single-package; contact application package vendor'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@installer</span>
+      <span class="ruby-ivar">@installer</span>.<span class="ruby-identifier">packages</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000499">
+                    
+                    <a name="M000499"></a><b>path_config?</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000499_source')" id="l_M000499_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L491" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000499_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 491</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path_config?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">config_type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'path'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000505">
+                    
+                    <a name="M000505"></a><b>remove_config</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000505_source')" id="l_M000505_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L515" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000505_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 515</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_config</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000504">
+                    
+                    <a name="M000504"></a><b>set_config_default</b>(name, default)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000504_source')" id="l_M000504_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L511" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000504_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 511</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_config_default</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">default</span> = <span class="ruby-identifier">default</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000500">
+                    
+                    <a name="M000500"></a><b>value_config?</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000500_source')" id="l_M000500_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L495" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000500_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 495</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value_config?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">lookup</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">config_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">'exec'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

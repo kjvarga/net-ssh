@@ -1,0 +1,1551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>TestBuffer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            TestBuffer 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/test/test_buffer_rb.html">test/test_buffer.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000849">test_append_should_append_argument_without_changing_position_and_should_return_self</a>,</li>
+                
+                <li><a href="#M000844">test_available_should_return_length_after_position_to_end_of_string</a>,</li>
+                
+                <li><a href="#M000845">test_clear_bang_should_reset_buffer_contents_and_counters</a>,</li>
+                
+                <li><a href="#M000825">test_constructor_should_initialize_buffer_to_empty_by_default</a>,</li>
+                
+                <li><a href="#M000826">test_constructor_with_string_should_initialize_buffer_to_the_string</a>,</li>
+                
+                <li><a href="#M000838">test_consume_with_argument_should_resize_buffer_starting_at_n</a>,</li>
+                
+                <li><a href="#M000837">test_consume_without_argument_should_resize_buffer_to_start_at_position</a>,</li>
+                
+                <li><a href="#M000828">test_from_should_build_new_buffer_from_definition</a>,</li>
+                
+                <li><a href="#M000827">test_from_should_require_an_even_number_of_arguments</a>,</li>
+                
+                <li><a href="#M000829">test_from_with_array_argument_should_write_multiple_of_the_given_type</a>,</li>
+                
+                <li><a href="#M000836">test_read_at_eof_should_return_empty_string</a>,</li>
+                
+                <li><a href="#M000843">test_read_bang_should_read_and_consume_and_return_read_portion</a>,</li>
+                
+                <li><a href="#M000866">test_read_bignum_should_read_openssl_formatted_bignum</a>,</li>
+                
+                <li><a href="#M000867">test_read_bignum_should_return_nil_if_length_cannot_be_read</a>,</li>
+                
+                <li><a href="#M000864">test_read_bool_should_return_false_if_zero_byte_is_read</a>,</li>
+                
+                <li><a href="#M000865">test_read_bool_should_return_nil_at_eof</a>,</li>
+                
+                <li><a href="#M000863">test_read_bool_should_return_true_if_non_zero_byte_is_read</a>,</li>
+                
+                <li><a href="#M000875">test_read_buffer_should_read_a_string_and_return_it_wrapped_in_a_buffer</a>,</li>
+                
+                <li><a href="#M000858">test_read_byte_should_return_nil_at_eof</a>,</li>
+                
+                <li><a href="#M000857">test_read_byte_should_return_single_byte_integer</a>,</li>
+                
+                <li><a href="#M000851">test_read_int64_should_return_8_byte_integer</a>,</li>
+                
+                <li><a href="#M000854">test_read_int64_should_return_nil_on_partial_read</a>,</li>
+                
+                <li><a href="#M000868">test_read_key_blob_should_read_dsa_keys</a>,</li>
+                
+                <li><a href="#M000869">test_read_key_blob_should_read_rsa_keys</a>,</li>
+                
+                <li><a href="#M000873">test_read_key_should_read_dsa_key_type_and_keyblob</a>,</li>
+                
+                <li><a href="#M000874">test_read_key_should_read_rsa_key_type_and_keyblob</a>,</li>
+                
+                <li><a href="#M000855">test_read_long_should_return_4_byte_integer</a>,</li>
+                
+                <li><a href="#M000856">test_read_long_should_return_nil_on_partial_read</a>,</li>
+                
+                <li><a href="#M000859">test_read_string_should_read_length_and_data_from_buffer</a>,</li>
+                
+                <li><a href="#M000860">test_read_string_should_return_nil_if_4_byte_length_cannot_be_read</a>,</li>
+                
+                <li><a href="#M000882">test_read_to_should_grok_fixnum_patterns</a>,</li>
+                
+                <li><a href="#M000879">test_read_to_should_grok_regex_patterns</a>,</li>
+                
+                <li><a href="#M000878">test_read_to_should_grok_string_patterns</a>,</li>
+                
+                <li><a href="#M000876">test_read_to_should_return_nil_if_pattern_does_not_exist_in_buffer</a>,</li>
+                
+                <li><a href="#M000831">test_read_with_argument_that_is_less_than_length_should_read_that_many_bytes</a>,</li>
+                
+                <li><a href="#M000835">test_read_with_argument_that_is_more_than_length_should_read_no_more_than_length</a>,</li>
+                
+                <li><a href="#M000830">test_read_without_argument_should_read_to_end</a>,</li>
+                
+                <li><a href="#M000850">test_remainder_as_buffer_should_return_a_new_buffer_filled_with_the_text_after_the_current_position</a>,</li>
+                
+                <li><a href="#M000883">test_reset_bang_should_reset_position_to_0</a>,</li>
+                
+                <li><a href="#M000891">test_write_bignum_should_write_arguments_as_ssh_formatted_bignum_values_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000890">test_write_bool_should_write_arguments_as_1_byte_boolean_values_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000889">test_write_byte_should_write_arguments_as_1_byte_integers_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000892">test_write_dss_key_should_write_argument_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000885">test_write_int64_should_write_arguments_as_8_byte_integers_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000888">test_write_long_should_write_arguments_as_4_byte_integers_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000893">test_write_rsa_key_should_write_argument_to_end_of_buffer</a>,</li>
+                
+                <li><a href="#M000884">test_write_should_write_arguments_directly_to_end_buffer</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000849">
+                    
+                    <a name="M000849"></a><b>test_append_should_append_argument_without_changing_position_and_should_return_self</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000849_source')" id="l_M000849_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L100" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000849_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_append_should_append_argument_without_changing_position_and_should_return_self</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">append</span>(<span class="ruby-value str">&quot; again&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">12</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">available</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">17</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world again&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000844">
+                    
+                    <a name="M000844"></a><b>test_available_should_return_length_after_position_to_end_of_string</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000844_source')" id="l_M000844_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L85" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000844_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 85</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_available_should_return_length_after_position_to_end_of_string</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">available</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000845">
+                    
+                    <a name="M000845"></a><b>test_clear_bang_should_reset_buffer_contents_and_counters</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000845_source')" id="l_M000845_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000845_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 91</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_clear_bang_should_reset_buffer_contents_and_counters</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">clear!</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000825">
+                    
+                    <a name="M000825"></a><b>test_constructor_should_initialize_buffer_to_empty_by_default</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000825_source')" id="l_M000825_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L5" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000825_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 5</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_should_initialize_buffer_to_empty_by_default</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000826">
+                    
+                    <a name="M000826"></a><b>test_constructor_with_string_should_initialize_buffer_to_the_string</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000826_source')" id="l_M000826_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000826_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 11</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_string_should_initialize_buffer_to_the_string</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;hello&quot;</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000838">
+                    
+                    <a name="M000838"></a><b>test_consume_with_argument_should_resize_buffer_starting_at_n</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000838_source')" id="l_M000838_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000838_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 68</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_consume_with_argument_should_resize_buffer_starting_at_n</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">consume!</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot; world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000837">
+                    
+                    <a name="M000837"></a><b>test_consume_without_argument_should_resize_buffer_to_start_at_position</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000837_source')" id="l_M000837_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000837_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_consume_without_argument_should_resize_buffer_to_start_at_position</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">consume!</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot; world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000828">
+                    
+                    <a name="M000828"></a><b>test_from_should_build_new_buffer_from_definition</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000828_source')" id="l_M000828_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000828_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_from_should_build_new_buffer_from_definition</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">:int64</span>, <span class="ruby-value">3</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;4&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:bignum</span>, <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">BN</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;1234567890&quot;</span>, <span class="ruby-value">10</span>), <span class="ruby-identifier">:raw</span>, <span class="ruby-value str">&quot;something&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;\1\0\0\0\2\0\0\0\0\0\0\0\3\0\0\0\0014\1\0\000\000\000\004I\226\002\322something&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000827">
+                    
+                    <a name="M000827"></a><b>test_from_should_require_an_even_number_of_arguments</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000827_source')" id="l_M000827_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L18" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000827_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_from_should_require_an_even_number_of_arguments</span>
+    <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) { <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-value str">&quot;this&quot;</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000829">
+                    
+                    <a name="M000829"></a><b>test_from_with_array_argument_should_write_multiple_of_the_given_type</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000829_source')" id="l_M000829_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000829_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_from_with_array_argument_should_write_multiple_of_the_given_type</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:byte</span>, [<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>,<span class="ruby-value">4</span>,<span class="ruby-value">5</span>])
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;\1\2\3\4\5&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000836">
+                    
+                    <a name="M000836"></a><b>test_read_at_eof_should_return_empty_string</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000836_source')" id="l_M000836_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000836_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 51</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_at_eof_should_return_empty_string</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span> = <span class="ruby-value">5</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000843">
+                    
+                    <a name="M000843"></a><b>test_read_bang_should_read_and_consume_and_return_read_portion</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000843_source')" id="l_M000843_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000843_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 77</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bang_should_read_and_consume_and_return_read_portion</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read!</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot; world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000866">
+                    
+                    <a name="M000866"></a><b>test_read_bignum_should_read_openssl_formatted_bignum</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000866_source')" id="l_M000866_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L176" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000866_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 176</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bignum_should_read_openssl_formatted_bignum</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\000\000\000\004I\226\002\322&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">BN</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;1234567890&quot;</span>, <span class="ruby-value">10</span>), <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_bignum</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000867">
+                    
+                    <a name="M000867"></a><b>test_read_bignum_should_return_nil_if_length_cannot_be_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000867_source')" id="l_M000867_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L181" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000867_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 181</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bignum_should_return_nil_if_length_cannot_be_read</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\0\1\2&quot;</span>).<span class="ruby-identifier">read_bignum</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000864">
+                    
+                    <a name="M000864"></a><b>test_read_bool_should_return_false_if_zero_byte_is_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000864_source')" id="l_M000864_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L167" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000864_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 167</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bool_should_return_false_if_zero_byte_is_read</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\0&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_bool</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000865">
+                    
+                    <a name="M000865"></a><b>test_read_bool_should_return_nil_at_eof</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000865_source')" id="l_M000865_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L172" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000865_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bool_should_return_nil_at_eof</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">read_bool</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000863">
+                    
+                    <a name="M000863"></a><b>test_read_bool_should_return_true_if_non_zero_byte_is_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000863_source')" id="l_M000863_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L162" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000863_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 162</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_bool_should_return_true_if_non_zero_byte_is_read</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\1\2\3\4\5\6&quot;</span>
+    <span class="ruby-value">6</span>.<span class="ruby-identifier">times</span> { <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_bool</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000875">
+                    
+                    <a name="M000875"></a><b>test_read_buffer_should_read_a_string_and_return_it_wrapped_in_a_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000875_source')" id="l_M000875_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L207" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000875_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 207</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_buffer_should_read_a_string_and_return_it_wrapped_in_a_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\0\0\0\x0bhello world&quot;</span>)
+    <span class="ruby-identifier">b2</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_buffer</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world&quot;</span>, <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">read</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000858">
+                    
+                    <a name="M000858"></a><b>test_read_byte_should_return_nil_at_eof</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000858_source')" id="l_M000858_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L149" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000858_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 149</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_byte_should_return_nil_at_eof</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">read_byte</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000857">
+                    
+                    <a name="M000857"></a><b>test_read_byte_should_return_single_byte_integer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000857_source')" id="l_M000857_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L143" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000857_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_byte_should_return_single_byte_integer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\xfe\xdc&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0xfe</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_byte</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000851">
+                    
+                    <a name="M000851"></a><b>test_read_int64_should_return_8_byte_integer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000851_source')" id="l_M000851_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L119" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000851_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 119</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_int64_should_return_8_byte_integer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\xff\xee\xdd\xcc\xbb\xaa\x99\x88&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0xffeeddccbbaa9988</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_int64</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">8</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000854">
+                    
+                    <a name="M000854"></a><b>test_read_int64_should_return_nil_on_partial_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000854_source')" id="l_M000854_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L125" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000854_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_int64_should_return_nil_on_partial_read</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\0\0\0\0\0\0\0&quot;</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_int64</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">eof?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000868">
+                    
+                    <a name="M000868"></a><b>test_read_key_blob_should_read_dsa_keys</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000868_source')" id="l_M000868_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L185" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000868_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 185</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_key_blob_should_read_dsa_keys</span>
+    <span class="ruby-identifier">random_dss</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_keyblob</span>(<span class="ruby-value str">&quot;ssh-dss&quot;</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000869">
+                    
+                    <a name="M000869"></a><b>test_read_key_blob_should_read_rsa_keys</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000869_source')" id="l_M000869_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L189" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000869_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 189</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_key_blob_should_read_rsa_keys</span>
+    <span class="ruby-identifier">random_rsa</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_keyblob</span>(<span class="ruby-value str">&quot;ssh-rsa&quot;</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000873">
+                    
+                    <a name="M000873"></a><b>test_read_key_should_read_dsa_key_type_and_keyblob</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000873_source')" id="l_M000873_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L193" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000873_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 193</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_key_should_read_dsa_key_type_and_keyblob</span>
+    <span class="ruby-identifier">random_dss</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">b2</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;ssh-dss&quot;</span>, <span class="ruby-identifier">:raw</span>, <span class="ruby-identifier">buffer</span>)
+      <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">read_key</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000874">
+                    
+                    <a name="M000874"></a><b>test_read_key_should_read_rsa_key_type_and_keyblob</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000874_source')" id="l_M000874_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L200" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000874_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 200</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_key_should_read_rsa_key_type_and_keyblob</span>
+    <span class="ruby-identifier">random_rsa</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">b2</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;ssh-rsa&quot;</span>, <span class="ruby-identifier">:raw</span>, <span class="ruby-identifier">buffer</span>)
+      <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">read_key</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000855">
+                    
+                    <a name="M000855"></a><b>test_read_long_should_return_4_byte_integer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000855_source')" id="l_M000855_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L131" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000855_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 131</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_long_should_return_4_byte_integer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\xff\xee\xdd\xcc\xbb\xaa\x99\x88&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0xffeeddcc</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_long</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">4</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000856">
+                    
+                    <a name="M000856"></a><b>test_read_long_should_return_nil_on_partial_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000856_source')" id="l_M000856_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L137" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000856_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 137</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_long_should_return_nil_on_partial_read</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\0\0\0&quot;</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_long</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">eof?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000859">
+                    
+                    <a name="M000859"></a><b>test_read_string_should_read_length_and_data_from_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000859_source')" id="l_M000859_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000859_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 153</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_string_should_read_length_and_data_from_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;\0\0\0\x0bhello world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_string</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000860">
+                    
+                    <a name="M000860"></a><b>test_read_string_should_return_nil_if_4_byte_length_cannot_be_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000860_source')" id="l_M000860_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L158" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000860_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 158</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_string_should_return_nil_if_4_byte_length_cannot_be_read</span>
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\0\1&quot;</span>).<span class="ruby-identifier">read_string</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000882">
+                    
+                    <a name="M000882"></a><b>test_read_to_should_grok_fixnum_patterns</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000882_source')" id="l_M000882_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L232" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000882_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 232</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_to_should_grok_fixnum_patterns</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;one two three&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;one tw&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_to</span>(<span class="ruby-value">?w</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000879">
+                    
+                    <a name="M000879"></a><b>test_read_to_should_grok_regex_patterns</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000879_source')" id="l_M000879_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L226" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000879_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 226</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_to_should_grok_regex_patterns</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;one two three&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;one tw&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_to</span>(<span class="ruby-regexp re">/tw/</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000878">
+                    
+                    <a name="M000878"></a><b>test_read_to_should_grok_string_patterns</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000878_source')" id="l_M000878_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L220" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000878_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 220</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_to_should_grok_string_patterns</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;one two three&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;one tw&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_to</span>(<span class="ruby-value str">&quot;tw&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000876">
+                    
+                    <a name="M000876"></a><b>test_read_to_should_return_nil_if_pattern_does_not_exist_in_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000876_source')" id="l_M000876_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L215" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000876_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 215</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_to_should_return_nil_if_pattern_does_not_exist_in_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;one two three&quot;</span>)
+    <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_to</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000831">
+                    
+                    <a name="M000831"></a><b>test_read_with_argument_that_is_less_than_length_should_read_that_many_bytes</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000831_source')" id="l_M000831_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000831_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 39</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_with_argument_that_is_less_than_length_should_read_that_many_bytes</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000835">
+                    
+                    <a name="M000835"></a><b>test_read_with_argument_that_is_more_than_length_should_read_no_more_than_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000835_source')" id="l_M000835_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000835_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 45</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_with_argument_that_is_more_than_length_should_read_no_more_than_length</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">500</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000830">
+                    
+                    <a name="M000830"></a><b>test_read_without_argument_should_read_to_end</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000830_source')" id="l_M000830_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000830_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_read_without_argument_should_read_to_end</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">eof?</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000850">
+                    
+                    <a name="M000850"></a><b>test_remainder_as_buffer_should_return_a_new_buffer_filled_with_the_text_after_the_current_position</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000850_source')" id="l_M000850_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L110" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000850_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 110</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_remainder_as_buffer_should_return_a_new_buffer_filled_with_the_text_after_the_current_position</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;hello world&quot;</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">6</span>)
+    <span class="ruby-identifier">b2</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">remainder_as_buffer</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;world&quot;</span>, <span class="ruby-identifier">b2</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000883">
+                    
+                    <a name="M000883"></a><b>test_reset_bang_should_reset_position_to_0</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000883_source')" id="l_M000883_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L238" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000883_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 238</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_reset_bang_should_reset_position_to_0</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read</span>(<span class="ruby-value">5</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">5</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">reset!</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000891">
+                    
+                    <a name="M000891"></a><b>test_write_bignum_should_write_arguments_as_ssh_formatted_bignum_values_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000891_source')" id="l_M000891_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L277" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000891_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 277</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_bignum_should_write_arguments_as_ssh_formatted_bignum_values_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_bignum</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">BN</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'1234567890'</span>, <span class="ruby-value">10</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\000\000\000\004I\226\002\322&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000890">
+                    
+                    <a name="M000890"></a><b>test_write_bool_should_write_arguments_as_1_byte_boolean_values_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000890_source')" id="l_M000890_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L271" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000890_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 271</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_bool_should_write_arguments_as_1_byte_boolean_values_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_bool</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">Object</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\0\0\1\1\1&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000889">
+                    
+                    <a name="M000889"></a><b>test_write_byte_should_write_arguments_as_1_byte_integers_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000889_source')" id="l_M000889_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L265" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000889_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 265</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_byte_should_write_arguments_as_1_byte_integers_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_byte</span> <span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-value">5</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\1\2\3\4\5&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000892">
+                    
+                    <a name="M000892"></a><b>test_write_dss_key_should_write_argument_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000892_source')" id="l_M000892_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L283" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000892_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 283</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_dss_key_should_write_argument_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+
+    <span class="ruby-identifier">key</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">DSA</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">p</span> = <span class="ruby-value">0xffeeddccbbaa9988</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">q</span> = <span class="ruby-value">0x7766554433221100</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">g</span> = <span class="ruby-value">0xffddbb9977553311</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">pub_key</span> = <span class="ruby-value">0xeeccaa8866442200</span>
+
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_key</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\0\0\0\7ssh-dss\0\0\0\011\0\xff\xee\xdd\xcc\xbb\xaa\x99\x88\0\0\0\010\x77\x66\x55\x44\x33\x22\x11\x00\0\0\0\011\0\xff\xdd\xbb\x99\x77\x55\x33\x11\0\0\0\011\0\xee\xcc\xaa\x88\x66\x44\x22\x00&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000885">
+                    
+                    <a name="M000885"></a><b>test_write_int64_should_write_arguments_as_8_byte_integers_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000885_source')" id="l_M000885_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L253" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000885_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 253</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_int64_should_write_arguments_as_8_byte_integers_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_int64</span> <span class="ruby-value">0xffeeddccbbaa9988</span>, <span class="ruby-value">0x7766554433221100</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\xff\xee\xdd\xcc\xbb\xaa\x99\x88\x77\x66\x55\x44\x33\x22\x11\x00&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000888">
+                    
+                    <a name="M000888"></a><b>test_write_long_should_write_arguments_as_4_byte_integers_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000888_source')" id="l_M000888_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L259" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000888_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 259</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_long_should_write_arguments_as_4_byte_integers_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_long</span> <span class="ruby-value">0xffeeddcc</span>, <span class="ruby-value">0xbbaa9988</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\xff\xee\xdd\xcc\xbb\xaa\x99\x88&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000893">
+                    
+                    <a name="M000893"></a><b>test_write_rsa_key_should_write_argument_to_end_of_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000893_source')" id="l_M000893_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L296" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000893_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 296</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_rsa_key_should_write_argument_to_end_of_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+
+    <span class="ruby-identifier">key</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSA</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">e</span> = <span class="ruby-value">0xffeeddccbbaa9988</span>
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">n</span> = <span class="ruby-value">0x7766554433221100</span>
+
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write_key</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;start\0\0\0\7ssh-rsa\0\0\0\011\0\xff\xee\xdd\xcc\xbb\xaa\x99\x88\0\0\0\010\x77\x66\x55\x44\x33\x22\x11\x00&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000884">
+                    
+                    <a name="M000884"></a><b>test_write_should_write_arguments_directly_to_end_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000884_source')" id="l_M000884_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffer.rb#L246" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000884_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffer.rb, line 246</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_write_should_write_arguments_directly_to_end_buffer</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;start&quot;</span>)
+    <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">write</span> <span class="ruby-value str">&quot;hello&quot;</span>, <span class="ruby-value str">&quot; &quot;</span>, <span class="ruby-value str">&quot;world&quot;</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;starthello world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">position</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Test::Packet</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Test::Packet 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/test/packet_rb.html">lib/net/ssh/test/packet.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This is an abstract class, not to be instantiated directly, subclassed by
+<a href="LocalPacket.html">Net::SSH::Test::LocalPacket</a> and <a
+href="RemotePacket.html">Net::SSH::Test::RemotePacket</a>. It implements
+functionality common to those subclasses.
+</p>
+<p>
+These packets are not true packets, in that they don&#8217;t represent what
+was actually sent between the hosst; rather, they represent what was
+expected to be sent, as dictated by the script (<a
+href="Script.html">Net::SSH::Test::Script</a>). Thus, though they are
+defined with data elements, these data elements are used to either validate
+data that was sent by the local host (<a
+href="LocalPacket.html">Net::SSH::Test::LocalPacket</a>) or to mimic the
+sending of data by the remote host (<a
+href="RemotePacket.html">Net::SSH::Test::RemotePacket</a>).
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000264">instantiate!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000263">local?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000261">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000262">remote?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000268">types</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../../../Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="../../../Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000261">
+                    
+                    <a name="M000261"></a><b>new</b>(type, *args)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Ceate a new packet of the given <tt>type</tt>, and with <tt>args</tt> being
+a list of data elements in the order expected for packets of the given
+<tt>type</tt> (see <a href="Packet.html#M000268">types</a>).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000261_source')" id="l_M000261_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/14d2ac33d10f69314febfc28b456e3cf92f72b12/lib/net/ssh/test/packet.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000261_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/test/packet.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">type</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-ivar">@type</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>)
+      <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">args</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000264">
+                    
+                    <a name="M000264"></a><b>instantiate!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Instantiates the packets data elements. When the packet was first defined,
+some elements may not have been fully realized, and were described as Proc
+objects rather than atomic types. This invokes those Proc objects and
+replaces them with their returned values. This allows for values like <a
+href="Channel.html#M000228">Net::SSH::Test::Channel#remote_id</a> to be
+used in scripts before the remote_id is known (since it is only known after
+a channel has been confirmed open).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000264_source')" id="l_M000264_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/14d2ac33d10f69314febfc28b456e3cf92f72b12/lib/net/ssh/test/packet.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000264_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/test/packet.rb, line 45</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instantiate!</span>
+      <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">map!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:call</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">call</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">i</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000263">
+                    
+                    <a name="M000263"></a><b>local?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The default for <tt>local?</tt> is false. Subclasses should override as
+necessary.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000263_source')" id="l_M000263_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/14d2ac33d10f69314febfc28b456e3cf92f72b12/lib/net/ssh/test/packet.rb#L34" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000263_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/test/packet.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local?</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000262">
+                    
+                    <a name="M000262"></a><b>remote?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The default for <tt>remote?</tt> is false. Subclasses should override as
+necessary.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000262_source')" id="l_M000262_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/14d2ac33d10f69314febfc28b456e3cf92f72b12/lib/net/ssh/test/packet.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000262_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/test/packet.rb, line 29</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remote?</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000268">
+                    
+                    <a name="M000268"></a><b>types</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an array of symbols describing the data elements for packets of the
+same type as this packet. These types are used to either validate sent
+packets (<a href="LocalPacket.html">Net::SSH::Test::LocalPacket</a>) or
+build received packets (<a
+href="RemotePacket.html">Net::SSH::Test::RemotePacket</a>).
+</p>
+<p>
+Not all packet types are defined here. As new packet types are required
+(e.g., a unit test needs to test that the remote host sent a packet that is
+not implemented here), the description of that packet should be added.
+Unsupported packet types will otherwise raise an exception.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000268_source')" id="l_M000268_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/14d2ac33d10f69314febfc28b456e3cf92f72b12/lib/net/ssh/test/packet.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000268_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/test/packet.rb, line 58</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">types</span>
+      <span class="ruby-ivar">@types</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword kw">case</span> <span class="ruby-ivar">@type</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">KEXINIT</span> <span class="ruby-keyword kw">then</span> 
+          [<span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>,
+           <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:string</span>,
+           <span class="ruby-identifier">:bool</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">NEWKEYS</span> <span class="ruby-keyword kw">then</span> []
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">CHANNEL_OPEN</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">CHANNEL_OPEN_CONFIRMATION</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:long</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">CHANNEL_DATA</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:string</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">CHANNEL_EOF</span>, <span class="ruby-constant">CHANNEL_CLOSE</span>, <span class="ruby-constant">CHANNEL_SUCCESS</span>, <span class="ruby-constant">CHANNEL_FAILURE</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">:long</span>]
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">CHANNEL_REQUEST</span>
+          <span class="ruby-identifier">parts</span> = [<span class="ruby-identifier">:long</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">:bool</span>]
+          <span class="ruby-keyword kw">case</span> <span class="ruby-ivar">@data</span>[<span class="ruby-value">1</span>]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-value str">&quot;subsystem&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">parts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">:string</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;exit-status&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">parts</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">:long</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;don't know what to do about #{@data[1]} channel request&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;don't know how to parse packet type #{@type}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

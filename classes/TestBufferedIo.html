@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>TestBufferedIo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            TestBufferedIo 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/test/test_buffered_io_rb.html">test/test_buffered_io.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000904">test_enqueue_should_not_write_to_underlying_io</a>,</li>
+                
+                <li><a href="#M000903">test_fill_should_pull_from_underlying_io</a>,</li>
+                
+                <li><a href="#M000905">test_send_pending_should_not_fail_when_no_writes_are_pending</a>,</li>
+                
+                <li><a href="#M000906">test_send_pending_with_pending_writes_should_write_to_underlying_io</a>,</li>
+                
+                <li><a href="#M000908">test_wait_for_pending_sends_should_write_multiple_times_if_first_write_was_partial</a>,</li>
+                
+                <li><a href="#M000907">test_wait_for_pending_sends_should_write_only_once_if_all_can_be_written_at_once</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000904">
+                    
+                    <a name="M000904"></a><b>test_enqueue_should_not_write_to_underlying_io</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000904_source')" id="l_M000904_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000904_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 12</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_should_not_write_to_underlying_io</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">never</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">enqueue</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000903">
+                    
+                    <a name="M000903"></a><b>test_fill_should_pull_from_underlying_io</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000903_source')" id="l_M000903_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L5" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000903_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 5</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_fill_should_pull_from_underlying_io</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:recv</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value">8192</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">17</span>, <span class="ruby-identifier">io</span>.<span class="ruby-identifier">fill</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">17</span>, <span class="ruby-identifier">io</span>.<span class="ruby-identifier">available</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;here is some data&quot;</span>, <span class="ruby-identifier">io</span>.<span class="ruby-identifier">read_available</span>(<span class="ruby-value">20</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000905">
+                    
+                    <a name="M000905"></a><b>test_send_pending_should_not_fail_when_no_writes_are_pending</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000905_source')" id="l_M000905_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000905_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_pending_should_not_fail_when_no_writes_are_pending</span>
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">never</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">io</span>.<span class="ruby-identifier">send_pending</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000906">
+                    
+                    <a name="M000906"></a><b>test_send_pending_with_pending_writes_should_write_to_underlying_io</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000906_source')" id="l_M000906_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000906_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_pending_with_pending_writes_should_write_to_underlying_io</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">enqueue</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value">17</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">io</span>.<span class="ruby-identifier">send_pending</span> }
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000908">
+                    
+                    <a name="M000908"></a><b>test_wait_for_pending_sends_should_write_multiple_times_if_first_write_was_partial</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000908_source')" id="l_M000908_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000908_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_for_pending_sends_should_write_multiple_times_if_first_write_was_partial</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">enqueue</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value">10</span>)
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;me data&quot;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value">4</span>)
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;ata&quot;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value">3</span>)
+
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:select</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">with</span>(<span class="ruby-keyword kw">nil</span>, [<span class="ruby-identifier">io</span>]).<span class="ruby-identifier">returns</span>([[], [<span class="ruby-identifier">io</span>]])
+
+    <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">io</span>.<span class="ruby-identifier">wait_for_pending_sends</span> }
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000907">
+                    
+                    <a name="M000907"></a><b>test_wait_for_pending_sends_should_write_only_once_if_all_can_be_written_at_once</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000907_source')" id="l_M000907_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/test_buffered_io.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000907_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_buffered_io.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_for_pending_sends_should_write_only_once_if_all_can_be_written_at_once</span>
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">enqueue</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+    <span class="ruby-identifier">io</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value">17</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+    <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">io</span>.<span class="ruby-identifier">wait_for_pending_sends</span> }
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">io</span>.<span class="ruby-identifier">pending_write?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

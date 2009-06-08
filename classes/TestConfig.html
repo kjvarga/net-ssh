@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>TestConfig</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            TestConfig 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/test/test_config_rb.html">test/test_config.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000918">test_for_should_load_all_files_and_translate_to_net_ssh_options</a>,</li>
+                
+                <li><a href="#M000910">test_load_for_non_existant_file_should_return_empty_hash</a>,</li>
+                
+                <li><a href="#M000911">test_load_should_expand_path</a>,</li>
+                
+                <li><a href="#M000921">test_load_should_parse_equal_sign_delimiters</a>,</li>
+                
+                <li><a href="#M000912">test_load_with_exact_host_match_should_load_that_section</a>,</li>
+                
+                <li><a href="#M000913">test_load_with_wild_card_matches_should_load_all_matches_with_first_match_taking_precedence</a>,</li>
+                
+                <li><a href="#M000922">test_translate_should_correctly_translate_from_openssh_to_net_ssh_names</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000918">
+                    
+                    <a name="M000918"></a><b>test_for_should_load_all_files_and_translate_to_net_ssh_options</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000918_source')" id="l_M000918_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000918_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_for_should_load_all_files_and_translate_to_net_ssh_options</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">for</span>(<span class="ruby-value str">&quot;test.host&quot;</span>, [<span class="ruby-identifier">config</span>(<span class="ruby-identifier">:exact_match</span>), <span class="ruby-identifier">config</span>(<span class="ruby-identifier">:wild_cards</span>)])
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1234</span>, <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:port</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:forward_agent</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(~/.ssh/id_dsa)</span>, <span class="ruby-identifier">config</span>[<span class="ruby-identifier">:keys</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">config</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">:rekey_limit</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000910">
+                    
+                    <a name="M000910"></a><b>test_load_for_non_existant_file_should_return_empty_hash</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000910_source')" id="l_M000910_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L5" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000910_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 5</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_for_non_existant_file_should_return_empty_hash</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:readable?</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/bogus/file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">false</span>)
+    <span class="ruby-identifier">assert_equal</span>({}, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value str">&quot;/bogus/file&quot;</span>, <span class="ruby-value str">&quot;host.name&quot;</span>))
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000911">
+                    
+                    <a name="M000911"></a><b>test_load_should_expand_path</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000911_source')" id="l_M000911_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000911_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 10</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_should_expand_path</span>
+    <span class="ruby-identifier">expected</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-value str">&quot;~/.ssh/config&quot;</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:readable?</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">expected</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">false</span>)
+    <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value str">&quot;~/.ssh/config&quot;</span>, <span class="ruby-value str">&quot;host.name&quot;</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000921">
+                    
+                    <a name="M000921"></a><b>test_load_should_parse_equal_sign_delimiters</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000921_source')" id="l_M000921_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000921_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_should_parse_equal_sign_delimiters</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">config</span>(<span class="ruby-identifier">:eqsign</span>), <span class="ruby-value str">&quot;test.test&quot;</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-value str">'compression'</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1234</span>, <span class="ruby-identifier">config</span>[<span class="ruby-value str">'port'</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000912">
+                    
+                    <a name="M000912"></a><b>test_load_with_exact_host_match_should_load_that_section</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000912_source')" id="l_M000912_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L16" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000912_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_with_exact_host_match_should_load_that_section</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">config</span>(<span class="ruby-identifier">:exact_match</span>), <span class="ruby-value str">&quot;test.host&quot;</span>)
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-value str">'compression'</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-value str">'forwardagent'</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1234</span>, <span class="ruby-identifier">config</span>[<span class="ruby-value str">'port'</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000913">
+                    
+                    <a name="M000913"></a><b>test_load_with_wild_card_matches_should_load_all_matches_with_first_match_taking_precedence</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000913_source')" id="l_M000913_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000913_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 23</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_with_wild_card_matches_should_load_all_matches_with_first_match_taking_precedence</span>
+    <span class="ruby-identifier">config</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">config</span>(<span class="ruby-identifier">:wild_cards</span>), <span class="ruby-value str">&quot;test.host&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1234</span>, <span class="ruby-identifier">config</span>[<span class="ruby-value str">'port'</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">config</span>[<span class="ruby-value str">'compression'</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">config</span>[<span class="ruby-value str">'forwardagent'</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(~/.ssh/id_dsa)</span>, <span class="ruby-identifier">config</span>[<span class="ruby-value str">'identityfile'</span>]
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">config</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value str">'rekeylimit'</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000922">
+                    
+                    <a name="M000922"></a><b>test_translate_should_correctly_translate_from_openssh_to_net_ssh_names</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000922_source')" id="l_M000922_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/86610921ec3690ff4b049d93279bb70a84e08537/test/test_config.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000922_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_config.rb, line 47</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_translate_should_correctly_translate_from_openssh_to_net_ssh_names</span>
+    <span class="ruby-identifier">open_ssh</span> = {
+      <span class="ruby-value str">'ciphers'</span>                 =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;a,b,c&quot;</span>,
+      <span class="ruby-value str">'compression'</span>             =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-value str">'compressionlevel'</span>        =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>,
+      <span class="ruby-value str">'connecttimeout'</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>,
+      <span class="ruby-value str">'forwardagent'</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-value str">'hostbasedauthentication'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-value str">'hostkeyalgorithms'</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;d,e,f&quot;</span>,
+      <span class="ruby-value str">'identityfile'</span>            =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(g h i)</span>,
+      <span class="ruby-value str">'macs'</span>                    =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;j,k,l&quot;</span>,
+      <span class="ruby-value str">'passwordauthentication'</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-value str">'port'</span>                    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1234</span>,
+      <span class="ruby-value str">'pubkeyauthentication'</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-value str">'rekeylimit'</span>              =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1024</span>
+    }
+
+    <span class="ruby-identifier">net_ssh</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">translate</span>(<span class="ruby-identifier">open_ssh</span>)
+
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(a b c)</span>, <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:encryption</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">true</span>,      <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">6</span>,         <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:compression_level</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">100</span>,       <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:timeout</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">true</span>,      <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:forward_agent</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(hostbased password publickey)</span>, <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:auth_methods</span>].<span class="ruby-identifier">sort</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(d e f)</span>, <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:host_key</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(g h i)</span>, <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:keys</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(j k l)</span>, <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:hmac</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1234</span>,      <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:port</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1024</span>,      <span class="ruby-identifier">net_ssh</span>[<span class="ruby-identifier">:rekey_limit</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

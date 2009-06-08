@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Transport::IdentityCipher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Transport::IdentityCipher 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/transport/identity_cipher_rb.html">lib/net/ssh/transport/identity_cipher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+A cipher that does nothing but pass the data through, unchanged. This keeps
+things in the code nice and clean when a cipher has not yet been determined
+(i.e., during key exchange).
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>B</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000327">block_size</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000330">decrypt</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000329">encrypt</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000332">final</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000334">iv=</a>,</li>
+                
+                <li><a href="#M000328">iv_len</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000333">name</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000335">reset</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000331">update</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000327">
+                    
+                    <a name="M000327"></a><b>block_size</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A default block size of 8 is required by the SSH2 protocol.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000327_source')" id="l_M000327_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000327_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 9</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">block_size</span>
+        <span class="ruby-value">8</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000330">
+                    
+                    <a name="M000330"></a><b>decrypt</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Does nothing. Returns self.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000330_source')" id="l_M000330_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000330_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 24</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt</span>
+        <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000329">
+                    
+                    <a name="M000329"></a><b>encrypt</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Does nothing. Returns self.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000329_source')" id="l_M000329_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000329_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 19</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt</span>
+        <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000332">
+                    
+                    <a name="M000332"></a><b>final</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the empty string.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000332_source')" id="l_M000332_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L34" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000332_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 34</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">final</span>
+        <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000334">
+                    
+                    <a name="M000334"></a><b>iv=</b>(v)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Does nothing. Returns nil.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000334_source')" id="l_M000334_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000334_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 44</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iv=</span>(<span class="ruby-identifier">v</span>)
+        <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000328">
+                    
+                    <a name="M000328"></a><b>iv_len</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an arbitrary integer.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000328_source')" id="l_M000328_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000328_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 14</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iv_len</span>
+        <span class="ruby-value">4</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000333">
+                    
+                    <a name="M000333"></a><b>name</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The name of this cipher, which is &#8220;identity&#8221;.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000333_source')" id="l_M000333_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000333_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 39</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">name</span>
+        <span class="ruby-value str">&quot;identity&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000335">
+                    
+                    <a name="M000335"></a><b>reset</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Does nothing. Returns self.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000335_source')" id="l_M000335_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000335_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 49</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset</span>
+        <span class="ruby-keyword kw">self</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000331">
+                    
+                    <a name="M000331"></a><b>update</b>(text)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Passes its single argument through unchanged.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000331_source')" id="l_M000331_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/ed912ab19de0caa588d0f5a6c5887a53d3ab04be/lib/net/ssh/transport/identity_cipher.rb#L29" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000331_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/identity_cipher.rb, line 29</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">text</span>)
+        <span class="ruby-identifier">text</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

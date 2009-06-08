@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::HostKeyMismatch</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::HostKeyMismatch 
+            
+                <span class="parent">&lt; 
+                    
+                    Exception
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/net/ssh/errors_rb.html">lib/net/ssh/errors.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Raised when the cached key for a particular host does not match the key
+given by the host, which can be indicative of a man-in-the-middle attack.
+When rescuing this exception, you can inspect the key fingerprint and, if
+you want to proceed anyway, simply call the remember_host! method on the
+exception, and then retry.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000165">[]</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000166">fingerprint</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000167">host</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000169">ip</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>K</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000170">key</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000168">port</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000171">remember_host!</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000165">
+                    
+                    <a name="M000165"></a><b>[]</b>(key)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+An accessor for getting at the data that was used to look up the host (see
+also <a href="HostKeyMismatch.html#M000166">fingerprint</a>, <a
+href="HostKeyMismatch.html#M000167">host</a>, <a
+href="HostKeyMismatch.html#M000168">port</a>, <a
+href="HostKeyMismatch.html#M000169">ip</a>, and <a
+href="HostKeyMismatch.html#M000170">key</a>).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000165_source')" id="l_M000165_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000165_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">key</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000166">
+                    
+                    <a name="M000166"></a><b>fingerprint</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the fingerprint of the key for the host, which either was not found
+or did not match.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000166_source')" id="l_M000166_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000166_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 55</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fingerprint</span>
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:fingerprint</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000167">
+                    
+                    <a name="M000167"></a><b>host</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the host name for the remote host, as reported by the socket.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000167_source')" id="l_M000167_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L60" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000167_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">host</span>
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>][<span class="ruby-identifier">:host</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000169">
+                    
+                    <a name="M000169"></a><b>ip</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the IP address of the remote host, as reported by the socket.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000169_source')" id="l_M000169_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L70" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000169_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 70</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ip</span>
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>][<span class="ruby-identifier">:ip</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000170">
+                    
+                    <a name="M000170"></a><b>key</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the key itself, as reported by the remote host.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000170_source')" id="l_M000170_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L75" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000170_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 75</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">key</span>
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:key</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000168">
+                    
+                    <a name="M000168"></a><b>port</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns the port number for the remote host, as reported by the socket.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000168_source')" id="l_M000168_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000168_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">port</span>
+      <span class="ruby-ivar">@data</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">:peer</span>][<span class="ruby-identifier">:port</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000171">
+                    
+                    <a name="M000171"></a><b>remember_host!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Tell <a href="../SSH.html">Net::SSH</a> to record this host and key in the
+known hosts file, so that subsequent connections will remember them.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000171_source')" id="l_M000171_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b15c34734df0d35d9dc82434c965d4e831120265/lib/net/ssh/errors.rb#L81" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000171_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/errors.rb, line 81</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remember_host!</span>
+      <span class="ruby-ivar">@callback</span>.<span class="ruby-identifier">call</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

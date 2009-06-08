@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Authentication::Pageant::Socket</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Authentication::Pageant::Socket 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../../files/lib/net/ssh/authentication/pageant_rb.html">lib/net/ssh/authentication/pageant.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This is the pseudo-socket implementation that mimics the interface of a
+socket, translating each request into a Windows messaging call to the
+pageant daemon. This allows pageant support to be implemented simply by
+replacing the socket factory used by the <a href="../Agent.html">Agent</a>
+class.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000040">close</a>,</li>
+                
+                <li><a href="#M000041">closed?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000037">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000035">open</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000042">read</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000038">send</a>,</li>
+                
+                <li><a href="#M000039">send_query</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000037">
+                    
+                    <a name="M000037"></a><b>new</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Create a new instance that communicates with the running pageant instance.
+If no such instance is running, this will cause an error.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000037_source')" id="l_M000037_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000037_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 89</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+        <span class="ruby-ivar">@win</span> = <span class="ruby-constant">Win</span>.<span class="ruby-identifier">findWindow</span>(<span class="ruby-value str">&quot;Pageant&quot;</span>, <span class="ruby-value str">&quot;Pageant&quot;</span>)
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@win</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>,
+            <span class="ruby-value str">&quot;pageant process not running&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-ivar">@res</span> = <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-ivar">@pos</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000035">
+                    
+                    <a name="M000035"></a><b>open</b>(location=nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+The factory method for creating a new <a href="Socket.html">Socket</a>
+instance. The location parameter is ignored, and is only needed for
+compatibility with the general <a href="Socket.html">Socket</a> interface.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000035_source')" id="l_M000035_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000035_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 83</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">location</span>=<span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000040">
+                    
+                    <a name="M000040"></a><b>close</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Conceptually close the socket. This doesn&#8217;t really do anthing
+significant, but merely complies with the <a href="Socket.html">Socket</a>
+interface.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000040_source')" id="l_M000040_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L154" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000040_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 154</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+        <span class="ruby-ivar">@res</span> = <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-ivar">@pos</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000041">
+                    
+                    <a name="M000041"></a><b>closed?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Conceptually asks if the socket is closed. As with <a
+href="Socket.html#M000040">close</a>, this doesn&#8217;t really do anything
+significant, but merely complies with the <a href="Socket.html">Socket</a>
+interface.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000041_source')" id="l_M000041_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L162" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000041_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 162</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">closed?</span>
+        <span class="ruby-ivar">@res</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@pos</span>.<span class="ruby-identifier">zero?</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000042">
+                    
+                    <a name="M000042"></a><b>read</b>(n = nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Reads <tt>n</tt> bytes from the cached result of the last query. If
+<tt>n</tt> is <tt>nil</tt>, returns all remaining data from the last query.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000042_source')" id="l_M000042_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L168" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000042_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 168</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read</span>(<span class="ruby-identifier">n</span> = <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@res</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">start</span>, <span class="ruby-ivar">@pos</span> = <span class="ruby-ivar">@pos</span>, <span class="ruby-ivar">@res</span>.<span class="ruby-identifier">size</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@res</span>[<span class="ruby-identifier">start</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">start</span>, <span class="ruby-ivar">@pos</span> = <span class="ruby-ivar">@pos</span>, <span class="ruby-ivar">@pos</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@res</span>[<span class="ruby-identifier">start</span>, <span class="ruby-identifier">n</span>]
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000038">
+                    
+                    <a name="M000038"></a><b>send</b>(data, *args)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Forwards the data to <a href="Socket.html#M000039">send_query</a>, ignoring
+any arguments after the first. Returns 0.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000038_source')" id="l_M000038_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000038_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 103</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">data</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-ivar">@res</span> = <span class="ruby-identifier">send_query</span>(<span class="ruby-identifier">data</span>)
+        <span class="ruby-ivar">@pos</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000039">
+                    
+                    <a name="M000039"></a><b>send_query</b>(query)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Packages the given query string and sends it to the pageant process via the
+Windows messaging subsystem. The result is cached, to be returned
+piece-wise when <a href="Socket.html#M000042">read</a> is called.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000039_source')" id="l_M000039_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/a828d943aeb3ec0e84fb987eea04f190c5a11f81/lib/net/ssh/authentication/pageant.rb#L111" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000039_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/pageant.rb, line 111</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_query</span>(<span class="ruby-identifier">query</span>)
+        <span class="ruby-identifier">res</span> = <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">filemap</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">ptr</span> = <span class="ruby-keyword kw">nil</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-constant">DL</span><span class="ruby-operator">::</span><span class="ruby-constant">PtrData</span>.<span class="ruby-identifier">malloc</span>(<span class="ruby-constant">DL</span>.<span class="ruby-identifier">sizeof</span>(<span class="ruby-value str">&quot;L&quot;</span>))
+
+        <span class="ruby-identifier">mapname</span> = <span class="ruby-value str">&quot;PageantRequest%08x\000&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-constant">Win</span>.<span class="ruby-identifier">getCurrentThreadId</span>()
+        <span class="ruby-identifier">filemap</span> = <span class="ruby-constant">Win</span>.<span class="ruby-identifier">createFileMapping</span>(<span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">INVALID_HANDLE_VALUE</span>, 
+                                        <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">NULL</span>,
+                                        <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">PAGE_READWRITE</span>, <span class="ruby-value">0</span>, 
+                                        <span class="ruby-constant">AGENT_MAX_MSGLEN</span>, <span class="ruby-identifier">mapname</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filemap</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>,
+            <span class="ruby-value str">&quot;Creation of file mapping failed&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">ptr</span> = <span class="ruby-constant">Win</span>.<span class="ruby-identifier">mapViewOfFile</span>(<span class="ruby-identifier">filemap</span>, <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">FILE_MAP_WRITE</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, 
+                                <span class="ruby-constant">AGENT_MAX_MSGLEN</span>)
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">null?</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-value str">&quot;Mapping of file failed&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">ptr</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">query</span>
+        
+        <span class="ruby-identifier">cds</span> = [<span class="ruby-constant">AGENT_COPYDATA_ID</span>, <span class="ruby-identifier">mapname</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">mapname</span>].
+          <span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;LLp&quot;</span>).<span class="ruby-identifier">to_ptr</span>
+        <span class="ruby-identifier">succ</span> = <span class="ruby-constant">Win</span>.<span class="ruby-identifier">sendMessageTimeout</span>(<span class="ruby-ivar">@win</span>, <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">WM_COPYDATA</span>, <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">NULL</span>,
+          <span class="ruby-identifier">cds</span>, <span class="ruby-constant">Win</span><span class="ruby-operator">::</span><span class="ruby-constant">SMTO_NORMAL</span>, <span class="ruby-value">5000</span>, <span class="ruby-identifier">id</span>)
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">succ</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">retlen</span> = <span class="ruby-value">4</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-value">4</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;N&quot;</span>)[<span class="ruby-value">0</span>]
+          <span class="ruby-identifier">res</span> = <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">retlen</span>)
+        <span class="ruby-keyword kw">end</span>        
+
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">res</span>
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-constant">Win</span>.<span class="ruby-identifier">unmapViewOfFile</span>(<span class="ruby-identifier">ptr</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">ptr</span>.<span class="ruby-identifier">null?</span>
+        <span class="ruby-constant">Win</span>.<span class="ruby-identifier">closeHandle</span>(<span class="ruby-identifier">filemap</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filemap</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Authentication::Methods::TestHostbased</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Authentication::Methods::TestHostbased 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/test/authentication/methods/test_hostbased_rb.html">test/authentication/methods/test_hostbased.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000457">test_authenticate_should_return_false_if_no_keys_can_authenticate</a>,</li>
+                
+                <li><a href="#M000456">test_authenticate_should_return_false_when_key_manager_has_no_keys</a>,</li>
+                
+                <li><a href="#M000455">test_authenticate_should_return_false_when_no_key_manager_has_been_set</a>,</li>
+                
+                <li><a href="#M000458">test_authenticate_should_return_true_if_any_key_can_authenticate</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Methods.html">Authentication::Methods</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000457">
+                    
+                    <a name="M000457"></a><b>test_authenticate_should_return_false_if_no_keys_can_authenticate</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000457_source')" id="l_M000457_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/6f3d9d875fcdfc38ad32c6452341a2d47cad3f92/test/authentication/methods/test_hostbased.rb#L18" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000457_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_hostbased.rb, line 18</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_return_false_if_no_keys_can_authenticate</span>
+      <span class="ruby-constant">ENV</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:[]</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">'USER'</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:sign</span>).<span class="ruby-identifier">with</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">signature_parameters</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>)).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;sig-one&quot;</span>)
+      <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:sign</span>).<span class="ruby-identifier">with</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">signature_parameters</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">last</span>)).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;sig-two&quot;</span>)
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert</span> <span class="ruby-identifier">verify_userauth_request_packet</span>(<span class="ruby-identifier">packet</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>)
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;sig-one&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_FAILURE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;hostbased,password&quot;</span>)
+
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>, <span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">assert</span> <span class="ruby-identifier">verify_userauth_request_packet</span>(<span class="ruby-identifier">packet2</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">last</span>)
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;sig-two&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">t2</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_FAILURE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;hostbased,password&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000456">
+                    
+                    <a name="M000456"></a><b>test_authenticate_should_return_false_when_key_manager_has_no_keys</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000456_source')" id="l_M000456_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/6f3d9d875fcdfc38ad32c6452341a2d47cad3f92/test/authentication/methods/test_hostbased.rb#L14" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000456_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_hostbased.rb, line 14</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_return_false_when_key_manager_has_no_keys</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">subject</span>(<span class="ruby-identifier">:keys</span> =<span class="ruby-operator">&gt;</span> []).<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000455">
+                    
+                    <a name="M000455"></a><b>test_authenticate_should_return_false_when_no_key_manager_has_been_set</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000455_source')" id="l_M000455_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/6f3d9d875fcdfc38ad32c6452341a2d47cad3f92/test/authentication/methods/test_hostbased.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000455_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_hostbased.rb, line 10</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_return_false_when_no_key_manager_has_been_set</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">subject</span>(<span class="ruby-identifier">:key_manager</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>).<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000458">
+                    
+                    <a name="M000458"></a><b>test_authenticate_should_return_true_if_any_key_can_authenticate</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000458_source')" id="l_M000458_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/6f3d9d875fcdfc38ad32c6452341a2d47cad3f92/test/authentication/methods/test_hostbased.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000458_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_hostbased.rb, line 40</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_return_true_if_any_key_can_authenticate</span>
+      <span class="ruby-constant">ENV</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:[]</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">'USER'</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:sign</span>).<span class="ruby-identifier">with</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">signature_parameters</span>(<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>)).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;sig-one&quot;</span>)
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert</span> <span class="ruby-identifier">verify_userauth_request_packet</span>(<span class="ruby-identifier">packet</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>)
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;sig-one&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_SUCCESS</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

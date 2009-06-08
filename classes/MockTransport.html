@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>MockTransport</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            MockTransport 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Net/SSH/Transport/Session.html">Net::SSH::Transport::Session</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/test/common_rb.html">test/common.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000734">configure_client</a>,</li>
+                
+                <li><a href="#M000735">configure_server</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000727">enqueue_message</a>,</li>
+                
+                <li><a href="#M000731">expect</a>,</li>
+                
+                <li><a href="#M000732">expect!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000736">hint</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000725">new</a>,</li>
+                
+                <li><a href="#M000729">next_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>P</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000728">poll_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000730">return</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000726">send_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000733">verifier</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="MockTransport/BlockVerifier.html">MockTransport::BlockVerifier</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>host_key_verifier</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>host_as_string</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>server_version</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>client_options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>server_options</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>hints</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>queue</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [RW]
+            </td>
+            <td class='attr-name'>mock_enqueue</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000725">
+                    
+                    <a name="M000725"></a><b>new</b>(options={})
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000725_source')" id="l_M000725_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000725_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">options</span>={})
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:logger</span>]
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">host_as_string</span> = <span class="ruby-value str">&quot;net.ssh.test,127.0.0.1&quot;</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">server_version</span> = <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:version</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;SSH-2.0-Ruby/Net::SSH::Test&quot;</span>)
+    <span class="ruby-ivar">@expectation</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-ivar">@queue</span> = []
+    <span class="ruby-ivar">@hints</span> = {}
+    <span class="ruby-ivar">@socket</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:socket</span>]
+    <span class="ruby-ivar">@algorithms</span> = <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:session_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;abcxyz123&quot;</span>)
+    <span class="ruby-identifier">verifier</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">data</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">true</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000734">
+                    
+                    <a name="M000734"></a><b>configure_client</b>(options)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000734_source')" id="l_M000734_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L95" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000734_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">configure_client</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-ivar">@client_options</span> = <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000735">
+                    
+                    <a name="M000735"></a><b>configure_server</b>(options)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000735_source')" id="l_M000735_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L99" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000735_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 99</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">configure_server</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-ivar">@server_options</span> = <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000727">
+                    
+                    <a name="M000727"></a><b>enqueue_message</b>(message)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000727_source')" id="l_M000727_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000727_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 63</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">enqueue_message</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mock_enqueue</span>
+      <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">super</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000731">
+                    
+                    <a name="M000731"></a><b>expect</b>(&amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000731_source')" id="l_M000731_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L83" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000731_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 83</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-ivar">@expectation</span> = <span class="ruby-identifier">block</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000732">
+                    
+                    <a name="M000732"></a><b>expect!</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000732_source')" id="l_M000732_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000732_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect!</span>
+    <span class="ruby-identifier">expect</span> {}
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000736">
+                    
+                    <a name="M000736"></a><b>hint</b>(name, value=true)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000736_source')" id="l_M000736_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000736_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 103</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hint</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword kw">true</span>)
+    <span class="ruby-ivar">@hints</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000729">
+                    
+                    <a name="M000729"></a><b>next_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000729_source')" id="l_M000729_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L75" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000729_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 75</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_message</span>
+    <span class="ruby-ivar">@queue</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;expected a message from the server but nothing was ready to send&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000728">
+                    
+                    <a name="M000728"></a><b>poll_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000728_source')" id="l_M000728_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L71" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000728_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 71</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">poll_message</span>
+    <span class="ruby-ivar">@queue</span>.<span class="ruby-identifier">shift</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000730">
+                    
+                    <a name="M000730"></a><b>return</b>(type, *args)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000730_source')" id="l_M000730_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000730_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 79</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">type</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-ivar">@queue</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-identifier">type</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000726">
+                    
+                    <a name="M000726"></a><b>send_message</b>(message)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000726_source')" id="l_M000726_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000726_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 53</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">message</span>)
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">message</span>.<span class="ruby-identifier">to_s</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@expectation</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;got #{message.to_s.inspect} but was not expecting anything&quot;</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">block</span>, <span class="ruby-ivar">@expectation</span> = <span class="ruby-ivar">@expectation</span>, <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Packet</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">buffer</span>))
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000733">
+                    
+                    <a name="M000733"></a><b>verifier</b>(&amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000733_source')" id="l_M000733_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/4621071a5ba901a5a6080fc10e1aed9ed056685f/test/common.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000733_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/common.rb, line 91</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verifier</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-ivar">@host_key_verifier</span> = <span class="ruby-constant">BlockVerifier</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

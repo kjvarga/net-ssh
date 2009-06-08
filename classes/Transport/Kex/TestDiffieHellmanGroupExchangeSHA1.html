@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::Kex::TestDiffieHellmanGroupExchangeSHA1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::Kex::TestDiffieHellmanGroupExchangeSHA1 
+            
+                <span class="parent">&lt; 
+                    
+                    TestDiffieHellmanGroup1SHA1
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/test/transport/kex/test_diffie_hellman_group_exchange_sha1_rb.html">test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000966">test_exchange_with_fewer_than_maximum_bits_uses_need_bits</a>,</li>
+                
+                <li><a href="#M000965">test_exchange_with_fewer_than_minimum_bits_uses_minimum_bits</a>,</li>
+                
+                <li><a href="#M000967">test_exchange_with_more_than_maximum_bits_uses_maximum_bits</a>,</li>
+                
+                <li><a href="#M000968">test_that_p_and_g_are_provided_by_the_server</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">KEXDH_GEX_GROUP</td>
+            <td>=</td>
+            <td class="attr-value">31</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">KEXDH_GEX_INIT</td>
+            <td>=</td>
+            <td class="attr-value">32</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">KEXDH_GEX_REPLY</td>
+            <td>=</td>
+            <td class="attr-value">33</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">KEXDH_GEX_REQUEST</td>
+            <td>=</td>
+            <td class="attr-value">34</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000966">
+                    
+                    <a name="M000966"></a><b>test_exchange_with_fewer_than_maximum_bits_uses_need_bits</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000966_source')" id="l_M000966_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000966_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exchange_with_fewer_than_maximum_bits_uses_need_bits</span>
+      <span class="ruby-identifier">dh_options</span> <span class="ruby-identifier">:need_bytes</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">500</span>
+      <span class="ruby-identifier">need_bits</span>(<span class="ruby-value">4000</span>)
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">exchange!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000965">
+                    
+                    <a name="M000965"></a><b>test_exchange_with_fewer_than_minimum_bits_uses_minimum_bits</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000965_source')" id="l_M000965_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000965_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exchange_with_fewer_than_minimum_bits_uses_minimum_bits</span>
+      <span class="ruby-identifier">dh_options</span> <span class="ruby-identifier">:need_bytes</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">20</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1024</span>, <span class="ruby-identifier">need_bits</span>
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">exchange!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000967">
+                    
+                    <a name="M000967"></a><b>test_exchange_with_more_than_maximum_bits_uses_maximum_bits</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000967_source')" id="l_M000967_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000967_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb, line 25</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exchange_with_more_than_maximum_bits_uses_maximum_bits</span>
+      <span class="ruby-identifier">dh_options</span> <span class="ruby-identifier">:need_bytes</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2000</span>
+      <span class="ruby-identifier">need_bits</span>(<span class="ruby-value">8192</span>)
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">exchange!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000968">
+                    
+                    <a name="M000968"></a><b>test_that_p_and_g_are_provided_by_the_server</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000968_source')" id="l_M000968_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000968_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/kex/test_diffie_hellman_group_exchange_sha1.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_that_p_and_g_are_provided_by_the_server</span>
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">exchange!</span> <span class="ruby-identifier">:p</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">default_p</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">:g</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span> }
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">default_p</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">dh</span>.<span class="ruby-identifier">dh</span>.<span class="ruby-identifier">p</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">dh</span>.<span class="ruby-identifier">dh</span>.<span class="ruby-identifier">g</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

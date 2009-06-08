@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::TestIdentityCipher</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::TestIdentityCipher 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/transport/test_identity_cipher_rb.html">test/transport/test_identity_cipher.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001052">test_block_size_should_be_8</a>,</li>
+                
+                <li><a href="#M001054">test_decrypt_should_return_self</a>,</li>
+                
+                <li><a href="#M001053">test_encrypt_should_return_self</a>,</li>
+                
+                <li><a href="#M001056">test_final_should_return_empty_string</a>,</li>
+                
+                <li><a href="#M001057">test_name_should_be_identity</a>,</li>
+                
+                <li><a href="#M001055">test_update_should_return_argument</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001052">
+                    
+                    <a name="M001052"></a><b>test_block_size_should_be_8</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001052_source')" id="l_M001052_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L8" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001052_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_block_size_should_be_8</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">8</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">block_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001054">
+                    
+                    <a name="M001054"></a><b>test_decrypt_should_return_self</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001054_source')" id="l_M001054_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L16" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001054_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 16</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_decrypt_should_return_self</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">cipher</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">decrypt</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001053">
+                    
+                    <a name="M001053"></a><b>test_encrypt_should_return_self</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001053_source')" id="l_M001053_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001053_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_encrypt_should_return_self</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">cipher</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">encrypt</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001056">
+                    
+                    <a name="M001056"></a><b>test_final_should_return_empty_string</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001056_source')" id="l_M001056_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001056_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_final_should_return_empty_string</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">final</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001057">
+                    
+                    <a name="M001057"></a><b>test_name_should_be_identity</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001057_source')" id="l_M001057_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001057_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_name_should_be_identity</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;identity&quot;</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">name</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001055">
+                    
+                    <a name="M001055"></a><b>test_update_should_return_argument</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001055_source')" id="l_M001055_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/transport/test_identity_cipher.rb#L20" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001055_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_identity_cipher.rb, line 20</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_update_should_return_argument</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello, world&quot;</span>, <span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">update</span>(<span class="ruby-value str">&quot;hello, world&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

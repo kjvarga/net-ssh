@@ -1,0 +1,1715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Connection::TestChannel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Connection::TestChannel 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/connection/test_channel_rb.html">test/connection/test_channel.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000737">teardown</a>,</li>
+                
+                <li><a href="#M000797">test_active_should_be_false_when_channel_is_not_in_channel_list</a>,</li>
+                
+                <li><a href="#M000796">test_active_should_be_true_when_channel_appears_in_channel_list</a>,</li>
+                
+                <li><a href="#M000739">test_channel_properties</a>,</li>
+                
+                <li><a href="#M000746">test_close_before_channel_has_been_confirmed_should_do_nothing</a>,</li>
+                
+                <li><a href="#M000747">test_close_should_set_closing_and_send_message</a>,</li>
+                
+                <li><a href="#M000748">test_close_while_closing_should_do_nothing</a>,</li>
+                
+                <li><a href="#M000738">test_constructor_should_set_defaults</a>,</li>
+                
+                <li><a href="#M000786">test_do_data_should_update_local_window_size</a>,</li>
+                
+                <li><a href="#M000790">test_do_data_when_local_window_size_drops_below_threshold_should_trigger_WINDOW_ADJUST_message</a>,</li>
+                
+                <li><a href="#M000789">test_do_extended_data_should_update_local_window_size</a>,</li>
+                
+                <li><a href="#M000794">test_do_failure_should_grab_next_pending_request_and_call_it</a>,</li>
+                
+                <li><a href="#M000778">test_do_open_confirmation_should_call_open_confirmation_callback</a>,</li>
+                
+                <li><a href="#M000777">test_do_open_confirmation_should_set_remote_parameters</a>,</li>
+                
+                <li><a href="#M000782">test_do_open_confirmation_with_non_session_channel_should_not_invoke_agent_forwarding_even_if_agent_forwarding_requested</a>,</li>
+                
+                <li><a href="#M000781">test_do_open_confirmation_with_session_channel_should_invoke_agent_forwarding_if_agent_forwarding_requested</a>,</li>
+                
+                <li><a href="#M000764">test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_fails_and_not_wants_reply</a>,</li>
+                
+                <li><a href="#M000763">test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_returns_true_and_not_wants_reply</a>,</li>
+                
+                <li><a href="#M000769">test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_FAILURE_if_returns_false_and_wants_reply</a>,</li>
+                
+                <li><a href="#M000768">test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_SUCCESS_if_returns_true_and_wants_reply</a>,</li>
+                
+                <li><a href="#M000761">test_do_request_for_unhandled_request_should_do_nothing_if_not_wants_reply</a>,</li>
+                
+                <li><a href="#M000762">test_do_request_for_unhandled_request_should_send_CHANNEL_FAILURE_if_wants_reply</a>,</li>
+                
+                <li><a href="#M000795">test_do_success_should_grab_next_pending_request_and_call_it</a>,</li>
+                
+                <li><a href="#M000783">test_do_window_adjust_should_adjust_remote_window_size_by_the_given_amount</a>,</li>
+                
+                <li><a href="#M000751">test_enqueue_pending_output_should_have_no_effect_if_channel_has_not_been_confirmed</a>,</li>
+                
+                <li><a href="#M000752">test_enqueue_pending_output_should_have_no_effect_if_there_is_no_output</a>,</li>
+                
+                <li><a href="#M000754">test_enqueue_pending_output_should_not_enqueue_more_than_max_packet_length_at_once</a>,</li>
+                
+                <li><a href="#M000755">test_enqueue_pending_output_should_not_enqueue_more_than_max_window_size</a>,</li>
+                
+                <li><a href="#M000753">test_enqueue_pending_output_should_not_enqueue_more_than_output_length</a>,</li>
+                
+                <li><a href="#M000803">test_eof_bang_should_not_send_eof_if_eof_was_already_declared</a>,</li>
+                
+                <li><a href="#M000802">test_eof_bang_should_send_eof_to_server</a>,</li>
+                
+                <li><a href="#M000804">test_eof_q_should_return_true_if_eof_declared</a>,</li>
+                
+                <li><a href="#M000740">test_exec_should_be_syntactic_sugar_for_a_channel_request</a>,</li>
+                
+                <li><a href="#M000759">test_on_close_with_block_should_set_callback</a>,</li>
+                
+                <li><a href="#M000756">test_on_data_with_block_should_set_callback</a>,</li>
+                
+                <li><a href="#M000760">test_on_eof_with_block_should_set_callback</a>,</li>
+                
+                <li><a href="#M000757">test_on_extended_data_with_block_should_set_callback</a>,</li>
+                
+                <li><a href="#M000758">test_on_process_with_block_should_set_callback</a>,</li>
+                
+                <li><a href="#M000749">test_process_when_process_callback_is_not_set_should_just_enqueue_data</a>,</li>
+                
+                <li><a href="#M000750">test_process_when_process_callback_is_set_should_yield_self_before_enqueuing_data</a>,</li>
+                
+                <li><a href="#M000742">test_request_pty_with_invalid_option_should_raise_error</a>,</li>
+                
+                <li><a href="#M000744">test_request_pty_with_options_should_honor_options</a>,</li>
+                
+                <li><a href="#M000743">test_request_pty_without_options_should_use_defaults</a>,</li>
+                
+                <li><a href="#M000774">test_send_channel_request_with_callback_should_want_reply</a>,</li>
+                
+                <li><a href="#M000773">test_send_channel_request_without_callback_should_not_want_reply</a>,</li>
+                
+                <li><a href="#M000745">test_send_data_should_append_to_channels_output_buffer</a>,</li>
+                
+                <li><a href="#M000807">test_send_data_should_raise_exception_if_eof_declared</a>,</li>
+                
+                <li><a href="#M000741">test_subsystem_should_be_syntactic_sugar_for_a_channel_request</a>,</li>
+                
+                <li><a href="#M000798">test_wait_should_block_while_channel_is_active?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="TestChannel/MockConnection.html">Connection::TestChannel::MockConnection</a></li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000737">
+                    
+                    <a name="M000737"></a><b>teardown</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000737_source')" id="l_M000737_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000737_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 9</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">test!</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000797">
+                    
+                    <a name="M000797"></a><b>test_active_should_be_false_when_channel_is_not_in_channel_list</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000797_source')" id="l_M000797_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L368" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000797_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 368</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_active_should_be_false_when_channel_is_not_in_channel_list</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">channel</span>.<span class="ruby-identifier">active?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000796">
+                    
+                    <a name="M000796"></a><b>test_active_should_be_true_when_channel_appears_in_channel_list</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000796_source')" id="l_M000796_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L363" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000796_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 363</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_active_should_be_true_when_channel_appears_in_channel_list</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">channels</span>[<span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_id</span>] = <span class="ruby-identifier">channel</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">active?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000739">
+                    
+                    <a name="M000739"></a><b>test_channel_properties</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000739_source')" id="l_M000739_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000739_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_channel_properties</span>
+      <span class="ruby-identifier">channel</span>[<span class="ruby-identifier">:hello</span>] = <span class="ruby-value str">&quot;some value&quot;</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;some value&quot;</span>, <span class="ruby-identifier">channel</span>[<span class="ruby-identifier">:hello</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000746">
+                    
+                    <a name="M000746"></a><b>test_close_before_channel_has_been_confirmed_should_do_nothing</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000746_source')" id="l_M000746_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000746_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_close_before_channel_has_been_confirmed_should_do_nothing</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">channel</span>.<span class="ruby-identifier">closing?</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">close</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">channel</span>.<span class="ruby-identifier">closing?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000747">
+                    
+                    <a name="M000747"></a><b>test_close_should_set_closing_and_send_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000747_source')" id="l_M000747_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000747_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_close_should_set_closing_and_send_message</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">channel</span>.<span class="ruby-identifier">closing?</span>
+
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_CLOSE</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">close</span>
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">closing?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000748">
+                    
+                    <a name="M000748"></a><b>test_close_while_closing_should_do_nothing</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000748_source')" id="l_M000748_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000748_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 82</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_close_while_closing_should_do_nothing</span>
+      <span class="ruby-identifier">test_close_should_set_closing_and_send_message</span>
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">close</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000738">
+                    
+                    <a name="M000738"></a><b>test_constructor_should_set_defaults</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000738_source')" id="l_M000738_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000738_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_should_set_defaults</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x10000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_packet_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000786">
+                    
+                    <a name="M000786"></a><b>test_do_data_should_update_local_window_size</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000786_source')" id="l_M000786_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L315" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000786_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 315</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_data_should_update_local_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_data</span>(<span class="ruby-value str">&quot;here is some data&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x1</span><span class="ruby-constant">FFEF</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000790">
+                    
+                    <a name="M000790"></a><b>test_do_data_when_local_window_size_drops_below_threshold_should_trigger_WINDOW_ADJUST_message</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000790_source')" id="l_M000790_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L331" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000790_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 331</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_data_when_local_window_size_drops_below_threshold_should_trigger_WINDOW_ADJUST_message</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_WINDOW_ADJUST</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:extra_bytes</span>]
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_data</span>(<span class="ruby-value str">&quot;.&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">0x10001</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x40000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x2</span><span class="ruby-constant">FFFF</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000789">
+                    
+                    <a name="M000789"></a><b>test_do_extended_data_should_update_local_window_size</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000789_source')" id="l_M000789_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L323" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000789_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 323</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_extended_data_should_update_local_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_extended_data</span>(<span class="ruby-value">1</span>, <span class="ruby-value str">&quot;here is some data&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x20000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0x1</span><span class="ruby-constant">FFEF</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">local_window_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000794">
+                    
+                    <a name="M000794"></a><b>test_do_failure_should_grab_next_pending_request_and_call_it</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000794_source')" id="l_M000794_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L347" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000794_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 347</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_failure_should_grab_next_pending_request_and_call_it</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span> = <span class="ruby-identifier">args</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_failure</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">channel</span>, <span class="ruby-keyword kw">false</span>], <span class="ruby-identifier">result</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000778">
+                    
+                    <a name="M000778"></a><b>test_do_open_confirmation_should_call_open_confirmation_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000778_source')" id="l_M000778_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L283" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000778_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 283</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_open_confirmation_should_call_open_confirmation_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should not have been invoked yet&quot;</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000777">
+                    
+                    <a name="M000777"></a><b>test_do_open_confirmation_should_set_remote_parameters</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000777_source')" id="l_M000777_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L275" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000777_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 275</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_open_confirmation_should_set_remote_parameters</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_id</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_maximum_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_maximum_packet_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000782">
+                    
+                    <a name="M000782"></a><b>test_do_open_confirmation_with_non_session_channel_should_not_invoke_agent_forwarding_even_if_agent_forwarding_requested</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000782_source')" id="l_M000782_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L299" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000782_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 299</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_open_confirmation_with_non_session_channel_should_not_invoke_agent_forwarding_even_if_agent_forwarding_requested</span>
+      <span class="ruby-identifier">connection</span> <span class="ruby-identifier">:forward_agent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">channel</span> <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;direct-tcpip&quot;</span>
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:forward</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000781">
+                    
+                    <a name="M000781"></a><b>test_do_open_confirmation_with_session_channel_should_invoke_agent_forwarding_if_agent_forwarding_requested</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000781_source')" id="l_M000781_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L291" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000781_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 291</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_open_confirmation_with_session_channel_should_invoke_agent_forwarding_if_agent_forwarding_requested</span>
+      <span class="ruby-identifier">connection</span> <span class="ruby-identifier">:forward_agent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">forward</span> = <span class="ruby-identifier">mock</span>(<span class="ruby-value str">&quot;forward&quot;</span>)
+      <span class="ruby-identifier">forward</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:agent</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">channel</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:forward</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">forward</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value">3</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000764">
+                    
+                    <a name="M000764"></a><b>test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_fails_and_not_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000764_source')" id="l_M000764_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L222" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000764_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 222</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_fails_and_not_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_request</span>(<span class="ruby-value str">&quot;exit-status&quot;</span>) { <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">true</span>; <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">ChannelRequestFailed</span> }
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;exit-status&quot;</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">nil</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000763">
+                    
+                    <a name="M000763"></a><b>test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_returns_true_and_not_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000763_source')" id="l_M000763_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L214" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000763_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 214</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_handled_request_should_invoke_callback_and_do_nothing_if_returns_true_and_not_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_request</span>(<span class="ruby-value str">&quot;exit-status&quot;</span>) { <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">true</span>; <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;exit-status&quot;</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">nil</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000769">
+                    
+                    <a name="M000769"></a><b>test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_FAILURE_if_returns_false_and_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000769_source')" id="l_M000769_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L239" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000769_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 239</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_FAILURE_if_returns_false_and_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_request</span>(<span class="ruby-value str">&quot;exit-status&quot;</span>) { <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">true</span>; <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">ChannelRequestFailed</span> }
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_FAILURE</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;exit-status&quot;</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-keyword kw">nil</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000768">
+                    
+                    <a name="M000768"></a><b>test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_SUCCESS_if_returns_true_and_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000768_source')" id="l_M000768_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L230" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000768_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 230</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_handled_request_should_invoke_callback_and_send_CHANNEL_SUCCESS_if_returns_true_and_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_request</span>(<span class="ruby-value str">&quot;exit-status&quot;</span>) { <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">true</span>; <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_SUCCESS</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;exit-status&quot;</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-keyword kw">nil</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000761">
+                    
+                    <a name="M000761"></a><b>test_do_request_for_unhandled_request_should_do_nothing_if_not_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000761_source')" id="l_M000761_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L203" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000761_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 203</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_unhandled_request_should_do_nothing_if_not_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;exit-status&quot;</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-keyword kw">nil</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000762">
+                    
+                    <a name="M000762"></a><b>test_do_request_for_unhandled_request_should_send_CHANNEL_FAILURE_if_wants_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000762_source')" id="l_M000762_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L208" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000762_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 208</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_request_for_unhandled_request_should_send_CHANNEL_FAILURE_if_wants_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_FAILURE</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_request</span> <span class="ruby-value str">&quot;keepalive@openssh.com&quot;</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000795">
+                    
+                    <a name="M000795"></a><b>test_do_success_should_grab_next_pending_request_and_call_it</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000795_source')" id="l_M000795_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L355" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000795_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 355</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_success_should_grab_next_pending_request_and_call_it</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">result</span> = <span class="ruby-identifier">args</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_success</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">channel</span>, <span class="ruby-keyword kw">true</span>], <span class="ruby-identifier">result</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000783">
+                    
+                    <a name="M000783"></a><b>test_do_window_adjust_should_adjust_remote_window_size_by_the_given_amount</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000783_source')" id="l_M000783_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L306" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000783_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 306</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_do_window_adjust_should_adjust_remote_window_size_by_the_given_amount</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1000</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_maximum_window_size</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_window_adjust</span>(<span class="ruby-value">500</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1500</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_window_size</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1500</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">remote_maximum_window_size</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000751">
+                    
+                    <a name="M000751"></a><b>test_enqueue_pending_output_should_have_no_effect_if_channel_has_not_been_confirmed</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000751_source')" id="l_M000751_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L98" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000751_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 98</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_pending_output_should_have_no_effect_if_channel_has_not_been_confirmed</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;hello&quot;</span>)
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">enqueue_pending_output</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000752">
+                    
+                    <a name="M000752"></a><b>test_enqueue_pending_output_should_have_no_effect_if_there_is_no_output</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000752_source')" id="l_M000752_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000752_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 103</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_pending_output_should_have_no_effect_if_there_is_no_output</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">enqueue_pending_output</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000754">
+                    
+                    <a name="M000754"></a><b>test_enqueue_pending_output_should_not_enqueue_more_than_max_packet_length_at_once</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000754_source')" id="l_M000754_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L121" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000754_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 121</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_pending_output_should_not_enqueue_more_than_max_packet_length_at_once</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">8</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_DATA</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello wo&quot;</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data</span>]
+        
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>,<span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_DATA</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">packet2</span>[<span class="ruby-identifier">:local_id</span>]
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;rld&quot;</span>, <span class="ruby-identifier">packet2</span>[<span class="ruby-identifier">:data</span>]
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">enqueue_pending_output</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000755">
+                    
+                    <a name="M000755"></a><b>test_enqueue_pending_output_should_not_enqueue_more_than_max_window_size</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000755_source')" id="l_M000755_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000755_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 140</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_pending_output_should_not_enqueue_more_than_max_window_size</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">8</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_DATA</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello wo&quot;</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data</span>]
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">enqueue_pending_output</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000753">
+                    
+                    <a name="M000753"></a><b>test_enqueue_pending_output_should_not_enqueue_more_than_output_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000753_source')" id="l_M000753_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000753_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 108</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_pending_output_should_not_enqueue_more_than_output_length</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_DATA</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">11</span>, <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:data</span>].<span class="ruby-identifier">length</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">enqueue_pending_output</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000803">
+                    
+                    <a name="M000803"></a><b>test_eof_bang_should_not_send_eof_if_eof_was_already_declared</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000803_source')" id="l_M000803_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L383" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000803_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 383</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_eof_bang_should_not_send_eof_if_eof_was_already_declared</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_EOF</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof!</span>
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000802">
+                    
+                    <a name="M000802"></a><b>test_eof_bang_should_send_eof_to_server</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000802_source')" id="l_M000802_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L377" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000802_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 377</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_eof_bang_should_send_eof_to_server</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_EOF</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof!</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000804">
+                    
+                    <a name="M000804"></a><b>test_eof_q_should_return_true_if_eof_declared</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000804_source')" id="l_M000804_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L390" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000804_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 390</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_eof_q_should_return_true_if_eof_declared</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_EOF</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof?</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof!</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000740">
+                    
+                    <a name="M000740"></a><b>test_exec_should_be_syntactic_sugar_for_a_channel_request</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000740_source')" id="l_M000740_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000740_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exec_should_be_syntactic_sugar_for_a_channel_request</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send_channel_request</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;ls&quot;</span>).<span class="ruby-identifier">yields</span>
+      <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">exec</span>(<span class="ruby-value str">&quot;ls&quot;</span>) { <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">found_block</span>, <span class="ruby-value str">&quot;expected block to be passed to send_channel_request&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000759">
+                    
+                    <a name="M000759"></a><b>test_on_close_with_block_should_set_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000759_source')" id="l_M000759_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L183" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000759_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 183</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_on_close_with_block_should_set_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_close</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_close</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_close</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_close</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been removed&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000756">
+                    
+                    <a name="M000756"></a><b>test_on_data_with_block_should_set_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000756_source')" id="l_M000756_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000756_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 153</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_on_data_with_block_should_set_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_data</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_data</span>(<span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_data</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_data</span>(<span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been removed&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000760">
+                    
+                    <a name="M000760"></a><b>test_on_eof_with_block_should_set_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000760_source')" id="l_M000760_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L193" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000760_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 193</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_on_eof_with_block_should_set_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_eof</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_eof</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_eof</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_eof</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been removed&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000757">
+                    
+                    <a name="M000757"></a><b>test_on_extended_data_with_block_should_set_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000757_source')" id="l_M000757_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L163" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000757_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 163</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_on_extended_data_with_block_should_set_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_extended_data</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_extended_data</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_extended_data</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_extended_data</span>(<span class="ruby-value">0</span>, <span class="ruby-value str">&quot;&quot;</span>)
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been removed&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000758">
+                    
+                    <a name="M000758"></a><b>test_on_process_with_block_should_set_callback</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000758_source')" id="l_M000758_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L173" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000758_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 173</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_on_process_with_block_should_set_callback</span>
+      <span class="ruby-identifier">flag</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_process</span> { <span class="ruby-identifier">flag</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">flag</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">process</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been invoked&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_process</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">process</span>
+      <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">flag</span>, <span class="ruby-value str">&quot;callback should have been removed&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000749">
+                    
+                    <a name="M000749"></a><b>test_process_when_process_callback_is_not_set_should_just_enqueue_data</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000749_source')" id="l_M000749_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000749_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 87</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_process_when_process_callback_is_not_set_should_just_enqueue_data</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:enqueue_pending_output</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">process</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000750">
+                    
+                    <a name="M000750"></a><b>test_process_when_process_callback_is_set_should_yield_self_before_enqueuing_data</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000750_source')" id="l_M000750_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000750_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 92</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_process_when_process_callback_is_set_should_yield_self_before_enqueuing_data</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:enqueue_pending_output</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_process</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ch</span><span class="ruby-operator">|</span> <span class="ruby-identifier">ch</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:enqueue_pending_output</span>).<span class="ruby-identifier">once</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">process</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000742">
+                    
+                    <a name="M000742"></a><b>test_request_pty_with_invalid_option_should_raise_error</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000742_source')" id="l_M000742_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000742_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_request_pty_with_invalid_option_should_raise_error</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">request_pty</span>(<span class="ruby-identifier">:bogus</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;thing&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000744">
+                    
+                    <a name="M000744"></a><b>test_request_pty_with_options_should_honor_options</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000744_source')" id="l_M000744_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000744_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 52</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_request_pty_with_options_should_honor_options</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send_channel_request</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;pty-req&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;vanilla&quot;</span>,
+        <span class="ruby-identifier">:long</span>, <span class="ruby-value">60</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">15</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">400</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">200</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;\5\0\0\0\1\0&quot;</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">request_pty</span> <span class="ruby-identifier">:term</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;vanilla&quot;</span>, <span class="ruby-identifier">:chars_wide</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">60</span>, <span class="ruby-identifier">:chars_high</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">15</span>,
+        <span class="ruby-identifier">:pixels_wide</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">400</span>, <span class="ruby-identifier">:pixels_high</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">200</span>, <span class="ruby-identifier">:modes</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">5</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000743">
+                    
+                    <a name="M000743"></a><b>test_request_pty_without_options_should_use_defaults</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000743_source')" id="l_M000743_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000743_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_request_pty_without_options_should_use_defaults</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send_channel_request</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;pty-req&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;xterm&quot;</span>,
+        <span class="ruby-identifier">:long</span>, <span class="ruby-value">80</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">24</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">640</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">480</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;\0&quot;</span>).<span class="ruby-identifier">yields</span>
+      <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">request_pty</span> { <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">found_block</span>, <span class="ruby-value str">&quot;expected block to be passed to send_channel_request&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000774">
+                    
+                    <a name="M000774"></a><b>test_send_channel_request_with_callback_should_want_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000774_source')" id="l_M000774_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L261" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000774_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 261</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_channel_request_with_callback_should_want_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_REQUEST</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:request</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:want_reply</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;ls&quot;</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:request_data</span>].<span class="ruby-identifier">read_string</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">callback</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> {}
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_channel_request</span>(<span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;ls&quot;</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">callback</span>], <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000773">
+                    
+                    <a name="M000773"></a><b>test_send_channel_request_without_callback_should_not_want_reply</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000773_source')" id="l_M000773_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L248" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000773_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 248</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_channel_request_without_callback_should_not_want_reply</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">100</span>, <span class="ruby-value">100</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_REQUEST</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:local_id</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:request</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:want_reply</span>]
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;ls&quot;</span>, <span class="ruby-identifier">p</span>[<span class="ruby-identifier">:request_data</span>].<span class="ruby-identifier">read_string</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_channel_request</span>(<span class="ruby-value str">&quot;exec&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;ls&quot;</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">pending_requests</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000745">
+                    
+                    <a name="M000745"></a><b>test_send_data_should_append_to_channels_output_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000745_source')" id="l_M000745_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L59" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000745_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 59</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_data_should_append_to_channels_output_buffer</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;hello&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello&quot;</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">output</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;world&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;helloworld&quot;</span>, <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">output</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000807">
+                    
+                    <a name="M000807"></a><b>test_send_data_should_raise_exception_if_eof_declared</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000807_source')" id="l_M000807_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L399" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000807_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 399</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_data_should_raise_exception_if_eof_declared</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">do_open_confirmation</span>(<span class="ruby-value">0</span>, <span class="ruby-value">1000</span>, <span class="ruby-value">1000</span>)
+      <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CHANNEL_EOF</span>, <span class="ruby-identifier">p</span>.<span class="ruby-identifier">type</span> }
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">eof!</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">EOFError</span>) { <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_data</span>(<span class="ruby-value str">&quot;die! die! die!&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000741">
+                    
+                    <a name="M000741"></a><b>test_subsystem_should_be_syntactic_sugar_for_a_channel_request</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000741_source')" id="l_M000741_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000741_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_subsystem_should_be_syntactic_sugar_for_a_channel_request</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send_channel_request</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;subsystem&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;sftp&quot;</span>).<span class="ruby-identifier">yields</span>
+      <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">subsystem</span>(<span class="ruby-value str">&quot;sftp&quot;</span>) { <span class="ruby-identifier">found_block</span> = <span class="ruby-keyword kw">true</span> }
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">found_block</span>, <span class="ruby-value str">&quot;expected block to be passed to send_channel_request&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000798">
+                    
+                    <a name="M000798"></a><b>test_wait_should_block_while_channel_is_active?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000798_source')" id="l_M000798_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/connection/test_channel.rb#L372" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000798_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/connection/test_channel.rb, line 372</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_should_block_while_channel_is_active?</span>
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:active?</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">3</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">true</span>,<span class="ruby-keyword kw">true</span>,<span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">wait</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

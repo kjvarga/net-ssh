@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Authentication::Methods::TestKeyboardInteractive</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Authentication::Methods::TestKeyboardInteractive 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/test/authentication/methods/test_keyboard_interactive_rb.html">test/authentication/methods/test_keyboard_interactive.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000511">test_authenticate_should_be_false_if_given_password_is_not_accepted</a>,</li>
+                
+                <li><a href="#M000510">test_authenticate_should_be_false_when_server_does_not_support_this_method</a>,</li>
+                
+                <li><a href="#M000516">test_authenticate_should_be_true_if_given_password_is_accepted</a>,</li>
+                
+                <li><a href="#M000519">test_authenticate_should_duplicate_password_as_needed_to_fill_request</a>,</li>
+                
+                <li><a href="#M000520">test_authenticate_should_prompt_for_input_when_password_is_not_given</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Methods.html">Authentication::Methods</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">USERAUTH_INFO_REQUEST</td>
+            <td>=</td>
+            <td class="attr-value">60</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">USERAUTH_INFO_RESPONSE</td>
+            <td>=</td>
+            <td class="attr-value">61</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000511">
+                    
+                    <a name="M000511"></a><b>test_authenticate_should_be_false_if_given_password_is_not_accepted</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000511_source')" id="l_M000511_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/authentication/methods/test_keyboard_interactive.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000511_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_keyboard_interactive.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_be_false_if_given_password_is_not_accepted</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_INFO_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Password:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>,<span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_INFO_RESPONSE</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_long</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;the-password&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">t2</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_FAILURE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;publickey&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>, <span class="ruby-value str">&quot;the-password&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000510">
+                    
+                    <a name="M000510"></a><b>test_authenticate_should_be_false_when_server_does_not_support_this_method</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000510_source')" id="l_M000510_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/authentication/methods/test_keyboard_interactive.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000510_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_keyboard_interactive.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_be_false_when_server_does_not_support_this_method</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;jamis&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;keyboard-interactive&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span> <span class="ruby-comment cmt"># language tags</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">read_string</span> <span class="ruby-comment cmt"># submethods</span>
+
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_FAILURE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;password&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000516">
+                    
+                    <a name="M000516"></a><b>test_authenticate_should_be_true_if_given_password_is_accepted</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000516_source')" id="l_M000516_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/authentication/methods/test_keyboard_interactive.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000516_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_keyboard_interactive.rb, line 43</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_be_true_if_given_password_is_accepted</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_INFO_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Password:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>,<span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_INFO_RESPONSE</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">t2</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_SUCCESS</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>, <span class="ruby-value str">&quot;the-password&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000519">
+                    
+                    <a name="M000519"></a><b>test_authenticate_should_duplicate_password_as_needed_to_fill_request</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000519_source')" id="l_M000519_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/authentication/methods/test_keyboard_interactive.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000519_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_keyboard_interactive.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_duplicate_password_as_needed_to_fill_request</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_INFO_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Password:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Again:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>,<span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_INFO_RESPONSE</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_long</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;the-password&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;the-password&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">t2</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_SUCCESS</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>, <span class="ruby-value str">&quot;the-password&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000520">
+                    
+                    <a name="M000520"></a><b>test_authenticate_should_prompt_for_input_when_password_is_not_given</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000520_source')" id="l_M000520_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/authentication/methods/test_keyboard_interactive.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000520_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/methods/test_keyboard_interactive.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_authenticate_should_prompt_for_input_when_password_is_not_given</span>
+      <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:prompt</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;Name:&quot;</span>, <span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;name&quot;</span>)
+      <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:prompt</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;Password:&quot;</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;password&quot;</span>)
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">packet</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_REQUEST</span>, <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_INFO_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Name:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Password:&quot;</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>)
+        <span class="ruby-identifier">t</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t2</span>,<span class="ruby-identifier">packet2</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">USERAUTH_INFO_RESPONSE</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">type</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_long</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;name&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;password&quot;</span>, <span class="ruby-identifier">packet2</span>.<span class="ruby-identifier">read_string</span>
+          <span class="ruby-identifier">t2</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">USERAUTH_SUCCESS</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-value str">&quot;ssh-connection&quot;</span>, <span class="ruby-value str">&quot;jamis&quot;</span>, <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

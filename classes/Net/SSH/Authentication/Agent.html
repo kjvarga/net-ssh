@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Authentication::Agent</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Authentication::Agent 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/authentication/agent_rb.html">lib/net/ssh/authentication/agent.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This class implements a simple client for the ssh-agent protocol. It does
+not implement any specific protocol, but instead copies the behavior of the
+ssh-agent functions in the OpenSSH library (3.8).
+</p>
+<p>
+This means that although it behaves like a SSH1 client, it also has some
+SSH2 functionality (like signing data).
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000006">close</a>,</li>
+                
+                <li><a href="#M000000">connect</a>,</li>
+                
+                <li><a href="#M000002">connect!</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000005">identities</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000003">negotiate!</a>,</li>
+                
+                <li><a href="#M000001">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000007">sign</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../../SSH.html">Net::SSH</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">MODULE</span> <a href="Agent/Comment.html">Net::SSH::Authentication::Agent::Comment</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_REQUEST_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_REQUEST_IDENTITIES</td>
+            <td>=</td>
+            <td class="attr-value">11</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_IDENTITIES_ANSWER</td>
+            <td>=</td>
+            <td class="attr-value">12</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_SIGN_REQUEST</td>
+            <td>=</td>
+            <td class="attr-value">13</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_SIGN_RESPONSE</td>
+            <td>=</td>
+            <td class="attr-value">14</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">30</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_VERSION_RESPONSE</td>
+            <td>=</td>
+            <td class="attr-value">103</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_COM_AGENT2_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">102</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_REQUEST_RSA_IDENTITIES</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_RSA_IDENTITIES_ANSWER1</td>
+            <td>=</td>
+            <td class="attr-value">2</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_RSA_IDENTITIES_ANSWER2</td>
+            <td>=</td>
+            <td class="attr-value">5</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">5</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>socket</td>
+            <td class='attr-desc'><p>
+The underlying socket being used to communicate with the <a
+href="../../SSH.html">SSH</a> agent.
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000000">
+                    
+                    <a name="M000000"></a><b>connect</b>(logger=nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Instantiates a new agent object, connects to a running <a
+href="../../SSH.html">SSH</a> agent, negotiates the agent protocol version,
+and returns the agent object.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000000_source')" id="l_M000000_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 51</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">logger</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">agent</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">logger</span>)
+      <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">connect!</span>
+      <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">negotiate!</span>
+      <span class="ruby-identifier">agent</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000001">
+                    
+                    <a name="M000001"></a><b>new</b>(logger=nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Creates a new <a href="Agent.html">Agent</a> object, using the optional
+logger instance to report status.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000001_source')" id="l_M000001_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L60" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000001_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">logger</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">logger</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000006">
+                    
+                    <a name="M000006"></a><b>close</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Closes this socket. This agent reference is no longer able to query the
+agent.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L112" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000006_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 112</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+      <span class="ruby-ivar">@socket</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000002">
+                    
+                    <a name="M000002"></a><b>connect!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Connect to the agent process using the socket factory and socket name given
+by the attribute writers. If the agent on the other end of the socket
+reports that it is an SSH2-compatible agent, this will fail (it only
+supports the ssh-agent distributed by OpenSSH).
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000002_source')" id="l_M000002_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000002_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connect!</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">debug</span> { <span class="ruby-value str">&quot;connecting to ssh-agent&quot;</span> }
+        <span class="ruby-ivar">@socket</span> = <span class="ruby-identifier">agent_socket_factory</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">ENV</span>[<span class="ruby-value str">'SSH_AUTH_SOCK'</span>])
+      <span class="ruby-keyword kw">rescue</span>
+        <span class="ruby-identifier">error</span> { <span class="ruby-value str">&quot;could not connect to ssh-agent&quot;</span> }
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentNotAvailable</span>, <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">message</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000005">
+                    
+                    <a name="M000005"></a><b>identities</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Return an array of all identities (public keys) known to the agent. Each
+key returned is augmented with a <tt>comment</tt> property which is set to
+the comment returned by the agent for that key.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L94" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000005_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 94</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">identities</span>
+      <span class="ruby-identifier">type</span>, <span class="ruby-identifier">body</span> = <span class="ruby-identifier">send_and_wait</span>(<span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentError</span>, <span class="ruby-value str">&quot;could not get identity count&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">agent_failed</span>(<span class="ruby-identifier">type</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentError</span>, <span class="ruby-node">&quot;bad authentication reply: #{type}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">SSH2_AGENT_IDENTITIES_ANSWER</span>
+
+      <span class="ruby-identifier">identities</span> = []
+      <span class="ruby-identifier">body</span>.<span class="ruby-identifier">read_long</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">key</span> = <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">body</span>.<span class="ruby-identifier">read_string</span>).<span class="ruby-identifier">read_key</span>
+        <span class="ruby-identifier">key</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Comment</span>)
+        <span class="ruby-identifier">key</span>.<span class="ruby-identifier">comment</span> = <span class="ruby-identifier">body</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">identities</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">key</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">identities</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000003">
+                    
+                    <a name="M000003"></a><b>negotiate!</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Attempts to negotiate the <a href="../../SSH.html">SSH</a> agent protocol
+version. Raises an error if the version could not be negotiated
+successfully.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000003_source')" id="l_M000003_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000003_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 80</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">negotiate!</span>
+      <span class="ruby-comment cmt"># determine what type of agent we're communicating with</span>
+      <span class="ruby-identifier">type</span>, <span class="ruby-identifier">body</span> = <span class="ruby-identifier">send_and_wait</span>(<span class="ruby-constant">SSH2_AGENT_REQUEST_VERSION</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">ServerVersion</span><span class="ruby-operator">::</span><span class="ruby-constant">PROTO_VERSION</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-constant">SSH2_AGENT_VERSION_RESPONSE</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>, <span class="ruby-value str">&quot;SSH2 agents are not yet supported&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">SSH_AGENT_RSA_IDENTITIES_ANSWER1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">SSH_AGENT_RSA_IDENTITIES_ANSWER2</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentError</span>, <span class="ruby-node">&quot;unknown response from agent: #{type}, #{body.to_s.inspect}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000007">
+                    
+                    <a name="M000007"></a><b>sign</b>(key, data)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Using the agent and the given public key, sign the given data. The
+signature is returned in SSH2 format.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000007_source')" id="l_M000007_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/690a871ae069a881de9c890fcb2d95ccc05bdde7/lib/net/ssh/authentication/agent.rb#L118" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000007_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/agent.rb, line 118</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">data</span>)
+      <span class="ruby-identifier">type</span>, <span class="ruby-identifier">reply</span> = <span class="ruby-identifier">send_and_wait</span>(<span class="ruby-constant">SSH2_AGENT_SIGN_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:key</span>, <span class="ruby-identifier">key</span>), <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">data</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">0</span>)
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">agent_failed</span>(<span class="ruby-identifier">type</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentError</span>, <span class="ruby-value str">&quot;agent could not sign data with requested identity&quot;</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">SSH2_AGENT_SIGN_RESPONSE</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">AgentError</span>, <span class="ruby-node">&quot;bad authentication response #{type}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">reply</span>.<span class="ruby-identifier">read_string</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

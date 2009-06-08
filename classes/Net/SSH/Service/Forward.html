@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Service::Forward</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Service::Forward 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/service/forward_rb.html">lib/net/ssh/service/forward.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This class implements various port forwarding services for use by <a
+href="../../SSH.html">Net::SSH</a> clients. The <a
+href="Forward.html">Forward</a> class should never need to be instantiated
+directly; instead, it should be accessed via the singleton instance
+returned by <a
+href="../Connection/Session.html#M000158">Connection::Session#forward</a>:
+</p>
+<pre>
+  ssh.forward.local(1234, &quot;www.capify.org&quot;, 80)
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000223">active_locals</a>,</li>
+                
+                <li><a href="#M000230">active_remotes</a>,</li>
+                
+                <li><a href="#M000236">agent</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000222">cancel_local</a>,</li>
+                
+                <li><a href="#M000229">cancel_remote</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000221">local</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000220">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000226">remote</a>,</li>
+                
+                <li><a href="#M000227">remote_to</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../../SSH.html">Net::SSH</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>session</td>
+            <td class='attr-desc'><p>
+The underlying connection service instance that the port-forwarding
+services employ.
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000220">
+                    
+                    <a name="M000220"></a><b>new</b>(session)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Instantiates a new <a href="Forward.html">Forward</a> service instance atop
+the given connection service session. This will register new channel open
+handlers to handle the specialized channels that the <a
+href="../../SSH.html">SSH</a> port forwarding protocols employ.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000220_source')" id="l_M000220_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L24" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000220_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 24</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">session</span>)
+      <span class="ruby-ivar">@session</span> = <span class="ruby-identifier">session</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">session</span>.<span class="ruby-identifier">logger</span>
+      <span class="ruby-ivar">@remote_forwarded_ports</span> = {}
+      <span class="ruby-ivar">@local_forwarded_ports</span> = {}
+      <span class="ruby-ivar">@agent_forwarded</span> = <span class="ruby-keyword kw">false</span>
+
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">on_open_channel</span>(<span class="ruby-value str">'forwarded-tcpip'</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">method</span>(<span class="ruby-identifier">:forwarded_tcpip</span>))
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">on_open_channel</span>(<span class="ruby-value str">'auth-agent'</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">method</span>(<span class="ruby-identifier">:auth_agent_channel</span>))
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">on_open_channel</span>(<span class="ruby-value str">'auth-agent@openssh.com'</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">method</span>(<span class="ruby-identifier">:auth_agent_channel</span>))
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000223">
+                    
+                    <a name="M000223"></a><b>active_locals</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns a list of all active locally forwarded ports. The returned value is
+an array of arrays, where each element is a two-element tuple consisting of
+the local port and bind address corresponding to the forwarding port.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000223_source')" id="l_M000223_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L101" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000223_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 101</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active_locals</span>
+      <span class="ruby-ivar">@local_forwarded_ports</span>.<span class="ruby-identifier">keys</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000230">
+                    
+                    <a name="M000230"></a><b>active_remotes</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns all active forwarded remote ports. The returned value is an array
+of two-element tuples, where the first element is the port on the remote
+host and the second is the bind address.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000230_source')" id="l_M000230_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L159" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000230_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 159</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active_remotes</span>
+      <span class="ruby-ivar">@remote_forwarded_ports</span>.<span class="ruby-identifier">keys</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000236">
+                    
+                    <a name="M000236"></a><b>agent</b>(channel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Enables <a href="../../SSH.html">SSH</a> agent forwarding on the given
+channel. The forwarded agent will remain active even after the channel
+closes&#8212;the channel is only used as the transport for enabling the
+forwarded connection. You should never need to call this directly&#8212;it
+is called automatically the first time a session channel is opened, when
+the connection was created with :forward_agent set to true:
+</p>
+<pre>
+   Net::SSH.start(&quot;remote.host&quot;, &quot;me&quot;, :forwrd_agent =&gt; true) do |ssh|
+     ssh.open_channel do |ch|
+       # agent will be automatically forwarded by this point
+     end
+     ssh.loop
+   end
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000236_source')" id="l_M000236_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L176" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000236_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 176</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">agent</span>(<span class="ruby-identifier">channel</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@agent_forwarded</span>
+      <span class="ruby-ivar">@agent_forwarded</span> = <span class="ruby-keyword kw">true</span>
+
+      <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">send_channel_request</span>(<span class="ruby-value str">&quot;auth-agent-req@openssh.com&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">achannel</span>, <span class="ruby-identifier">success</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+          <span class="ruby-identifier">debug</span> { <span class="ruby-value str">&quot;authentication agent forwarding is active&quot;</span> }
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">achannel</span>.<span class="ruby-identifier">send_channel_request</span>(<span class="ruby-value str">&quot;auth-agent-req&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a2channel</span>, <span class="ruby-identifier">success2</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success2</span>
+              <span class="ruby-identifier">debug</span> { <span class="ruby-value str">&quot;authentication agent forwarding is active&quot;</span> }
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">error</span> { <span class="ruby-value str">&quot;could not establish forwarding of authentication agent&quot;</span> }
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000222">
+                    
+                    <a name="M000222"></a><b>cancel_local</b>(port, bind_address=&quot;127.0.0.1&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Terminates an active local forwarded port. If no such forwarded port
+exists, this will raise an exception. Otherwise, the forwarded connection
+is terminated.
+</p>
+<pre>
+  ssh.forward.cancel_local(1234)
+  ssh.forward.cancel_local(1234, &quot;0.0.0.0&quot;)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000222_source')" id="l_M000222_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L90" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000222_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 90</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cancel_local</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">bind_address</span>=<span class="ruby-value str">&quot;127.0.0.1&quot;</span>)
+      <span class="ruby-identifier">socket</span> = <span class="ruby-ivar">@local_forwarded_ports</span>.<span class="ruby-identifier">delete</span>([<span class="ruby-identifier">port</span>, <span class="ruby-identifier">bind_address</span>])
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">shutdown</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">stop_listening_to</span>(<span class="ruby-identifier">socket</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000229">
+                    
+                    <a name="M000229"></a><b>cancel_remote</b>(port, host=&quot;127.0.0.1&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Requests that a remote forwarded port be cancelled. The remote forwarded
+port on the remote host, bound to the given address on the remote host,
+will be terminated, but not immediately. This method returns immediately
+after queueing the request to be sent to the server. If for some reason the
+port cannot be cancelled, an exception will be raised (asynchronously).
+</p>
+<p>
+If you want to know when the connection has been cancelled, it will no
+longer be present in the <a href="Forward.html#M000230">active_remotes</a>
+list. If you want to block until the port is no longer active, you could do
+something like this:
+</p>
+<pre>
+  ssh.forward.cancel_remote(1234, &quot;0.0.0.0&quot;)
+  ssh.loop { ssh.forward.active_remotes.include?([1234, &quot;0.0.0.0&quot;]) }
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000229_source')" id="l_M000229_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L146" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000229_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 146</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cancel_remote</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">host</span>=<span class="ruby-value str">&quot;127.0.0.1&quot;</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">send_global_request</span>(<span class="ruby-value str">&quot;cancel-tcpip-forward&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">port</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">success</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+          <span class="ruby-ivar">@remote_forwarded_ports</span>.<span class="ruby-identifier">delete</span>([<span class="ruby-identifier">port</span>, <span class="ruby-identifier">host</span>])
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;could not cancel remote forward request on #{host}:#{port}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000221">
+                    
+                    <a name="M000221"></a><b>local</b>(*args)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Starts listening for connections on the local host, and forwards them to
+the specified remote host/port via the <a href="../../SSH.html">SSH</a>
+connection. This method accepts either three or four arguments. When four
+arguments are given, they are:
+</p>
+<ul>
+<li>the local address to bind to
+
+</li>
+<li>the local port to listen on
+
+</li>
+<li>the remote host to forward connections to
+
+</li>
+<li>the port on the remote host to connect to
+
+</li>
+</ul>
+<p>
+If three arguments are given, it is as if the local bind address is
+&#8220;127.0.0.1&#8220;, and the rest are applied as above.
+</p>
+<pre>
+  ssh.forward.local(1234, &quot;www.capify.org&quot;, 80)
+  ssh.forward.local(&quot;0.0.0.0&quot;, 1234, &quot;www.capify.org&quot;, 80)
+</pre>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000221_source')" id="l_M000221_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L51" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000221_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 51</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">local</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">3</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;expected 3 or 4 parameters, got #{args.length}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">bind_address</span> = <span class="ruby-value str">&quot;127.0.0.1&quot;</span>
+      <span class="ruby-identifier">bind_address</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/\D/</span>
+
+      <span class="ruby-identifier">local_port</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">remote_host</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+      <span class="ruby-identifier">remote_port</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+
+      <span class="ruby-identifier">socket</span> = <span class="ruby-constant">TCPServer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">bind_address</span>, <span class="ruby-identifier">local_port</span>)
+
+      <span class="ruby-ivar">@local_forwarded_ports</span>[[<span class="ruby-identifier">local_port</span>, <span class="ruby-identifier">bind_address</span>]] = <span class="ruby-identifier">socket</span>
+
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">listen_to</span>(<span class="ruby-identifier">socket</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">server</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">client</span> = <span class="ruby-identifier">server</span>.<span class="ruby-identifier">accept</span>
+        <span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;received connection on #{bind_address}:#{local_port}&quot;</span> }
+
+        <span class="ruby-identifier">channel</span> = <span class="ruby-identifier">session</span>.<span class="ruby-identifier">open_channel</span>(<span class="ruby-value str">&quot;direct-tcpip&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">remote_host</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">remote_port</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">bind_address</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">local_port</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">achannel</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">achannel</span>.<span class="ruby-identifier">info</span> { <span class="ruby-value str">&quot;direct channel established&quot;</span> }
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">prepare_client</span>(<span class="ruby-identifier">client</span>, <span class="ruby-identifier">channel</span>, <span class="ruby-identifier">:local</span>)
+  
+        <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">on_open_failed</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ch</span>, <span class="ruby-identifier">code</span>, <span class="ruby-identifier">description</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">channel</span>.<span class="ruby-identifier">error</span> { <span class="ruby-node">&quot;could not establish direct channel: #{description} (#{code})&quot;</span> }
+          <span class="ruby-identifier">channel</span>[<span class="ruby-identifier">:socket</span>].<span class="ruby-identifier">close</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000226">
+                    
+                    <a name="M000226"></a><b>remote</b>(port, host, remote_port, remote_host=&quot;127.0.0.1&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Requests that all connections on the given remote-port be forwarded via the
+local host to the given port/host. The last argument describes the bind
+address on the remote host, and defaults to 127.0.0.1.
+</p>
+<p>
+This method will return immediately, but the port will not actually be
+forwarded immediately. If the remote server is not able to begin the
+listener for this request, an exception will be raised asynchronously.
+</p>
+<p>
+If you want to know when the connection is active, it will show up in the
+<a href="Forward.html#M000230">active_remotes</a> list. If you want to
+block until the port is active, you could do something like this:
+</p>
+<pre>
+  ssh.forward.remote(80, &quot;www.google.com&quot;, 1234, &quot;0.0.0.0&quot;)
+  ssh.loop { !ssh.forward.active_remotes.include?([1234, &quot;0.0.0.0&quot;]) }
+</pre>
+
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Forward.html#M000227">remote_to</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000226_source')" id="l_M000226_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/service/forward.rb#L119" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000226_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/service/forward.rb, line 119</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remote</span>(<span class="ruby-identifier">port</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">remote_port</span>, <span class="ruby-identifier">remote_host</span>=<span class="ruby-value str">&quot;127.0.0.1&quot;</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">send_global_request</span>(<span class="ruby-value str">&quot;tcpip-forward&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-identifier">remote_host</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-identifier">remote_port</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">success</span>, <span class="ruby-identifier">response</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">success</span>
+          <span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;remote forward from remote #{remote_host}:#{remote_port} to #{host}:#{port} established&quot;</span> }
+          <span class="ruby-ivar">@remote_forwarded_ports</span>[[<span class="ruby-identifier">remote_port</span>, <span class="ruby-identifier">remote_host</span>]] = <span class="ruby-constant">Remote</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">port</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">error</span> { <span class="ruby-value str">&quot;remote forwarding request failed&quot;</span> }
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-value str">&quot;remote forwarding request failed&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000227">
+                    
+                    <a name="M000227"></a><b>remote_to</b>(port, host, remote_port, remote_host=&quot;127.0.0.1&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Forward.html#M000226">remote</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

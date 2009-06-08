@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::TestCipherFactory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::TestCipherFactory 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/transport/test_cipher_factory_rb.html">test/transport/test_cipher_factory.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000993">if_supported?</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001026">test_3des_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001025">test_3des_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001028">test_aes128_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001027">test_aes128_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001030">test_aes192_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001029">test_aes192_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001034">test_aes256_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001033">test_aes256_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001014">test_blowfish_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001013">test_blowfish_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001021">test_cast128_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001020">test_cast128_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001017">test_idea_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001015">test_idea_cbc_for_encryption</a>,</li>
+                
+                <li><a href="#M001002">test_lengths_for_3des_cbc</a>,</li>
+                
+                <li><a href="#M001011">test_lengths_for_aes128_cbc</a>,</li>
+                
+                <li><a href="#M001003">test_lengths_for_aes192_cbc</a>,</li>
+                
+                <li><a href="#M001012">test_lengths_for_aes256_cbc</a>,</li>
+                
+                <li><a href="#M000998">test_lengths_for_blowfish_cbc</a>,</li>
+                
+                <li><a href="#M001001">test_lengths_for_cast128_cbc</a>,</li>
+                
+                <li><a href="#M000999">test_lengths_for_idea_cbc</a>,</li>
+                
+                <li><a href="#M000994">test_lengths_for_none</a>,</li>
+                
+                <li><a href="#M001000">test_lengths_for_rijndael_cbc</a>,</li>
+                
+                <li><a href="#M001036">test_none_for_decryption</a>,</li>
+                
+                <li><a href="#M001035">test_none_for_encryption</a>,</li>
+                
+                <li><a href="#M001019">test_rijndael_cbc_for_decryption</a>,</li>
+                
+                <li><a href="#M001018">test_rijndael_cbc_for_encryption</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">BLOWFISH</td>
+            <td>=</td>
+            <td class="attr-value">&quot;\210\021\200\315\240_\026$\352\204g\233\244\242x\332e\370\001\327\224Nv@9_\323\037\252kb\037\036\237\375]\343/y\037\237\312Q\f7]\347Y\005\275%\377\0010$G\272\250B\265Nd\375\342\372\025r6}+Y\213y\n\237\267\\\374^\346BdJ$\353\220Ik\023&lt;\236&amp;H\277=\225&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">IDEA</td>
+            <td>=</td>
+            <td class="attr-value">&quot;W\234\017G\231\b\357\370H\b\256U]\343M\031k\233]~\023C\363\263\177\262-\261\341$\022\376mv\217\322\b\2763\270H\306\035\343z\313\312\3531\351\t\201\302U\022\360\300\354ul7$z\320O]\360g\024\305\005`V\005\335A\351\312\270c\320D\232\eQH1\340\265\2118\031g*\303v&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">RIJNDAEL</td>
+            <td>=</td>
+            <td class="attr-value">&quot;$\253\271\255\005Z\354\336&amp;\312\324\221\233\307Mj\315\360\310Fk\241EfN\037\231\213\361{'\310\204\347I\343\271\005\240`\325;\034\346uM&gt;#\241\231C`\374\261\vo\226;Z\302:\b\250\366T\330\\#V\330\340\226\363\374!\bm\266\232\207!\232\347\340\t\307\370\356z\236\343=v\210\206y&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">CAST128</td>
+            <td>=</td>
+            <td class="attr-value">&quot;qW\302\331\333P\223t[9 ~(sg\322\271\227\272\022I\223\373p\255&gt;k\326\314\260\2003\236C_W\211\227\373\205&gt;\351\334\322\227\223\e\236\202Ii\032!P\214\035:\017\360h7D\371v\210\264\317\236a\262w1\2772\023\036\331\227\240:\f/X\351\324I\t[x\350\323E\2301\016m&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">TRIPLE_DES</td>
+            <td>=</td>
+            <td class="attr-value">&quot;\322\252\216D\303Q\375gg\367A{\177\313\3436\272\353%\223K?\257\206|\r&amp;\353/%\340\336 \203E8rY\206\234\004\274\267\031\233T/{\&quot;\227/B!i?[qGaw\306T\206\223\213n \212\032\244%]@\355\250\334\312\265E\251\017\361\270\357\230\274KP&amp;^\031r+r%\370&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">AES128</td>
+            <td>=</td>
+            <td class="attr-value">&quot;k\026\350B\366-k\224\313\3277}B\035\004\200\035\r\233\024$\205\261\231Q\2214r\245\250\360\315\237\266hg\262C&amp;+\321\346Pf\267v\376I\215P\327\345-\232&amp;HK\375\326_\030&lt;\a\276\212\303g\342C\242O\233\260\006\001a&amp;V\345`\\T\e\236.\207\223l\233ri^\v\252\363\245&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">AES192</td>
+            <td>=</td>
+            <td class="attr-value">&quot;\256\017)x\270\213\336\303L\003f\235'jQ\3231k9\225\267\242\364C4\370\224\201\302~\217I\202\374\2167='\272\037\225\223\177Y\r\212\376(\275\n\3553\377\177\252C\254\236\016MA\274Z@H\331&lt;\rL\317\205\323[\305X8\376\237=\374\352bH9\244\0231\353\204\352p\226\326~J\242&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">AES256</td>
+            <td>=</td>
+            <td class="attr-value">&quot;$\253\271\255\005Z\354\336&amp;\312\324\221\233\307Mj\315\360\310Fk\241EfN\037\231\213\361{'\310\204\347I\343\271\005\240`\325;\034\346uM&gt;#\241\231C`\374\261\vo\226;Z\302:\b\250\366T\330\\#V\330\340\226\363\374!\bm\266\232\207!\232\347\340\t\307\370\356z\236\343=v\210\206y&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">TEXT</td>
+            <td>=</td>
+            <td class="attr-value">&quot;But soft! What light through yonder window breaks? It is the east, and Juliet is the sun!&quot;</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">OPTIONS</td>
+            <td>=</td>
+            <td class="attr-value">{ :iv =&gt; &quot;ABC&quot;,         :key =&gt; &quot;abc&quot;,         :digester =&gt; OpenSSL::Digest::MD5,         :shared =&gt; &quot;1234567890123456780&quot;,         :hash =&gt; '!@#$%#$^%$&amp;^&amp;%#$@$'       }</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000993">
+                    
+                    <a name="M000993"></a><b>if_supported?</b>(name)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000993_source')" id="l_M000993_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000993_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 7</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">if_supported?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">CipherFactory</span>.<span class="ruby-identifier">supported?</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001026">
+                    
+                    <a name="M001026"></a><b>test_3des_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001026_source')" id="l_M001026_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L98" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001026_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 98</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_3des_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;3des-cbc&quot;</span>, <span class="ruby-constant">TRIPLE_DES</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001025">
+                    
+                    <a name="M001025"></a><b>test_3des_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001025_source')" id="l_M001025_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L94" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001025_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 94</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_3des_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TRIPLE_DES</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;3des-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001028">
+                    
+                    <a name="M001028"></a><b>test_aes128_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001028_source')" id="l_M001028_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001028_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 108</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes128_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;aes128-cbc&quot;</span>, <span class="ruby-constant">AES128</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001027">
+                    
+                    <a name="M001027"></a><b>test_aes128_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001027_source')" id="l_M001027_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L104" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001027_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 104</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes128_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">AES128</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;aes128-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001030">
+                    
+                    <a name="M001030"></a><b>test_aes192_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001030_source')" id="l_M001030_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L118" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001030_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 118</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes192_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;aes192-cbc&quot;</span>, <span class="ruby-constant">AES192</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001029">
+                    
+                    <a name="M001029"></a><b>test_aes192_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001029_source')" id="l_M001029_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L114" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001029_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 114</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes192_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">AES192</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;aes192-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001034">
+                    
+                    <a name="M001034"></a><b>test_aes256_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001034_source')" id="l_M001034_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L128" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001034_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 128</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes256_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;aes256-cbc&quot;</span>, <span class="ruby-constant">AES256</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001033">
+                    
+                    <a name="M001033"></a><b>test_aes256_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001033_source')" id="l_M001033_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L124" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001033_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 124</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_aes256_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">AES256</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;aes256-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001014">
+                    
+                    <a name="M001014"></a><b>test_blowfish_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001014_source')" id="l_M001014_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001014_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_blowfish_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;blowfish-cbc&quot;</span>, <span class="ruby-constant">BLOWFISH</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001013">
+                    
+                    <a name="M001013"></a><b>test_blowfish_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001013_source')" id="l_M001013_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001013_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 52</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_blowfish_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">BLOWFISH</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;blowfish-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001021">
+                    
+                    <a name="M001021"></a><b>test_cast128_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001021_source')" id="l_M001021_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L88" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001021_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 88</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_cast128_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;cast128-cbc&quot;</span>, <span class="ruby-constant">CAST128</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001020">
+                    
+                    <a name="M001020"></a><b>test_cast128_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001020_source')" id="l_M001020_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L84" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001020_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 84</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_cast128_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">CAST128</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;cast128-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001017">
+                    
+                    <a name="M001017"></a><b>test_idea_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001017_source')" id="l_M001017_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001017_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 67</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_idea_cbc_for_decryption</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;idea-cbc&quot;</span>, <span class="ruby-constant">IDEA</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001015">
+                    
+                    <a name="M001015"></a><b>test_idea_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001015_source')" id="l_M001015_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L63" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001015_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 63</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_idea_cbc_for_encryption</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">IDEA</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;idea-cbc&quot;</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001002">
+                    
+                    <a name="M001002"></a><b>test_lengths_for_3des_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001002_source')" id="l_M001002_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L34" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001002_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 34</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_3des_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">24</span>,<span class="ruby-value">8</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;3des-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001011">
+                    
+                    <a name="M001011"></a><b>test_lengths_for_aes128_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001011_source')" id="l_M001011_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001011_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 42</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_aes128_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">16</span>,<span class="ruby-value">16</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;aes128-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001003">
+                    
+                    <a name="M001003"></a><b>test_lengths_for_aes192_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001003_source')" id="l_M001003_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001003_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 38</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_aes192_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">24</span>,<span class="ruby-value">16</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;aes192-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001012">
+                    
+                    <a name="M001012"></a><b>test_lengths_for_aes256_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001012_source')" id="l_M001012_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001012_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 46</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_aes256_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">32</span>,<span class="ruby-value">16</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;aes256-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000998">
+                    
+                    <a name="M000998"></a><b>test_lengths_for_blowfish_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000998_source')" id="l_M000998_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L16" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000998_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 16</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_blowfish_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">16</span>,<span class="ruby-value">8</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;blowfish-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001001">
+                    
+                    <a name="M001001"></a><b>test_lengths_for_cast128_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001001_source')" id="l_M001001_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001001_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 30</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_cast128_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">16</span>,<span class="ruby-value">8</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;cast128-cbc&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000999">
+                    
+                    <a name="M000999"></a><b>test_lengths_for_idea_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000999_source')" id="l_M000999_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000999_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 21</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_idea_cbc</span>
+        <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">16</span>,<span class="ruby-value">8</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;idea-cbc&quot;</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000994">
+                    
+                    <a name="M000994"></a><b>test_lengths_for_none</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000994_source')" id="l_M000994_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000994_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 11</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_none</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">0</span>,<span class="ruby-value">0</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;none&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">0</span>,<span class="ruby-value">0</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;bogus&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001000">
+                    
+                    <a name="M001000"></a><b>test_lengths_for_rijndael_cbc</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001000_source')" id="l_M001000_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001000_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lengths_for_rijndael_cbc</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-value">32</span>,<span class="ruby-value">16</span>], <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">get_lengths</span>(<span class="ruby-value str">&quot;rijndael-cbc@lysator.liu.se&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001036">
+                    
+                    <a name="M001036"></a><b>test_none_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001036_source')" id="l_M001036_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L136" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001036_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 136</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_none_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;none&quot;</span>, <span class="ruby-constant">TEXT</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001035">
+                    
+                    <a name="M001035"></a><b>test_none_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001035_source')" id="l_M001035_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L132" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001035_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 132</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_none_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;none&quot;</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001019">
+                    
+                    <a name="M001019"></a><b>test_rijndael_cbc_for_decryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001019_source')" id="l_M001019_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L78" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001019_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 78</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rijndael_cbc_for_decryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">TEXT</span>, <span class="ruby-identifier">decrypt</span>(<span class="ruby-value str">&quot;rijndael-cbc@lysator.liu.se&quot;</span>, <span class="ruby-constant">RIJNDAEL</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001018">
+                    
+                    <a name="M001018"></a><b>test_rijndael_cbc_for_encryption</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001018_source')" id="l_M001018_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_cipher_factory.rb#L74" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001018_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_cipher_factory.rb, line 74</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rijndael_cbc_for_encryption</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">RIJNDAEL</span>, <span class="ruby-identifier">encrypt</span>(<span class="ruby-value str">&quot;rijndael-cbc@lysator.liu.se&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

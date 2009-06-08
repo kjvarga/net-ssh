@@ -1,0 +1,2127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Installer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Installer 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/setup_rb.html">setup.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000696">clean_dir_bin</a>,</li>
+                
+                <li><a href="#M000699">clean_dir_conf</a>,</li>
+                
+                <li><a href="#M000698">clean_dir_data</a>,</li>
+                
+                <li><a href="#M000701">clean_dir_ext</a>,</li>
+                
+                <li><a href="#M000697">clean_dir_lib</a>,</li>
+                
+                <li><a href="#M000700">clean_dir_man</a>,</li>
+                
+                <li><a href="#M000631">config_dir_bin</a>,</li>
+                
+                <li><a href="#M000635">config_dir_conf</a>,</li>
+                
+                <li><a href="#M000634">config_dir_data</a>,</li>
+                
+                <li><a href="#M000633">config_dir_ext</a>,</li>
+                
+                <li><a href="#M000632">config_dir_lib</a>,</li>
+                
+                <li><a href="#M000636">config_dir_man</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000703">distclean_dir_bin</a>,</li>
+                
+                <li><a href="#M000707">distclean_dir_conf</a>,</li>
+                
+                <li><a href="#M000706">distclean_dir_data</a>,</li>
+                
+                <li><a href="#M000705">distclean_dir_ext</a>,</li>
+                
+                <li><a href="#M000704">distclean_dir_lib</a>,</li>
+                
+                <li><a href="#M000708">distclean_dir_man</a>,</li>
+                
+                <li><a href="#M000712">dive_into</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000692">exec_clean</a>,</li>
+                
+                <li><a href="#M000630">exec_config</a>,</li>
+                
+                <li><a href="#M000702">exec_distclean</a>,</li>
+                
+                <li><a href="#M000666">exec_install</a>,</li>
+                
+                <li><a href="#M000638">exec_setup</a>,</li>
+                
+                <li><a href="#M000709">exec_task_traverse</a>,</li>
+                
+                <li><a href="#M000691">exec_test</a>,</li>
+                
+                <li><a href="#M000682">existfiles</a>,</li>
+                
+                <li><a href="#M000637">extconf</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000689">glob_reject</a>,</li>
+                
+                <li><a href="#M000688">glob_select</a>,</li>
+                
+                <li><a href="#M000690">globs2re</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>H</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000683">hookfiles</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>I</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000619">inspect</a>,</li>
+                
+                <li><a href="#M000668">install_dir_bin</a>,</li>
+                
+                <li><a href="#M000672">install_dir_conf</a>,</li>
+                
+                <li><a href="#M000671">install_dir_data</a>,</li>
+                
+                <li><a href="#M000670">install_dir_ext</a>,</li>
+                
+                <li><a href="#M000669">install_dir_lib</a>,</li>
+                
+                <li><a href="#M000673">install_dir_man</a>,</li>
+                
+                <li><a href="#M000674">install_files</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000676">libfiles</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>M</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000679">mapdir</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000615">new</a>,</li>
+                
+                <li><a href="#M000655">new_shebang</a>,</li>
+                
+                <li><a href="#M000625">no_harm?</a>,</li>
+                
+                <li><a href="#M000620">noop</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>O</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000622">objdir_root</a>,</li>
+                
+                <li><a href="#M000656">open_atomic_writer</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000623">relpath</a>,</li>
+                
+                <li><a href="#M000677">rubyextentions</a>,</li>
+                
+                <li><a href="#M000716">run_hook</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000639">setup_dir_bin</a>,</li>
+                
+                <li><a href="#M000647">setup_dir_conf</a>,</li>
+                
+                <li><a href="#M000646">setup_dir_data</a>,</li>
+                
+                <li><a href="#M000641">setup_dir_ext</a>,</li>
+                
+                <li><a href="#M000640">setup_dir_lib</a>,</li>
+                
+                <li><a href="#M000648">setup_dir_man</a>,</li>
+                
+                <li><a href="#M000621">srcdir_root</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000678">targetfiles</a>,</li>
+                
+                <li><a href="#M000711">traverse</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>U</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000649">update_shebang_line</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000624">verbose?</a>,</li>
+                
+                <li><a href="#M000626">verbose_off</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="Installer/Shebang.html">Installer::Shebang</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">FILETYPES</td>
+            <td>=</td>
+            <td class="attr-value">%w( bin lib ext data conf man )</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">JUNK_FILES</td>
+            <td>=</td>
+            <td class="attr-value">%w(      core RCSLOG tags TAGS .make.state     .nse_depinfo #* .#* cvslog.* ,* .del-* *.olb     *~ *.old *.bak *.BAK *.orig *.rej _$* *$      *.org *.in .*   )</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+picked up many entries from cvs-1.11.1/src/ignore.c
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">GLOB2REGEX</td>
+            <td>=</td>
+            <td class="attr-value">{     '.' =&gt; '\.',     '$' =&gt; '\$',     '#' =&gt; '\#',     '*' =&gt; '.*'   }</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">TESTDIR</td>
+            <td>=</td>
+            <td class="attr-value">'test'</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+TASK test
+</p>
+</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000615">
+                    
+                    <a name="M000615"></a><b>new</b>(config, srcroot, objroot)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000615_source')" id="l_M000615_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1165" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000615_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1165</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">config</span>, <span class="ruby-identifier">srcroot</span>, <span class="ruby-identifier">objroot</span>)
+    <span class="ruby-ivar">@config</span> = <span class="ruby-identifier">config</span>
+    <span class="ruby-ivar">@srcdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">srcroot</span>)
+    <span class="ruby-ivar">@objdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">objroot</span>)
+    <span class="ruby-ivar">@currdir</span> = <span class="ruby-value str">'.'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000696">
+                    
+                    <a name="M000696"></a><b>clean_dir_bin</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000699">
+                    
+                    <a name="M000699"></a><b>clean_dir_conf</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000698">
+                    
+                    <a name="M000698"></a><b>clean_dir_data</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000701">
+                    
+                    <a name="M000701"></a><b>clean_dir_ext</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000701_source')" id="l_M000701_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1486" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000701_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1486</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clean_dir_ext</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">extdir?</span>(<span class="ruby-identifier">curr_srcdir</span>())
+    <span class="ruby-identifier">make</span> <span class="ruby-value str">'clean'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-value str">'Makefile'</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000697">
+                    
+                    <a name="M000697"></a><b>clean_dir_lib</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000700">
+                    
+                    <a name="M000700"></a><b>clean_dir_man</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000631">
+                    
+                    <a name="M000631"></a><b>config_dir_bin</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000635">
+                    
+                    <a name="M000635"></a><b>config_dir_conf</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000634">
+                    
+                    <a name="M000634"></a><b>config_dir_data</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000633">
+                    
+                    <a name="M000633"></a><b>config_dir_ext</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000633_source')" id="l_M000633_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1229" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000633_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1229</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_dir_ext</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">extconf</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">extdir?</span>(<span class="ruby-identifier">curr_srcdir</span>())
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000632">
+                    
+                    <a name="M000632"></a><b>config_dir_lib</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000636">
+                    
+                    <a name="M000636"></a><b>config_dir_man</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000703">
+                    
+                    <a name="M000703"></a><b>distclean_dir_bin</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000707">
+                    
+                    <a name="M000707"></a><b>distclean_dir_conf</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000706">
+                    
+                    <a name="M000706"></a><b>distclean_dir_data</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000705">
+                    
+                    <a name="M000705"></a><b>distclean_dir_ext</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000705_source')" id="l_M000705_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1504" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000705_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1504</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">distclean_dir_ext</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">extdir?</span>(<span class="ruby-identifier">curr_srcdir</span>())
+    <span class="ruby-identifier">make</span> <span class="ruby-value str">'distclean'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-value str">'Makefile'</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000704">
+                    
+                    <a name="M000704"></a><b>distclean_dir_lib</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000708">
+                    
+                    <a name="M000708"></a><b>distclean_dir_man</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000712">
+                    
+                    <a name="M000712"></a><b>dive_into</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000712_source')" id="l_M000712_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1540" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000712_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1540</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">dive_into</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dir?</span>(<span class="ruby-node">&quot;#{@srcdir}/#{rel}&quot;</span>)
+
+    <span class="ruby-identifier">dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span> <span class="ruby-identifier">dir</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dir?</span>(<span class="ruby-identifier">dir</span>)
+    <span class="ruby-identifier">prevdir</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-identifier">dir</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value str">'---&gt; '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rel</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-ivar">@currdir</span> = <span class="ruby-identifier">rel</span>
+    <span class="ruby-keyword kw">yield</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-identifier">prevdir</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value str">'&lt;--- '</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rel</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-ivar">@currdir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">rel</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000692">
+                    
+                    <a name="M000692"></a><b>exec_clean</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+TASK clean
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000692_source')" id="l_M000692_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1474" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000692_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1474</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_clean</span>
+    <span class="ruby-identifier">exec_task_traverse</span> <span class="ruby-value str">'clean'</span>
+    <span class="ruby-identifier">rm_f</span> <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">savefile</span>
+    <span class="ruby-identifier">rm_f</span> <span class="ruby-value str">'InstalledFiles'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000630">
+                    
+                    <a name="M000630"></a><b>exec_config</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+TASK config
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000630_source')" id="l_M000630_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1222" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000630_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1222</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_config</span>
+    <span class="ruby-identifier">exec_task_traverse</span> <span class="ruby-value str">'config'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000702">
+                    
+                    <a name="M000702"></a><b>exec_distclean</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+TASK distclean
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000702_source')" id="l_M000702_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1495" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000702_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1495</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_distclean</span>
+    <span class="ruby-identifier">exec_task_traverse</span> <span class="ruby-value str">'distclean'</span>
+    <span class="ruby-identifier">rm_f</span> <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">savefile</span>
+    <span class="ruby-identifier">rm_f</span> <span class="ruby-value str">'InstalledFiles'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000666">
+                    
+                    <a name="M000666"></a><b>exec_install</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+TASK install
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000666_source')" id="l_M000666_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1340" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000666_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1340</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_install</span>
+    <span class="ruby-identifier">rm_f</span> <span class="ruby-value str">'InstalledFiles'</span>
+    <span class="ruby-identifier">exec_task_traverse</span> <span class="ruby-value str">'install'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000638">
+                    
+                    <a name="M000638"></a><b>exec_setup</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+TASK setup
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000638_source')" id="l_M000638_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1245" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000638_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1245</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_setup</span>
+    <span class="ruby-identifier">exec_task_traverse</span> <span class="ruby-value str">'setup'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000709">
+                    
+                    <a name="M000709"></a><b>exec_task_traverse</b>(task)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Traversing
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000709_source')" id="l_M000709_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1517" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000709_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1517</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_task_traverse</span>(<span class="ruby-identifier">task</span>)
+    <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;pre-#{task}&quot;</span>
+    <span class="ruby-constant">FILETYPES</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'ext'</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'without-ext'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'yes'</span>
+        <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value str">'skipping ext/* by user option'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+        <span class="ruby-keyword kw">next</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">traverse</span> <span class="ruby-identifier">task</span>, <span class="ruby-identifier">type</span>, <span class="ruby-node">&quot;#{task}_dir_#{type}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;post-#{task}&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000691">
+                    
+                    <a name="M000691"></a><b>exec_test</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000691_source')" id="l_M000691_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1454" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000691_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1454</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">exec_test</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-value str">'test'</span>)
+      <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value str">'no test in this package'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+      <span class="ruby-keyword kw">return</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-value str">'Running tests...'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'test/unit'</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>
+      <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-value str">'test/unit cannot loaded.  You need Ruby 1.8 or later to invoke this task.'</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">runner</span> = <span class="ruby-constant">Test</span><span class="ruby-operator">::</span><span class="ruby-constant">Unit</span><span class="ruby-operator">::</span><span class="ruby-constant">AutoRunner</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">true</span>)
+    <span class="ruby-identifier">runner</span>.<span class="ruby-identifier">to_run</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">TESTDIR</span>
+    <span class="ruby-identifier">runner</span>.<span class="ruby-identifier">run</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000682">
+                    
+                    <a name="M000682"></a><b>existfiles</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000682_source')" id="l_M000682_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1415" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000682_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1415</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">existfiles</span>
+    <span class="ruby-identifier">glob_reject</span>(<span class="ruby-constant">JUNK_FILES</span>, (<span class="ruby-identifier">files_of</span>(<span class="ruby-identifier">curr_srcdir</span>()) <span class="ruby-operator">|</span> <span class="ruby-identifier">files_of</span>(<span class="ruby-value str">'.'</span>)))
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000637">
+                    
+                    <a name="M000637"></a><b>extconf</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000637_source')" id="l_M000637_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1237" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000637_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1237</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extconf</span>
+    <span class="ruby-identifier">ruby</span> <span class="ruby-node">&quot;#{curr_srcdir()}/extconf.rb&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-ivar">@config</span>.<span class="ruby-identifier">config_opt</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000689">
+                    
+                    <a name="M000689"></a><b>glob_reject</b>(pats, ents)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000689_source')" id="l_M000689_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1430" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000689_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1430</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">glob_reject</span>(<span class="ruby-identifier">pats</span>, <span class="ruby-identifier">ents</span>)
+    <span class="ruby-identifier">re</span> = <span class="ruby-identifier">globs2re</span>(<span class="ruby-identifier">pats</span>)
+    <span class="ruby-identifier">ents</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span> <span class="ruby-identifier">re</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">ent</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000688">
+                    
+                    <a name="M000688"></a><b>glob_select</b>(pat, ents)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000688_source')" id="l_M000688_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1425" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000688_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1425</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">glob_select</span>(<span class="ruby-identifier">pat</span>, <span class="ruby-identifier">ents</span>)
+    <span class="ruby-identifier">re</span> = <span class="ruby-identifier">globs2re</span>([<span class="ruby-identifier">pat</span>])
+    <span class="ruby-identifier">ents</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span> <span class="ruby-identifier">re</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">ent</span> }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000690">
+                    
+                    <a name="M000690"></a><b>globs2re</b>(pats)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000690_source')" id="l_M000690_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1442" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000690_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1442</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">globs2re</span>(<span class="ruby-identifier">pats</span>)
+    <span class="ruby-node">/\A(?:#{
+      pats.map {|pat| pat.gsub(/[\.\$\#\*]/) {|ch| GLOB2REGEX[ch] } }.join('|')
+    })\z/</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000683">
+                    
+                    <a name="M000683"></a><b>hookfiles</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000683_source')" id="l_M000683_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1419" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000683_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1419</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hookfiles</span>
+    <span class="ruby-node">%w( pre-%s post-%s pre-%s.rb post-%s.rb )</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">fmt</span><span class="ruby-operator">|</span>
+      <span class="ruby-node">%w( config setup install clean )</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-identifier">fmt</span>, <span class="ruby-identifier">t</span>) }
+    }.<span class="ruby-identifier">flatten</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000619">
+                    
+                    <a name="M000619"></a><b>inspect</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000619_source')" id="l_M000619_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1172" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000619_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1172</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-node">&quot;#&lt;#{self.class} #{File.basename(@srcdir)}&gt;&quot;</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000668">
+                    
+                    <a name="M000668"></a><b>install_dir_bin</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000668_source')" id="l_M000668_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1345" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000668_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1345</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_bin</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">targetfiles</span>(), <span class="ruby-node">&quot;#{config('bindir')}/#{rel}&quot;</span>, <span class="ruby-value">0755</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000672">
+                    
+                    <a name="M000672"></a><b>install_dir_conf</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000672_source')" id="l_M000672_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1364" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000672_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1364</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_conf</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-comment cmt"># FIXME: should not remove current config files</span>
+    <span class="ruby-comment cmt"># (rename previous file to .old/.org)</span>
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">targetfiles</span>(), <span class="ruby-node">&quot;#{config('sysconfdir')}/#{rel}&quot;</span>, <span class="ruby-value">0644</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000671">
+                    
+                    <a name="M000671"></a><b>install_dir_data</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000671_source')" id="l_M000671_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1360" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000671_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1360</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_data</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">targetfiles</span>(), <span class="ruby-node">&quot;#{config('datadir')}/#{rel}&quot;</span>, <span class="ruby-value">0644</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000670">
+                    
+                    <a name="M000670"></a><b>install_dir_ext</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000670_source')" id="l_M000670_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1353" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000670_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1353</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_ext</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">extdir?</span>(<span class="ruby-identifier">curr_srcdir</span>())
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">rubyextentions</span>(<span class="ruby-value str">'.'</span>),
+                  <span class="ruby-node">&quot;#{config('sodir')}/#{File.dirname(rel)}&quot;</span>,
+                  <span class="ruby-value">0555</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000669">
+                    
+                    <a name="M000669"></a><b>install_dir_lib</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000669_source')" id="l_M000669_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1349" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000669_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1349</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_lib</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">libfiles</span>(), <span class="ruby-node">&quot;#{config('rbdir')}/#{rel}&quot;</span>, <span class="ruby-value">0644</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000673">
+                    
+                    <a name="M000673"></a><b>install_dir_man</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000673_source')" id="l_M000673_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1370" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000673_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1370</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_dir_man</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">install_files</span> <span class="ruby-identifier">targetfiles</span>(), <span class="ruby-node">&quot;#{config('mandir')}/#{rel}&quot;</span>, <span class="ruby-value">0644</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000674">
+                    
+                    <a name="M000674"></a><b>install_files</b>(list, dest, mode)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000674_source')" id="l_M000674_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1374" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000674_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1374</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_files</span>(<span class="ruby-identifier">list</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">mode</span>)
+    <span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">dest</span>, <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">install_prefix</span>
+    <span class="ruby-identifier">list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">install</span> <span class="ruby-identifier">fname</span>, <span class="ruby-identifier">dest</span>, <span class="ruby-identifier">mode</span>, <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">install_prefix</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000676">
+                    
+                    <a name="M000676"></a><b>libfiles</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000676_source')" id="l_M000676_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1381" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000676_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1381</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">libfiles</span>
+    <span class="ruby-identifier">glob_reject</span>(<span class="ruby-node">%w(*.y *.output)</span>, <span class="ruby-identifier">targetfiles</span>())
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000679">
+                    
+                    <a name="M000679"></a><b>mapdir</b>(ents)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000679_source')" id="l_M000679_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1397" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000679_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1397</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mapdir</span>(<span class="ruby-identifier">ents</span>)
+    <span class="ruby-identifier">ents</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">ent</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">ent</span>)
+      <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">ent</span>                         <span class="ruby-comment cmt"># objdir</span>
+      <span class="ruby-keyword kw">else</span> <span class="ruby-node">&quot;#{curr_srcdir()}/#{ent}&quot;</span>   <span class="ruby-comment cmt"># srcdir</span>
+      <span class="ruby-keyword kw">end</span>
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000655">
+                    
+                    <a name="M000655"></a><b>new_shebang</b>(old)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000655_source')" id="l_M000655_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1287" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000655_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1287</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new_shebang</span>(<span class="ruby-identifier">old</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-regexp re">/\Aruby/</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">old</span>.<span class="ruby-identifier">cmd</span>)
+      <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">config</span>(<span class="ruby-value str">'rubypath'</span>), <span class="ruby-identifier">old</span>.<span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">old</span>.<span class="ruby-identifier">cmd</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'env'</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'ruby'</span>
+      <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">config</span>(<span class="ruby-value str">'rubypath'</span>), <span class="ruby-identifier">old</span>.<span class="ruby-identifier">args</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>])
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">old</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'shebang'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'all'</span>
+      <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">config</span>(<span class="ruby-value str">'rubypath'</span>))
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000625">
+                    
+                    <a name="M000625"></a><b>no_harm?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+module <a href="FileOperations.html">FileOperations</a> requires this
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000625_source')" id="l_M000625_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1205" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000625_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1205</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">no_harm?</span>
+    <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">no_harm?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000620">
+                    
+                    <a name="M000620"></a><b>noop</b>(rel)
+                    
+                </div>
+                
+                
+                <div class="aka">
+                    This method is also aliased as
+                    
+                    <a href="Installer.html#M000631">config_dir_bin</a>
+                    
+                    <a href="Installer.html#M000632">config_dir_lib</a>
+                    
+                    <a href="Installer.html#M000634">config_dir_data</a>
+                    
+                    <a href="Installer.html#M000635">config_dir_conf</a>
+                    
+                    <a href="Installer.html#M000636">config_dir_man</a>
+                    
+                    <a href="Installer.html#M000640">setup_dir_lib</a>
+                    
+                    <a href="Installer.html#M000646">setup_dir_data</a>
+                    
+                    <a href="Installer.html#M000647">setup_dir_conf</a>
+                    
+                    <a href="Installer.html#M000648">setup_dir_man</a>
+                    
+                    <a href="Installer.html#M000696">clean_dir_bin</a>
+                    
+                    <a href="Installer.html#M000697">clean_dir_lib</a>
+                    
+                    <a href="Installer.html#M000698">clean_dir_data</a>
+                    
+                    <a href="Installer.html#M000699">clean_dir_conf</a>
+                    
+                    <a href="Installer.html#M000700">clean_dir_man</a>
+                    
+                    <a href="Installer.html#M000703">distclean_dir_bin</a>
+                    
+                    <a href="Installer.html#M000704">distclean_dir_lib</a>
+                    
+                    <a href="Installer.html#M000706">distclean_dir_data</a>
+                    
+                    <a href="Installer.html#M000707">distclean_dir_conf</a>
+                    
+                    <a href="Installer.html#M000708">distclean_dir_man</a>
+                    
+                </div>
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000620_source')" id="l_M000620_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1176" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000620_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1176</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">noop</span>(<span class="ruby-identifier">rel</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000622">
+                    
+                    <a name="M000622"></a><b>objdir_root</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000622_source')" id="l_M000622_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1187" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000622_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1187</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">objdir_root</span>
+    <span class="ruby-ivar">@objdir</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000656">
+                    
+                    <a name="M000656"></a><b>open_atomic_writer</b>(path, &amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000656_source')" id="l_M000656_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1298" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000656_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1298</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open_atomic_writer</span>(<span class="ruby-identifier">path</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">tmpfile</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">path</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'.tmp'</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">tmpfile</span>, <span class="ruby-value str">'wb'</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">rename</span> <span class="ruby-identifier">tmpfile</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">unlink</span> <span class="ruby-identifier">tmpfile</span> <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">tmpfile</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000623">
+                    
+                    <a name="M000623"></a><b>relpath</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000623_source')" id="l_M000623_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1191" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000623_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">relpath</span>
+    <span class="ruby-ivar">@currdir</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000677">
+                    
+                    <a name="M000677"></a><b>rubyextentions</b>(dir)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000677_source')" id="l_M000677_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1385" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000677_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1385</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rubyextentions</span>(<span class="ruby-identifier">dir</span>)
+    <span class="ruby-identifier">ents</span> = <span class="ruby-identifier">glob_select</span>(<span class="ruby-node">&quot;*.#{@config.dllext}&quot;</span>, <span class="ruby-identifier">targetfiles</span>())
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ents</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-node">&quot;no ruby extention exists: 'ruby #{$0} setup' first&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">ents</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000716">
+                    
+                    <a name="M000716"></a><b>run_hook</b>(id)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000716_source')" id="l_M000716_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1555" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000716_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1555</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_hook</span>(<span class="ruby-identifier">id</span>)
+    <span class="ruby-identifier">path</span> = [ <span class="ruby-node">&quot;#{curr_srcdir()}/#{id}&quot;</span>,
+             <span class="ruby-node">&quot;#{curr_srcdir()}/#{id}.rb&quot;</span> ].<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">cand</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">cand</span>) }
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">path</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">instance_eval</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">path</span>), <span class="ruby-identifier">path</span>, <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$DEBUG</span>
+      <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-node">&quot;hook #{path} failed:\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">message</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000639">
+                    
+                    <a name="M000639"></a><b>setup_dir_bin</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000639_source')" id="l_M000639_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1249" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000639_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1249</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_dir_bin</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">files_of</span>(<span class="ruby-identifier">curr_srcdir</span>()).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">update_shebang_line</span> <span class="ruby-node">&quot;#{curr_srcdir()}/#{fname}&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000647">
+                    
+                    <a name="M000647"></a><b>setup_dir_conf</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000646">
+                    
+                    <a name="M000646"></a><b>setup_dir_data</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000641">
+                    
+                    <a name="M000641"></a><b>setup_dir_ext</b>(rel)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000641_source')" id="l_M000641_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1257" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000641_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1257</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup_dir_ext</span>(<span class="ruby-identifier">rel</span>)
+    <span class="ruby-identifier">make</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">extdir?</span>(<span class="ruby-identifier">curr_srcdir</span>())
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000640">
+                    
+                    <a name="M000640"></a><b>setup_dir_lib</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000648">
+                    
+                    <a name="M000648"></a><b>setup_dir_man</b>(rel)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Alias for <a href="Installer.html#M000620">noop</a>
+</p>
+
+                </div>
+                
+                
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000621">
+                    
+                    <a name="M000621"></a><b>srcdir_root</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Hook Script API base methods
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000621_source')" id="l_M000621_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1183" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000621_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1183</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">srcdir_root</span>
+    <span class="ruby-ivar">@srcdir</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000678">
+                    
+                    <a name="M000678"></a><b>targetfiles</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000678_source')" id="l_M000678_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1393" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000678_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1393</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">targetfiles</span>
+    <span class="ruby-identifier">mapdir</span>(<span class="ruby-identifier">existfiles</span>() <span class="ruby-operator">-</span> <span class="ruby-identifier">hookfiles</span>())
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000711">
+                    
+                    <a name="M000711"></a><b>traverse</b>(task, rel, mid)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000711_source')" id="l_M000711_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1529" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000711_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1529</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">traverse</span>(<span class="ruby-identifier">task</span>, <span class="ruby-identifier">rel</span>, <span class="ruby-identifier">mid</span>)
+    <span class="ruby-identifier">dive_into</span>(<span class="ruby-identifier">rel</span>) {
+      <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;pre-#{task}&quot;</span>
+      <span class="ruby-identifier">__send__</span> <span class="ruby-identifier">mid</span>, <span class="ruby-identifier">rel</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp re">%r[\A.*?(?:/|\z)]</span>, <span class="ruby-value str">''</span>)
+      <span class="ruby-identifier">directories_of</span>(<span class="ruby-identifier">curr_srcdir</span>()).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">traverse</span> <span class="ruby-identifier">task</span>, <span class="ruby-node">&quot;#{rel}/#{d}&quot;</span>, <span class="ruby-identifier">mid</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">run_hook</span> <span class="ruby-node">&quot;post-#{task}&quot;</span>
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000649">
+                    
+                    <a name="M000649"></a><b>update_shebang_line</b>(path)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000649_source')" id="l_M000649_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1265" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000649_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1265</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update_shebang_line</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">no_harm?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'shebang'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'never'</span>
+    <span class="ruby-identifier">old</span> = <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>
+      <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;warning: #{path}: Shebang line includes too many args.  It is not portable and your program may not work.&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">new</span> = <span class="ruby-identifier">new_shebang</span>(<span class="ruby-identifier">old</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">old</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">config</span>(<span class="ruby-value str">'shebang'</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'all'</span>
+      <span class="ruby-identifier">new</span> = <span class="ruby-constant">Shebang</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">config</span>(<span class="ruby-value str">'rubypath'</span>))
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;updating shebang: #{File.basename(path)}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-identifier">open_atomic_writer</span>(<span class="ruby-identifier">path</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">output</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">gets</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old</span>   <span class="ruby-comment cmt"># discard</span>
+        <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">new</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">output</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">read</span>
+      }
+    }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000624">
+                    
+                    <a name="M000624"></a><b>verbose?</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+module <a href="FileOperations.html">FileOperations</a> requires this
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000624_source')" id="l_M000624_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1200" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000624_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1200</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verbose?</span>
+    <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">verbose?</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000626">
+                    
+                    <a name="M000626"></a><b>verbose_off</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000626_source')" id="l_M000626_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L1209" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000626_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 1209</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verbose_off</span>
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">save</span>, <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">verbose</span> = <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">verbose?</span>, <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">yield</span>
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-ivar">@config</span>.<span class="ruby-identifier">verbose</span> = <span class="ruby-identifier">save</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

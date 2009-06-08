@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Transport::ServerVersion</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Transport::ServerVersion 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/transport/server_version_rb.html">lib/net/ssh/transport/server_version.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Negotiates the <a href="../../SSH.html">SSH</a> protocol version and trades
+information about server and client. This is never used directly&#8212;it
+is always called by the transport layer as part of the initialization
+process of the transport layer.
+</p>
+<p>
+Note that this class also encapsulates the negotiated version, and acts as
+the authoritative reference for any queries regarding the version in
+effect.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000365">new</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../../SSH.html">Net::SSH</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">PROTO_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">&quot;SSH-2.0-Ruby/Net::SSH_#{Net::SSH::Version::CURRENT} #{RUBY_PLATFORM}&quot;</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The <a href="../../SSH.html">SSH</a> version string as reported by <a
+href="../../SSH.html">Net::SSH</a>
+</p>
+</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>header</td>
+            <td class='attr-desc'><p>
+Any header text sent by the server prior to sending the version.
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>version</td>
+            <td class='attr-desc'><p>
+The version string reported by the server.
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000365">
+                    
+                    <a name="M000365"></a><b>new</b>(socket, logger)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Instantiates a new <a href="ServerVersion.html">ServerVersion</a> and
+immediately (and synchronously) negotiates the <a
+href="../../SSH.html">SSH</a> protocol in effect, using the given socket.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000365_source')" id="l_M000365_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/687584d7616fa71198487ad785f0a24aab0be52a/lib/net/ssh/transport/server_version.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000365_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/server_version.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">socket</span>, <span class="ruby-identifier">logger</span>)
+      <span class="ruby-ivar">@header</span> = <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-ivar">@version</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-ivar">@logger</span> = <span class="ruby-identifier">logger</span>
+      <span class="ruby-identifier">negotiate!</span>(<span class="ruby-identifier">socket</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

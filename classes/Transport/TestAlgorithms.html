@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::TestAlgorithms</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::TestAlgorithms 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/transport/test_algorithms_rb.html">test/transport/test_algorithms.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001023">test_allow_when_not_pending_should_be_true_for_all_packets</a>,</li>
+                
+                <li><a href="#M001024">test_allow_when_pending_should_be_true_only_for_packets_valid_during_key_exchange</a>,</li>
+                
+                <li><a href="#M000982">test_allowed_packets</a>,</li>
+                
+                <li><a href="#M000983">test_constructor_should_build_default_list_of_preferred_algorithms</a>,</li>
+                
+                <li><a href="#M000984">test_constructor_should_set_client_and_server_prefs_identically</a>,</li>
+                
+                <li><a href="#M001006">test_constructor_with_general_preferred_compression_should_put_none_last</a>,</li>
+                
+                <li><a href="#M000986">test_constructor_with_known_hosts_reporting_known_host_key_should_use_that_host_key_type</a>,</li>
+                
+                <li><a href="#M001005">test_constructor_with_multiple_preferred_compression_should_put_all_preferred_compression_first</a>,</li>
+                
+                <li><a href="#M000991">test_constructor_with_multiple_preferred_encryption_should_put_all_preferred_encryption_first</a>,</li>
+                
+                <li><a href="#M000996">test_constructor_with_multiple_preferred_hmac_should_put_all_preferred_hmac_first</a>,</li>
+                
+                <li><a href="#M001004">test_constructor_with_preferred_compression_should_put_preferred_compression_first</a>,</li>
+                
+                <li><a href="#M000990">test_constructor_with_preferred_encryption_should_put_preferred_encryption_first</a>,</li>
+                
+                <li><a href="#M000995">test_constructor_with_preferred_hmac_should_put_preferred_hmac_first</a>,</li>
+                
+                <li><a href="#M000985">test_constructor_with_preferred_host_key_type_should_put_preferred_host_key_type_first</a>,</li>
+                
+                <li><a href="#M000988">test_constructor_with_preferred_kex_should_put_preferred_kex_first</a>,</li>
+                
+                <li><a href="#M001007">test_constructor_with_unrecognized_compression_should_raise_exception</a>,</li>
+                
+                <li><a href="#M000992">test_constructor_with_unrecognized_encryption_should_raise_exception</a>,</li>
+                
+                <li><a href="#M000997">test_constructor_with_unrecognized_hmac_should_raise_exception</a>,</li>
+                
+                <li><a href="#M000987">test_constructor_with_unrecognized_host_key_type_should_raise_exception</a>,</li>
+                
+                <li><a href="#M000989">test_constructor_with_unrecognized_kex_should_raise_exception</a>,</li>
+                
+                <li><a href="#M001032">test_exchange_with_zlib_at_openssh_dot_com_compression_enabled_sets_compression_to_delayed</a>,</li>
+                
+                <li><a href="#M001031">test_exchange_with_zlib_compression_enabled_sets_compression_to_standard</a>,</li>
+                
+                <li><a href="#M001008">test_initial_state_should_be_neither_pending_nor_initialized</a>,</li>
+                
+                <li><a href="#M001010">test_key_exchange_when_initiated_by_client</a>,</li>
+                
+                <li><a href="#M001009">test_key_exchange_when_initiated_by_server</a>,</li>
+                
+                <li><a href="#M001022">test_key_exchange_when_server_does_not_support_any_preferred_kex_should_raise_error</a>,</li>
+                
+                <li><a href="#M001016">test_key_exchange_when_server_does_not_support_preferred_kex_should_fallback_to_secondary</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001023">
+                    
+                    <a name="M001023"></a><b>test_allow_when_not_pending_should_be_true_for_all_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001023_source')" id="l_M001023_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L146" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001023_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 146</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_allow_when_not_pending_should_be_true_for_all_packets</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">255</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">stub</span>(<span class="ruby-value str">&quot;packet&quot;</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span>)
+        <span class="ruby-identifier">assert</span> <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">allow?</span>(<span class="ruby-identifier">packet</span>), <span class="ruby-identifier">type</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001024">
+                    
+                    <a name="M001024"></a><b>test_allow_when_pending_should_be_true_only_for_packets_valid_during_key_exchange</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001024_source')" id="l_M001024_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001024_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 153</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_allow_when_pending_should_be_true_only_for_packets_valid_during_key_exchange</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect!</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">rekey!</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">pending?</span>
+
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">255</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">stub</span>(<span class="ruby-value str">&quot;packet&quot;</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span>)
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>, <span class="ruby-value">6</span><span class="ruby-operator">..</span><span class="ruby-value">19</span>, <span class="ruby-value">21</span><span class="ruby-operator">..</span><span class="ruby-value">49</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">assert</span>(<span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">allow?</span>(<span class="ruby-identifier">packet</span>), <span class="ruby-node">&quot;#{type} should be allowed during key exchange&quot;</span>)
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">assert</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">allow?</span>(<span class="ruby-identifier">packet</span>), <span class="ruby-node">&quot;#{type} should not be allowed during key exchange&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000982">
+                    
+                    <a name="M000982"></a><b>test_allowed_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000982_source')" id="l_M000982_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L9" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000982_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 9</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_allowed_packets</span>
+      (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">255</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">stub</span>(<span class="ruby-value str">&quot;packet&quot;</span>, <span class="ruby-identifier">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span>)
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>, <span class="ruby-value">6</span><span class="ruby-operator">..</span><span class="ruby-value">19</span>, <span class="ruby-value">21</span><span class="ruby-operator">..</span><span class="ruby-value">49</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">assert</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">Algorithms</span>.<span class="ruby-identifier">allowed_packet?</span>(<span class="ruby-identifier">packet</span>), <span class="ruby-node">&quot;#{type} should be allowed during key exchange&quot;</span>)
+        <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">assert</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">Algorithms</span>.<span class="ruby-identifier">allowed_packet?</span>(<span class="ruby-identifier">packet</span>), <span class="ruby-node">&quot;#{type} should not be allowed during key exchange&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000983">
+                    
+                    <a name="M000983"></a><b>test_constructor_should_build_default_list_of_preferred_algorithms</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000983_source')" id="l_M000983_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000983_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_should_build_default_list_of_preferred_algorithms</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(ssh-rsa ssh-dss)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:host_key</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(diffie-hellman-group-exchange-sha1 diffie-hellman-group1-sha1)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:kex</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(aes128-cbc 3des-cbc blowfish-cbc cast128-cbc aes192-cbc aes256-cbc rijndael-cbc@lysator.liu.se idea-cbc none arcfour128 arcfour256)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:encryption</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(hmac-sha1 hmac-md5 hmac-sha1-96 hmac-md5-96 none)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:hmac</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(none zlib@openssh.com zlib)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:compression</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w()</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:language</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000984">
+                    
+                    <a name="M000984"></a><b>test_constructor_should_set_client_and_server_prefs_identically</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000984_source')" id="l_M000984_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000984_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 28</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_should_set_client_and_server_prefs_identically</span>
+      <span class="ruby-node">%w(encryption hmac compression language)</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>], <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:&quot;#{key}_client&quot;</span>], <span class="ruby-identifier">key</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>], <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:&quot;#{key}_server&quot;</span>], <span class="ruby-identifier">key</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001006">
+                    
+                    <a name="M001006"></a><b>test_constructor_with_general_preferred_compression_should_put_none_last</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001006_source')" id="l_M001006_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L88" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001006_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 88</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_general_preferred_compression_should_put_none_last</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(zlib@openssh.com zlib none)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000986">
+                    
+                    <a name="M000986"></a><b>test_constructor_with_known_hosts_reporting_known_host_key_should_use_that_host_key_type</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000986_source')" id="l_M000986_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000986_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 39</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_known_hosts_reporting_known_host_key_should_use_that_host_key_type</span>
+      <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KnownHosts</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:search_for</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;net.ssh.test,127.0.0.1&quot;</span>, {}).<span class="ruby-identifier">returns</span>([<span class="ruby-identifier">stub</span>(<span class="ruby-value str">&quot;key&quot;</span>, <span class="ruby-identifier">:ssh_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;ssh-dss&quot;</span>)])
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(ssh-dss ssh-rsa)</span>, <span class="ruby-identifier">algorithms</span>[<span class="ruby-identifier">:host_key</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001005">
+                    
+                    <a name="M001005"></a><b>test_constructor_with_multiple_preferred_compression_should_put_all_preferred_compression_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001005_source')" id="l_M001005_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L84" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001005_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 84</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_multiple_preferred_compression_should_put_all_preferred_compression_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(zlib@openssh.com zlib none)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(zlib@openssh.com zlib)</span>)[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000991">
+                    
+                    <a name="M000991"></a><b>test_constructor_with_multiple_preferred_encryption_should_put_all_preferred_encryption_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000991_source')" id="l_M000991_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L60" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000991_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 60</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_multiple_preferred_encryption_should_put_all_preferred_encryption_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(aes256-cbc 3des-cbc idea-cbc aes128-cbc blowfish-cbc cast128-cbc aes192-cbc rijndael-cbc@lysator.liu.se none arcfour128 arcfour256)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:encryption</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(aes256-cbc 3des-cbc idea-cbc)</span>)[<span class="ruby-identifier">:encryption</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000996">
+                    
+                    <a name="M000996"></a><b>test_constructor_with_multiple_preferred_hmac_should_put_all_preferred_hmac_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000996_source')" id="l_M000996_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000996_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_multiple_preferred_hmac_should_put_all_preferred_hmac_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(hmac-md5-96 hmac-sha1-96 hmac-sha1 hmac-md5 none)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">%w(hmac-md5-96 hmac-sha1-96)</span>)[<span class="ruby-identifier">:hmac</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001004">
+                    
+                    <a name="M001004"></a><b>test_constructor_with_preferred_compression_should_put_preferred_compression_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001004_source')" id="l_M001004_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001004_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 80</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_preferred_compression_should_put_preferred_compression_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(zlib none zlib@openssh.com)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib&quot;</span>)[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000990">
+                    
+                    <a name="M000990"></a><b>test_constructor_with_preferred_encryption_should_put_preferred_encryption_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000990_source')" id="l_M000990_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000990_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_preferred_encryption_should_put_preferred_encryption_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(aes256-cbc aes128-cbc 3des-cbc blowfish-cbc cast128-cbc aes192-cbc rijndael-cbc@lysator.liu.se idea-cbc none arcfour128 arcfour256)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:encryption</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;aes256-cbc&quot;</span>)[<span class="ruby-identifier">:encryption</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000995">
+                    
+                    <a name="M000995"></a><b>test_constructor_with_preferred_hmac_should_put_preferred_hmac_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000995_source')" id="l_M000995_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000995_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_preferred_hmac_should_put_preferred_hmac_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(hmac-md5-96 hmac-sha1 hmac-md5 hmac-sha1-96 none)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;hmac-md5-96&quot;</span>)[<span class="ruby-identifier">:hmac</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000985">
+                    
+                    <a name="M000985"></a><b>test_constructor_with_preferred_host_key_type_should_put_preferred_host_key_type_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000985_source')" id="l_M000985_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000985_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 35</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_preferred_host_key_type_should_put_preferred_host_key_type_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(ssh-dss ssh-rsa)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:host_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;ssh-dss&quot;</span>)[<span class="ruby-identifier">:host_key</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000988">
+                    
+                    <a name="M000988"></a><b>test_constructor_with_preferred_kex_should_put_preferred_kex_first</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000988_source')" id="l_M000988_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000988_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 48</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_preferred_kex_should_put_preferred_kex_first</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-node">%w(diffie-hellman-group1-sha1 diffie-hellman-group-exchange-sha1)</span>, <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:kex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;diffie-hellman-group1-sha1&quot;</span>)[<span class="ruby-identifier">:kex</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001007">
+                    
+                    <a name="M001007"></a><b>test_constructor_with_unrecognized_compression_should_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001007_source')" id="l_M001007_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001007_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 92</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_unrecognized_compression_should_raise_exception</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bogus&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000992">
+                    
+                    <a name="M000992"></a><b>test_constructor_with_unrecognized_encryption_should_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000992_source')" id="l_M000992_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L64" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000992_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 64</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_unrecognized_encryption_should_raise_exception</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:encryption</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bogus&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000997">
+                    
+                    <a name="M000997"></a><b>test_constructor_with_unrecognized_hmac_should_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000997_source')" id="l_M000997_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L76" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000997_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 76</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_unrecognized_hmac_should_raise_exception</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bogus&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000987">
+                    
+                    <a name="M000987"></a><b>test_constructor_with_unrecognized_host_key_type_should_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000987_source')" id="l_M000987_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000987_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_unrecognized_host_key_type_should_raise_exception</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:host_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bogus&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000989">
+                    
+                    <a name="M000989"></a><b>test_constructor_with_unrecognized_kex_should_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000989_source')" id="l_M000989_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000989_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 52</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_with_unrecognized_kex_should_raise_exception</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">algorithms</span>(<span class="ruby-identifier">:kex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;bogus&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001032">
+                    
+                    <a name="M001032"></a><b>test_exchange_with_zlib_at_openssh_dot_com_compression_enabled_sets_compression_to_delayed</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001032_source')" id="l_M001032_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L182" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001032_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 182</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exchange_with_zlib_at_openssh_dot_com_compression_enabled_sets_compression_to_delayed</span>
+      <span class="ruby-identifier">algorithms</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib@openssh.com&quot;</span>
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">:compression_client</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib@openssh.com,none,zlib&quot;</span>, <span class="ruby-identifier">:compression_server</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib@openssh.com,none,zlib&quot;</span>)
+        <span class="ruby-identifier">install_mock_key_exchange</span>(<span class="ruby-identifier">buffer</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">install_mock_algorithm_lookups</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>)
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:delayed</span>, <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">client_options</span>[<span class="ruby-identifier">:compression</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:delayed</span>, <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">server_options</span>[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001031">
+                    
+                    <a name="M001031"></a><b>test_exchange_with_zlib_compression_enabled_sets_compression_to_standard</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001031_source')" id="l_M001031_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L167" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001031_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 167</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_exchange_with_zlib_compression_enabled_sets_compression_to_standard</span>
+      <span class="ruby-identifier">algorithms</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib&quot;</span>
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">:compression_client</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib,none,zlib@openssh.com&quot;</span>, <span class="ruby-identifier">:compression_server</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;zlib,none,zlib@openssh.com&quot;</span>)
+        <span class="ruby-identifier">install_mock_key_exchange</span>(<span class="ruby-identifier">buffer</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">install_mock_algorithm_lookups</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>)
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:standard</span>, <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">client_options</span>[<span class="ruby-identifier">:compression</span>]
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:standard</span>, <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">server_options</span>[<span class="ruby-identifier">:compression</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001008">
+                    
+                    <a name="M001008"></a><b>test_initial_state_should_be_neither_pending_nor_initialized</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001008_source')" id="l_M001008_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L96" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001008_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 96</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_initial_state_should_be_neither_pending_nor_initialized</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">pending?</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">initialized?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001010">
+                    
+                    <a name="M001010"></a><b>test_key_exchange_when_initiated_by_client</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001010_source')" id="l_M001010_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L113" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001010_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 113</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_key_exchange_when_initiated_by_client</span>
+      <span class="ruby-identifier">state</span> = <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-identifier">state</span> = <span class="ruby-identifier">:sent_kexinit</span>
+        <span class="ruby-identifier">install_mock_key_exchange</span>(<span class="ruby-identifier">buffer</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">rekey!</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">state</span>, <span class="ruby-identifier">:sent_kexinit</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">pending?</span>
+
+      <span class="ruby-identifier">install_mock_algorithm_lookups</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>)
+
+      <span class="ruby-identifier">assert_exchange_results</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001009">
+                    
+                    <a name="M001009"></a><b>test_key_exchange_when_initiated_by_server</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001009_source')" id="l_M001009_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L101" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001009_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 101</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_key_exchange_when_initiated_by_server</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-identifier">install_mock_key_exchange</span>(<span class="ruby-identifier">buffer</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">install_mock_algorithm_lookups</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>)
+
+      <span class="ruby-identifier">assert_exchange_results</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001022">
+                    
+                    <a name="M001022"></a><b>test_key_exchange_when_server_does_not_support_any_preferred_kex_should_raise_error</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001022_source')" id="l_M001022_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001022_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 140</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_key_exchange_when_server_does_not_support_any_preferred_kex_should_raise_error</span>
+      <span class="ruby-identifier">kexinit</span> <span class="ruby-identifier">:kex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;something-obscure&quot;</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span> <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>) }
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>) { <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001016">
+                    
+                    <a name="M001016"></a><b>test_key_exchange_when_server_does_not_support_preferred_kex_should_fallback_to_secondary</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001016_source')" id="l_M001016_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/588947682890a2c8559525f4c89d821b0ed730a3/test/transport/test_algorithms.rb#L131" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001016_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_algorithms.rb, line 131</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_key_exchange_when_server_does_not_support_preferred_kex_should_fallback_to_secondary</span>
+      <span class="ruby-identifier">kexinit</span> <span class="ruby-identifier">:kex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;diffie-hellman-group1-sha1&quot;</span>
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">t</span>,<span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_kexinit</span>(<span class="ruby-identifier">buffer</span>)
+        <span class="ruby-identifier">install_mock_key_exchange</span>(<span class="ruby-identifier">buffer</span>, <span class="ruby-identifier">:kex</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">Kex</span><span class="ruby-operator">::</span><span class="ruby-constant">DiffieHellmanGroup1SHA1</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">accept_kexinit</span>(<span class="ruby-identifier">kexinit</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

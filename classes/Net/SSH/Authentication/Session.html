@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Authentication::Session</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Authentication::Session 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/lib/net/ssh/authentication/session_rb.html">lib/net/ssh/authentication/session.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+Represents an authentication session. It manages the authentication of a
+user over an established connection (the &#8220;transport&#8221; object,
+see <a href="../Transport/Session.html">Net::SSH::Transport::Session</a>).
+</p>
+<p>
+The use of an authentication session to manage user authentication is
+internal to <a href="../../SSH.html">Net::SSH</a> (specifically <a
+href="../../SSH.html#M000418">Net::SSH.start</a>). Consumers of the <a
+href="../../SSH.html">Net::SSH</a> library will never need to access this
+class directly.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>A</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000045">authenticate</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000057">expect_message</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000044">new</a>,</li>
+                
+                <li><a href="#M000050">next_message</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <span>Transport::Constants</span>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="../Authentication.html">Net::SSH::Authentication</a>
+            
+            START:includes
+        </li>
+        
+        <li>
+            
+            <a href="../../SSH.html">Net::SSH</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>transport</td>
+            <td class='attr-desc'><p>
+transport layer abstraction
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>auth_methods</td>
+            <td class='attr-desc'><p>
+the list of authentication methods to try
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>allowed_auth_methods</td>
+            <td class='attr-desc'><p>
+the list of authentication methods that are allowed
+</p></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>options</td>
+            <td class='attr-desc'><p>
+a hash of options, given at construction time
+</p></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000044">
+                    
+                    <a name="M000044"></a><b>new</b>(transport, options={})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Instantiates a new <a href="Session.html">Authentication::Session</a>
+object over the given transport layer abstraction.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000044_source')" id="l_M000044_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/authentication/session.rb#L36" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000044_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/session.rb, line 36</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">transport</span>, <span class="ruby-identifier">options</span>={})
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">logger</span>
+      <span class="ruby-ivar">@transport</span> = <span class="ruby-identifier">transport</span>
+
+      <span class="ruby-ivar">@auth_methods</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">||</span> <span class="ruby-node">%w(publickey hostbased password keyboard-interactive)</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
+
+      <span class="ruby-ivar">@allowed_auth_methods</span> = <span class="ruby-ivar">@auth_methods</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000045">
+                    
+                    <a name="M000045"></a><b>authenticate</b>(next_service, username, password=nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Attempts to authenticate the given user, in preparation for the next
+service request. Returns true if an authentication method succeeds in
+authenticating the user, and false otherwise.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000045_source')" id="l_M000045_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/authentication/session.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000045_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/session.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">next_service</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;beginning authentication of `#{username}'&quot;</span> }
+
+      <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">transport</span>.<span class="ruby-identifier">service_request</span>(<span class="ruby-value str">&quot;ssh-userauth&quot;</span>))
+      <span class="ruby-identifier">message</span> = <span class="ruby-identifier">expect_message</span>(<span class="ruby-constant">SERVICE_ACCEPT</span>)
+
+      <span class="ruby-identifier">key_manager</span> = <span class="ruby-constant">KeyManager</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">logger</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">key</span>) } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">key_data</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key2</span><span class="ruby-operator">|</span> <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">add_key_data</span>(<span class="ruby-identifier">key2</span>) } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key_data</span>.<span class="ruby-identifier">empty?</span>
+
+      <span class="ruby-identifier">attempted</span> = []
+
+      <span class="ruby-ivar">@auth_methods</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@allowed_auth_methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-identifier">attempted</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+
+        <span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;trying #{name}&quot;</span> }
+        <span class="ruby-identifier">method</span> = <span class="ruby-constant">Methods</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\W+/</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">capitalize</span> }.<span class="ruby-identifier">join</span>).<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-identifier">:key_manager</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">key_manager</span>)
+
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">method</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">next_service</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">error</span> { <span class="ruby-node">&quot;all authorization methods failed (tried #{attempted.join(', ')})&quot;</span> }
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-identifier">key_manager</span>.<span class="ruby-identifier">finish</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key_manager</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000057">
+                    
+                    <a name="M000057"></a><b>expect_message</b>(type)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Blocks until a packet is received, and returns it if it is of the given
+type. If it is not, an exception is raised.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000057_source')" id="l_M000057_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/authentication/session.rb#L109" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000057_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/session.rb, line 109</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">expect_message</span>(<span class="ruby-identifier">type</span>)
+      <span class="ruby-identifier">message</span> = <span class="ruby-identifier">next_message</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">message</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;expected #{type}, got #{message.type} (#{message})&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000050">
+                    
+                    <a name="M000050"></a><b>next_message</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Blocks until a packet is received. It silently handles USERAUTH_BANNER
+packets, and will raise an error if any packet is received that is not
+valid during user authentication.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000050_source')" id="l_M000050_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/authentication/session.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000050_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/authentication/session.rb, line 80</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">next_message</span>
+      <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">packet</span> = <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">next_message</span>
+
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">packet</span>.<span class="ruby-identifier">type</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">USERAUTH_BANNER</span>
+          <span class="ruby-identifier">info</span> { <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:message</span>] }
+          <span class="ruby-comment cmt"># TODO add a hook for people to retrieve the banner when it is sent</span>
+
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">USERAUTH_FAILURE</span>
+          <span class="ruby-ivar">@allowed_auth_methods</span> = <span class="ruby-identifier">packet</span>[<span class="ruby-identifier">:authentications</span>].<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+          <span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;allowed methods: #{packet[:authentications]}&quot;</span> }
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">packet</span>
+
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">USERAUTH_METHOD_RANGE</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">packet</span>
+
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">USERAUTH_SUCCESS</span>
+          <span class="ruby-identifier">transport</span>.<span class="ruby-identifier">hint</span> <span class="ruby-identifier">:authenticated</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">packet</span>
+
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;unexpected message #{packet.type} (#{packet})&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

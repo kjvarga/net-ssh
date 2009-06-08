@@ -1,0 +1,1404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::TestSession</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::TestSession 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/transport/test_session_rb.html">test/transport/test_session.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001088">test_close_should_cleanup_and_close_socket</a>,</li>
+                
+                <li><a href="#M001131">test_configure_client_should_pass_options_to_socket_client_state</a>,</li>
+                
+                <li><a href="#M001132">test_configure_server_should_pass_options_to_socket_server_state</a>,</li>
+                
+                <li><a href="#M001072">test_constructor_defaults</a>,</li>
+                
+                <li><a href="#M001130">test_enqueue_message_should_delegate_to_socket</a>,</li>
+                
+                <li><a href="#M001133">test_hint_should_set_hint_on_socket</a>,</li>
+                
+                <li><a href="#M001080">test_host_as_string_should_return_host_and_ip_when_port_is_default</a>,</li>
+                
+                <li><a href="#M001081">test_host_as_string_should_return_host_and_ip_with_port_when_port_is_not_default</a>,</li>
+                
+                <li><a href="#M001087">test_host_as_string_should_return_only_host_and_port_when_host_is_ip_and_port_is_not_default</a>,</li>
+                
+                <li><a href="#M001082">test_host_as_string_should_return_only_host_when_host_is_ip</a>,</li>
+                
+                <li><a href="#M001105">test_next_message_should_block_until_next_message_is_available</a>,</li>
+                
+                <li><a href="#M001075">test_paranoid_false_uses_null_verifier</a>,</li>
+                
+                <li><a href="#M001073">test_paranoid_true_uses_lenient_verifier</a>,</li>
+                
+                <li><a href="#M001079">test_paranoid_value_responding_to_verify_should_pass_muster</a>,</li>
+                
+                <li><a href="#M001074">test_paranoid_very_uses_strict_verifier</a>,</li>
+                
+                <li><a href="#M001101">test_peer_should_return_hash_of_info_about_peer</a>,</li>
+                
+                <li><a href="#M001107">test_poll_message_should_default_to_non_blocking</a>,</li>
+                
+                <li><a href="#M001120">test_poll_message_should_enqueue_packets_when_algorithm_disallows_packet</a>,</li>
+                
+                <li><a href="#M001123">test_poll_message_should_not_read_from_queue_when_consume_queue_is_false</a>,</li>
+                
+                <li><a href="#M001122">test_poll_message_should_not_read_from_queue_when_next_in_queue_is_not_allowed</a>,</li>
+                
+                <li><a href="#M001106">test_poll_message_should_query_next_packet_using_the_given_blocking_parameter</a>,</li>
+                
+                <li><a href="#M001121">test_poll_message_should_read_from_queue_when_next_in_queue_is_allowed_and_consume_queue_is_true</a>,</li>
+                
+                <li><a href="#M001119">test_poll_message_should_return_other_packets</a>,</li>
+                
+                <li><a href="#M001113">test_poll_message_should_silently_handle_debug_packets_with_always_display</a>,</li>
+                
+                <li><a href="#M001117">test_poll_message_should_silently_handle_debug_packets_without_always_display</a>,</li>
+                
+                <li><a href="#M001108">test_poll_message_should_silently_handle_disconnect_packets</a>,</li>
+                
+                <li><a href="#M001111">test_poll_message_should_silently_handle_ignore_packets</a>,</li>
+                
+                <li><a href="#M001118">test_poll_message_should_silently_handle_kexinit_packets</a>,</li>
+                
+                <li><a href="#M001112">test_poll_message_should_silently_handle_unimplemented_packets</a>,</li>
+                
+                <li><a href="#M001128">test_push_should_enqueue_packet</a>,</li>
+                
+                <li><a href="#M001095">test_rekey_as_needed_when_kex_is_pending_should_do_nothing</a>,</li>
+                
+                <li><a href="#M001096">test_rekey_as_needed_when_no_kex_is_pending_and_no_rekey_is_needed_should_do_nothing</a>,</li>
+                
+                <li><a href="#M001097">test_rekey_as_needed_when_no_kex_is_pending_and_rekey_is_needed_should_initiate_rekey_and_block</a>,</li>
+                
+                <li><a href="#M001090">test_rekey_when_kex_is_pending_should_do_nothing</a>,</li>
+                
+                <li><a href="#M001091">test_rekey_when_no_kex_is_pending_should_initiate_rekey_and_block_until_it_completes</a>,</li>
+                
+                <li><a href="#M001129">test_send_message_should_delegate_to_socket</a>,</li>
+                
+                <li><a href="#M001089">test_service_request_should_return_buffer</a>,</li>
+                
+                <li><a href="#M001076">test_unknown_paranoid_value_raises_exception_if_value_does_not_respond_to_verify</a>,</li>
+                
+                <li><a href="#M001127">test_wait_should_enqueue_packets</a>,</li>
+                
+                <li><a href="#M001125">test_wait_should_not_consume_queue_on_reads</a>,</li>
+                
+                <li><a href="#M001124">test_wait_with_block_should_return_immediately_if_block_returns_truth</a>,</li>
+                
+                <li><a href="#M001126">test_wait_without_block_should_return_after_first_read</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <a href="../Net.html">Net</a>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001088">
+                    
+                    <a name="M001088"></a><b>test_close_should_cleanup_and_close_socket</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001088_source')" id="l_M001088_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L68" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001088_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 68</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_close_should_cleanup_and_close_socket</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:cleanup</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:close</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001131">
+                    
+                    <a name="M001131"></a><b>test_configure_client_should_pass_options_to_socket_client_state</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001131_source')" id="l_M001131_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L269" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001131_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 269</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_configure_client_should_pass_options_to_socket_client_state</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">configure_client</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:standard</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:standard</span>, <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">client</span>.<span class="ruby-identifier">compression</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001132">
+                    
+                    <a name="M001132"></a><b>test_configure_server_should_pass_options_to_socket_server_state</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001132_source')" id="l_M001132_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L274" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001132_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 274</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_configure_server_should_pass_options_to_socket_server_state</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">configure_server</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:standard</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:standard</span>, <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">server</span>.<span class="ruby-identifier">compression</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001072">
+                    
+                    <a name="M001072"></a><b>test_constructor_defaults</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001072_source')" id="l_M001072_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001072_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_defaults</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;net.ssh.test&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">22</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">port</span>
+      <span class="ruby-identifier">assert_instance_of</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Verifiers</span><span class="ruby-operator">::</span><span class="ruby-constant">Lenient</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_key_verifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001130">
+                    
+                    <a name="M001130"></a><b>test_enqueue_message_should_delegate_to_socket</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001130_source')" id="l_M001130_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L262" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001130_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 262</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_enqueue_message_should_delegate_to_socket</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:enqueue_packet</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">enqueue_message</span>(<span class="ruby-identifier">packet</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001133">
+                    
+                    <a name="M001133"></a><b>test_hint_should_set_hint_on_socket</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001133_source')" id="l_M001133_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L279" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001133_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 279</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_hint_should_set_hint_on_socket</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">socket</span>.<span class="ruby-identifier">hints</span>[<span class="ruby-identifier">:authenticated</span>]
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">hint</span> <span class="ruby-identifier">:authenticated</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">hints</span>[<span class="ruby-identifier">:authenticated</span>]
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001080">
+                    
+                    <a name="M001080"></a><b>test_host_as_string_should_return_host_and_ip_when_port_is_default</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001080_source')" id="l_M001080_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L44" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001080_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 44</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_host_as_string_should_return_host_and_ip_when_port_is_default</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:peer_ip</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;net.ssh.test,1.2.3.4&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_as_string</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001081">
+                    
+                    <a name="M001081"></a><b>test_host_as_string_should_return_host_and_ip_with_port_when_port_is_not_default</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001081_source')" id="l_M001081_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L50" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001081_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 50</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_host_as_string_should_return_host_and_ip_with_port_when_port_is_not_default</span>
+      <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1234</span>) <span class="ruby-comment cmt"># force session to be instantiated</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:peer_ip</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;[net.ssh.test]:1234,[1.2.3.4]:1234&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_as_string</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001087">
+                    
+                    <a name="M001087"></a><b>test_host_as_string_should_return_only_host_and_port_when_host_is_ip_and_port_is_not_default</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001087_source')" id="l_M001087_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L62" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001087_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 62</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_host_as_string_should_return_only_host_and_port_when_host_is_ip_and_port_is_not_default</span>
+      <span class="ruby-identifier">session!</span>(<span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.2.3.4&quot;</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1234</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:peer_ip</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;[1.2.3.4]:1234&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_as_string</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001082">
+                    
+                    <a name="M001082"></a><b>test_host_as_string_should_return_only_host_when_host_is_ip</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001082_source')" id="l_M001082_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L56" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001082_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 56</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_host_as_string_should_return_only_host_when_host_is_ip</span>
+      <span class="ruby-identifier">session!</span>(<span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:peer_ip</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;1.2.3.4&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">host_as_string</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001105">
+                    
+                    <a name="M001105"></a><b>test_next_message_should_block_until_next_message_is_available</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001105_source')" id="l_M001105_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L122" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001105_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 122</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_next_message_should_block_until_next_message_is_available</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:poll_message</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">:block</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">next_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001075">
+                    
+                    <a name="M001075"></a><b>test_paranoid_false_uses_null_verifier</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001075_source')" id="l_M001075_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001075_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_paranoid_false_uses_null_verifier</span>
+      <span class="ruby-identifier">assert_instance_of</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Verifiers</span><span class="ruby-operator">::</span><span class="ruby-constant">Null</span>, <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:paranoid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">host_key_verifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001073">
+                    
+                    <a name="M001073"></a><b>test_paranoid_true_uses_lenient_verifier</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001073_source')" id="l_M001073_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001073_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_paranoid_true_uses_lenient_verifier</span>
+      <span class="ruby-identifier">assert_instance_of</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Verifiers</span><span class="ruby-operator">::</span><span class="ruby-constant">Lenient</span>, <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:paranoid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">host_key_verifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001079">
+                    
+                    <a name="M001079"></a><b>test_paranoid_value_responding_to_verify_should_pass_muster</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001079_source')" id="l_M001079_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001079_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 39</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_paranoid_value_responding_to_verify_should_pass_muster</span>
+      <span class="ruby-identifier">object</span> = <span class="ruby-identifier">stub</span>(<span class="ruby-value str">&quot;thingy&quot;</span>, <span class="ruby-identifier">:verify</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">object</span>, <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:paranoid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">object</span>).<span class="ruby-identifier">host_key_verifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001074">
+                    
+                    <a name="M001074"></a><b>test_paranoid_very_uses_strict_verifier</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001074_source')" id="l_M001074_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001074_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_paranoid_very_uses_strict_verifier</span>
+      <span class="ruby-identifier">assert_instance_of</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Verifiers</span><span class="ruby-operator">::</span><span class="ruby-constant">Strict</span>, <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:paranoid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:very</span>).<span class="ruby-identifier">host_key_verifier</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001101">
+                    
+                    <a name="M001101"></a><b>test_peer_should_return_hash_of_info_about_peer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001101_source')" id="l_M001101_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001101_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 116</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_peer_should_return_hash_of_info_about_peer</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:peer_ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.2.3.4&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span>({<span class="ruby-identifier">:ip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;1.2.3.4&quot;</span>, <span class="ruby-identifier">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">22</span>, <span class="ruby-identifier">:host</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;net.ssh.test&quot;</span>, <span class="ruby-identifier">:canonized</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;net.ssh.test,1.2.3.4&quot;</span>}, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">peer</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001107">
+                    
+                    <a name="M001107"></a><b>test_poll_message_should_default_to_non_blocking</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001107_source')" id="l_M001107_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L133" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001107_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 133</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_default_to_non_blocking</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">:nonblock</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001120">
+                    
+                    <a name="M001120"></a><b>test_poll_message_should_enqueue_packets_when_algorithm_disallows_packet</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001120_source')" id="l_M001120_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L184" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001120_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 184</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_enqueue_packets_when_algorithm_disallows_packet</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:allow?</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">packet</span>, <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">packet</span>], <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001123">
+                    
+                    <a name="M001123"></a><b>test_poll_message_should_not_read_from_queue_when_consume_queue_is_false</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001123_source')" id="l_M001123_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L212" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001123_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 212</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_not_read_from_queue_when_consume_queue_is_false</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>(<span class="ruby-identifier">:nonblock</span>, <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">packet</span>], <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001122">
+                    
+                    <a name="M001122"></a><b>test_poll_message_should_not_read_from_queue_when_next_in_queue_is_not_allowed</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001122_source')" id="l_M001122_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L202" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001122_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 202</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_not_read_from_queue_when_next_in_queue_is_not_allowed</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:allow?</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">packet</span>], <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001106">
+                    
+                    <a name="M001106"></a><b>test_poll_message_should_query_next_packet_using_the_given_blocking_parameter</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001106_source')" id="l_M001106_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L127" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001106_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 127</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_query_next_packet_using_the_given_blocking_parameter</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">:blocking_parameter</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>(<span class="ruby-identifier">:blocking_parameter</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001121">
+                    
+                    <a name="M001121"></a><b>test_poll_message_should_read_from_queue_when_next_in_queue_is_allowed_and_consume_queue_is_true</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001121_source')" id="l_M001121_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L193" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001121_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 193</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_read_from_queue_when_next_in_queue_is_allowed_and_consume_queue_is_true</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">packet</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001119">
+                    
+                    <a name="M001119"></a><b>test_poll_message_should_return_other_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001119_source')" id="l_M001119_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L177" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001119_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 177</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_return_other_packets</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">packet</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001113">
+                    
+                    <a name="M001113"></a><b>test_poll_message_should_silently_handle_debug_packets_with_always_display</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001113_source')" id="l_M001113_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L157" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001113_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 157</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_debug_packets_with_always_display</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">DEBUG</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;testing&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001117">
+                    
+                    <a name="M001117"></a><b>test_poll_message_should_silently_handle_debug_packets_without_always_display</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001117_source')" id="l_M001117_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L163" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001117_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 163</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_debug_packets_without_always_display</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">DEBUG</span>, <span class="ruby-identifier">:bool</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;testing&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001108">
+                    
+                    <a name="M001108"></a><b>test_poll_message_should_silently_handle_disconnect_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001108_source')" id="l_M001108_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L139" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001108_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 139</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_disconnect_packets</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">DISCONNECT</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;testing&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;&quot;</span>))
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Disconnect</span>) { <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001111">
+                    
+                    <a name="M001111"></a><b>test_poll_message_should_silently_handle_ignore_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001111_source')" id="l_M001111_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L145" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001111_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 145</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_ignore_packets</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">IGNORE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>), <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001118">
+                    
+                    <a name="M001118"></a><b>test_poll_message_should_silently_handle_kexinit_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001118_source')" id="l_M001118_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L169" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001118_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 169</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_kexinit_packets</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">KEXINIT</span>, <span class="ruby-identifier">:raw</span>, <span class="ruby-value str">&quot;lasdfalksdjfa;slkdfja;slkfjsdfaklsjdfa;df&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">packet</span>, <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:accept_kexinit</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001112">
+                    
+                    <a name="M001112"></a><b>test_poll_message_should_silently_handle_unimplemented_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001112_source')" id="l_M001112_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L151" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001112_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 151</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_poll_message_should_silently_handle_unimplemented_packets</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">UNIMPLEMENTED</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">15</span>), <span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">session</span>.<span class="ruby-identifier">poll_message</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001128">
+                    
+                    <a name="M001128"></a><b>test_push_should_enqueue_packet</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001128_source')" id="l_M001128_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L249" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001128_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 249</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_push_should_enqueue_packet</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">packet</span>], <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001095">
+                    
+                    <a name="M001095"></a><b>test_rekey_as_needed_when_kex_is_pending_should_do_nothing</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001095_source')" id="l_M001095_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L93" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001095_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 93</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rekey_as_needed_when_kex_is_pending_should_do_nothing</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:pending?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:if_needs_rekey?</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">rekey_as_needed</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001096">
+                    
+                    <a name="M001096"></a><b>test_rekey_as_needed_when_no_kex_is_pending_and_no_rekey_is_needed_should_do_nothing</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001096_source')" id="l_M001096_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L100" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001096_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 100</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rekey_as_needed_when_no_kex_is_pending_and_no_rekey_is_needed_should_do_nothing</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:pending?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:if_needs_rekey?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:rekey!</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">rekey_as_needed</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001097">
+                    
+                    <a name="M001097"></a><b>test_rekey_as_needed_when_no_kex_is_pending_and_rekey_is_needed_should_initiate_rekey_and_block</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001097_source')" id="l_M001097_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L108" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001097_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 108</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rekey_as_needed_when_no_kex_is_pending_and_rekey_is_needed_should_initiate_rekey_and_block</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:pending?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:if_needs_rekey?</span>).<span class="ruby-identifier">yields</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:rekey!</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">rekey_as_needed</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001090">
+                    
+                    <a name="M001090"></a><b>test_rekey_when_kex_is_pending_should_do_nothing</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001090_source')" id="l_M001090_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L79" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001090_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 79</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rekey_when_kex_is_pending_should_do_nothing</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:pending?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:rekey!</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">rekey!</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001091">
+                    
+                    <a name="M001091"></a><b>test_rekey_when_no_kex_is_pending_should_initiate_rekey_and_block_until_it_completes</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001091_source')" id="l_M001091_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L85" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001091_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 85</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_rekey_when_no_kex_is_pending_should_initiate_rekey_and_block_until_it_completes</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">stubs</span>(<span class="ruby-identifier">:pending?</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:rekey!</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:wait</span>).<span class="ruby-identifier">yields</span>
+      <span class="ruby-identifier">algorithms</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:initialized?</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">rekey!</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001129">
+                    
+                    <a name="M001129"></a><b>test_send_message_should_delegate_to_socket</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001129_source')" id="l_M001129_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L255" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001129_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 255</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_send_message_should_delegate_to_socket</span>
+      <span class="ruby-identifier">session!</span>
+      <span class="ruby-identifier">packet</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:send_packet</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">packet</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">send_message</span>(<span class="ruby-identifier">packet</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001089">
+                    
+                    <a name="M001089"></a><b>test_service_request_should_return_buffer</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001089_source')" id="l_M001089_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L75" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001089_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 75</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_service_request_should_return_buffer</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;\005\000\000\000\004sftp&quot;</span>, <span class="ruby-identifier">session</span>.<span class="ruby-identifier">service_request</span>(<span class="ruby-value str">'sftp'</span>).<span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001076">
+                    
+                    <a name="M001076"></a><b>test_unknown_paranoid_value_raises_exception_if_value_does_not_respond_to_verify</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001076_source')" id="l_M001076_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001076_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 35</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_unknown_paranoid_value_raises_exception_if_value_does_not_respond_to_verify</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) { <span class="ruby-identifier">session</span>(<span class="ruby-identifier">:paranoid</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:bogus</span>).<span class="ruby-identifier">host_key_verifier</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001127">
+                    
+                    <a name="M001127"></a><b>test_wait_should_enqueue_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001127_source')" id="l_M001127_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L237" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001127_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 237</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_should_enqueue_packets</span>
+      <span class="ruby-identifier">session!</span>
+
+      <span class="ruby-identifier">p1</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_REQUEST</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">p2</span> = <span class="ruby-constant">P</span>(<span class="ruby-identifier">:byte</span>, <span class="ruby-constant">SERVICE_ACCEPT</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;test&quot;</span>)
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:next_packet</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>)
+
+      <span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">wait</span> { (<span class="ruby-identifier">n</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> }
+      <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">p1</span>, <span class="ruby-identifier">p2</span>], <span class="ruby-identifier">session</span>.<span class="ruby-identifier">queue</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001125">
+                    
+                    <a name="M001125"></a><b>test_wait_should_not_consume_queue_on_reads</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001125_source')" id="l_M001125_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L226" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001125_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 226</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_should_not_consume_queue_on_reads</span>
+      <span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:poll_message</span>).<span class="ruby-identifier">with</span>(<span class="ruby-identifier">:nonblock</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">wait</span> { (<span class="ruby-identifier">n</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>) <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001124">
+                    
+                    <a name="M001124"></a><b>test_wait_with_block_should_return_immediately_if_block_returns_truth</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001124_source')" id="l_M001124_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L221" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001124_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 221</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_with_block_should_return_immediately_if_block_returns_truth</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:poll_message</span>).<span class="ruby-identifier">never</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">wait</span> { <span class="ruby-keyword kw">true</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001126">
+                    
+                    <a name="M001126"></a><b>test_wait_without_block_should_return_after_first_read</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001126_source')" id="l_M001126_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/test/transport/test_session.rb#L232" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001126_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_session.rb, line 232</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_wait_without_block_should_return_after_first_read</span>
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:poll_message</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">session</span>.<span class="ruby-identifier">wait</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::KeyFactory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::KeyFactory 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/net/ssh/key_factory_rb.html">lib/net/ssh/key_factory.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+A factory class for returning new Key classes. It is used for obtaining <a
+href="../../OpenSSL.html">OpenSSL</a> key instances via their <a
+href="../SSH.html">SSH</a> names, and for loading both public and private
+keys. It used used primarily by <a href="../SSH.html">Net::SSH</a> itself,
+internally, and will rarely (if ever) be directly used by consumers of the
+library.
+</p>
+<pre>
+  klass = Net::SSH::KeyFactory.get(&quot;rsa&quot;)
+  assert klass.is_a?(OpenSSL::PKey::RSA)
+
+  key = Net::SSH::KeyFacory.load_public_key(&quot;~/.ssh/id_dsa.pub&quot;)
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>G</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000175">get</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000177">load_data_private_key</a>,</li>
+                
+                <li><a href="#M000181">load_data_public_key</a>,</li>
+                
+                <li><a href="#M000176">load_private_key</a>,</li>
+                
+                <li><a href="#M000179">load_public_key</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <span>Prompt</span>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">MAP</td>
+            <td>=</td>
+            <td class="attr-value">{       &quot;dh&quot;  =&gt; OpenSSL::PKey::DH,       &quot;rsa&quot; =&gt; OpenSSL::PKey::RSA,       &quot;dsa&quot; =&gt; OpenSSL::PKey::DSA     }</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+Specifies the mapping of <a href="../SSH.html">SSH</a> names to <a
+href="../../OpenSSL.html">OpenSSL</a> key classes.
+</p>
+</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000175">
+                    
+                    <a name="M000175"></a><b>get</b>(name)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Fetch an <a href="../../OpenSSL.html">OpenSSL</a> key instance by its <a
+href="../SSH.html">SSH</a> name. It will be a new, empty key of the given
+type.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000175_source')" id="l_M000175_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/key_factory.rb#L28" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000175_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/key_factory.rb, line 28</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">name</span>)
+        <span class="ruby-constant">MAP</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">new</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000177">
+                    
+                    <a name="M000177"></a><b>load_data_private_key</b>(data, passphrase=nil, filename=&quot;&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Loads a private key. It will correctly determine whether the file describes
+an RSA or DSA key, and will load it appropriately. The new key is returned.
+If the key itself is encrypted (requiring a passphrase to use), the user
+will be prompted to enter their password unless passphrase works.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000177_source')" id="l_M000177_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/key_factory.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000177_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/key_factory.rb, line 47</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_data_private_key</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">passphrase</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">filename</span>=<span class="ruby-value str">&quot;&quot;</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/-----BEGIN DSA PRIVATE KEY-----/</span>)
+          <span class="ruby-identifier">key_type</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">DSA</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/-----BEGIN RSA PRIVATE KEY-----/</span>)
+          <span class="ruby-identifier">key_type</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSA</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/-----BEGIN (.*) PRIVATE KEY-----/</span>)
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">PKeyError</span>, <span class="ruby-node">&quot;not a supported key type '#{$1}'&quot;</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">PKeyError</span>, <span class="ruby-node">&quot;not a private key (#{filename})&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">encrypted_key</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/ENCRYPTED/</span>)
+        <span class="ruby-identifier">tries</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">key_type</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">passphrase</span> <span class="ruby-operator">||</span> <span class="ruby-value str">'invalid'</span>)
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSAError</span>, <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">DSAError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">encrypted_key</span>
+            <span class="ruby-identifier">tries</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">tries</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">3</span>
+              <span class="ruby-identifier">passphrase</span> = <span class="ruby-identifier">prompt</span>(<span class="ruby-node">&quot;Enter passphrase for #{filename}:&quot;</span>, <span class="ruby-keyword kw">false</span>)
+              <span class="ruby-keyword kw">retry</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">raise</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">raise</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000181">
+                    
+                    <a name="M000181"></a><b>load_data_public_key</b>(data, filename=&quot;&quot;)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Loads a public key. It will correctly determine whether the file describes
+an RSA or DSA key, and will load it appropriately. The new public key is
+returned.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000181_source')" id="l_M000181_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/key_factory.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000181_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/key_factory.rb, line 89</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_data_public_key</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">filename</span>=<span class="ruby-value str">&quot;&quot;</span>)
+        <span class="ruby-identifier">type</span>, <span class="ruby-identifier">blob</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/ /</span>)
+
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;public key at #{filename} is not valid&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">blob</span>.<span class="ruby-identifier">nil?</span>
+
+        <span class="ruby-identifier">blob</span> = <span class="ruby-identifier">blob</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;m*&quot;</span>).<span class="ruby-identifier">first</span>
+        <span class="ruby-identifier">reader</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">blob</span>)
+        <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">read_key</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">PKeyError</span>, <span class="ruby-node">&quot;not a public key #{filename.inspect}&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000176">
+                    
+                    <a name="M000176"></a><b>load_private_key</b>(filename, passphrase=nil)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Loads a private key from a file. It will correctly determine whether the
+file describes an RSA or DSA key, and will load it appropriately. The new
+key is returned. If the key itself is encrypted (requiring a passphrase to
+use), the user will be prompted to enter their password unless passphrase
+works.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000176_source')" id="l_M000176_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/key_factory.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000176_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/key_factory.rb, line 37</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_private_key</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">passphrase</span>=<span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-identifier">data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">filename</span>))
+        <span class="ruby-identifier">load_data_private_key</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">passphrase</span>, <span class="ruby-identifier">filename</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000179">
+                    
+                    <a name="M000179"></a><b>load_public_key</b>(filename)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Loads a public key from a file. It will correctly determine whether the
+file describes an RSA or DSA key, and will load it appropriately. The new
+public key is returned.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000179_source')" id="l_M000179_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b62f1092a09eaf54e3ba9f9c7f5d6b0d2cd2279a/lib/net/ssh/key_factory.rb#L81" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000179_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/key_factory.rb, line 81</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_public_key</span>(<span class="ruby-identifier">filename</span>)
+        <span class="ruby-identifier">data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">filename</span>))
+        <span class="ruby-identifier">load_data_public_key</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">filename</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

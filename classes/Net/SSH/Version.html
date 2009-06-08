@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Version</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Version 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/net/ssh/version_rb.html">lib/net/ssh/version.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+A class for describing the current version of a library. The version
+consists of three parts: the <tt>major</tt> number, the <tt>minor</tt>
+number, and the <tt>tiny</tt> (or <tt>patch</tt>) number.
+</p>
+<p>
+Two <a href="Version.html">Version</a> instances may be compared, so that
+you can test that a version of a library is what you require:
+</p>
+<pre>
+  require 'net/ssh/version'
+
+  if Net::SSH::Version::CURRENT &lt; Net::SSH::Version[2,1,0]
+    abort &quot;your software is too old!&quot;
+  end
+</pre>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>#</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000415"><=></a>,</li>
+                
+                <li><a href="#M000413">[]</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000414">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000417">to_i</a>,</li>
+                
+                <li><a href="#M000416">to_s</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+        
+        <li>
+            
+            <span>Comparable</span>
+            
+            START:includes
+        </li>
+        
+    </ul>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">MAJOR</td>
+            <td>=</td>
+            <td class="attr-value">2</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The major component of this version of the <a
+href="../SSH.html">Net::SSH</a> library
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">MINOR</td>
+            <td>=</td>
+            <td class="attr-value">0</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The minor component of this version of the <a
+href="../SSH.html">Net::SSH</a> library
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">TINY</td>
+            <td>=</td>
+            <td class="attr-value">12</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The tiny component of this version of the <a
+href="../SSH.html">Net::SSH</a> library
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">CURRENT</td>
+            <td>=</td>
+            <td class="attr-value">new(MAJOR, MINOR, TINY)</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The current version of the <a href="../SSH.html">Net::SSH</a> library as a
+<a href="Version.html">Version</a> instance
+</p>
+</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">STRING</td>
+            <td>=</td>
+            <td class="attr-value">CURRENT.to_s</td>
+        </tr>
+        
+        <tr valign='top'>
+            <td>&nbsp;</td>
+            <td colspan="2" class="attr-desc"><p>
+The current version of the <a href="../SSH.html">Net::SSH</a> library as a
+<a href="../../String.html">String</a>
+</p>
+</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+    <div class="sectiontitle">Attributes</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>major</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>minor</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+        <tr valign='top'>
+            <td class='attr-rw'>
+                [R]
+            </td>
+            <td class='attr-name'>tiny</td>
+            <td class='attr-desc'></td>
+        </tr>
+        
+    </table>
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000413">
+                    
+                    <a name="M000413"></a><b>[]</b>(major, minor, tiny)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+A convenience method for instantiating a new <a
+href="Version.html">Version</a> instance with the given <tt>major</tt>,
+<tt>minor</tt>, and <tt>tiny</tt> components.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000413_source')" id="l_M000413_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/3b0c3e592a5c57e59ac12372d0eb9ad8ddaeb60e/lib/net/ssh/version.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000413_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/version.rb, line 19</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span>, <span class="ruby-identifier">tiny</span>)
+      <span class="ruby-identifier">new</span>(<span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span>, <span class="ruby-identifier">tiny</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000414">
+                    
+                    <a name="M000414"></a><b>new</b>(major, minor, tiny)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Create a new <a href="Version.html">Version</a> object with the given
+components.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000414_source')" id="l_M000414_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/3b0c3e592a5c57e59ac12372d0eb9ad8ddaeb60e/lib/net/ssh/version.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000414_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/version.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span>, <span class="ruby-identifier">tiny</span>)
+      <span class="ruby-ivar">@major</span>, <span class="ruby-ivar">@minor</span>, <span class="ruby-ivar">@tiny</span> = <span class="ruby-identifier">major</span>, <span class="ruby-identifier">minor</span>, <span class="ruby-identifier">tiny</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000415">
+                    
+                    <a name="M000415"></a><b>&lt;=&gt;</b>(version)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Compare this version to the given <tt>version</tt> object.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000415_source')" id="l_M000415_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/3b0c3e592a5c57e59ac12372d0eb9ad8ddaeb60e/lib/net/ssh/version.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000415_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/version.rb, line 31</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">version</span>)
+      <span class="ruby-identifier">to_i</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">version</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000417">
+                    
+                    <a name="M000417"></a><b>to_i</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Converts this version to a canonical integer that may be compared against
+other version objects.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000417_source')" id="l_M000417_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/3b0c3e592a5c57e59ac12372d0eb9ad8ddaeb60e/lib/net/ssh/version.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000417_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/version.rb, line 43</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_i</span>
+      <span class="ruby-ivar">@to_i</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@major</span> <span class="ruby-operator">*</span> <span class="ruby-value">1_000_000</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@minor</span> <span class="ruby-operator">*</span> <span class="ruby-value">1_000</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@tiny</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000416">
+                    
+                    <a name="M000416"></a><b>to_s</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Converts this version object to a string, where each of the three version
+components are joined by the &#8217;.&#8217; character. E.g., 2.0.0.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000416_source')" id="l_M000416_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/3b0c3e592a5c57e59ac12372d0eb9ad8ddaeb60e/lib/net/ssh/version.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000416_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/version.rb, line 37</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+      <span class="ruby-ivar">@to_s</span> <span class="ruby-operator">||=</span> [<span class="ruby-ivar">@major</span>, <span class="ruby-ivar">@minor</span>, <span class="ruby-ivar">@tiny</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;.&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Net::SSH::Config</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Net::SSH::Config 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/lib/net/ssh/config_rb.html">lib/net/ssh/config.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+The <a href="Config.html">Net::SSH::Config</a> class is used to parse
+OpenSSH configuration files, and translates that syntax into the
+configuration syntax that <a href="../SSH.html">Net::SSH</a> understands.
+This lets <a href="../SSH.html">Net::SSH</a> scripts read their
+configuration (to some extent) from OpenSSH configuration files
+(~/.ssh/config, /etc/ssh_config, and so forth).
+</p>
+<p>
+Only a subset of OpenSSH configuration options are understood:
+</p>
+<ul>
+<li>Ciphers => maps to the :encryption option
+
+</li>
+<li>Compression => :compression
+
+</li>
+<li>CompressionLevel => :compression_level
+
+</li>
+<li>ConnectTimeout => maps to the :timeout option
+
+</li>
+<li>ForwardAgent => :forward_agent
+
+</li>
+<li>GlobalKnownHostsFile => :global_known_hosts_file
+
+</li>
+<li>HostBasedAuthentication => maps to the :auth_methods option
+
+</li>
+<li>HostKeyAlgorithms => maps to :host_key option
+
+</li>
+<li>HostKeyAlias => :host_key_alias
+
+</li>
+<li>HostName => :host_name
+
+</li>
+<li>IdentityFile => maps to the :keys option
+
+</li>
+<li>Macs => maps to the :hmac option
+
+</li>
+<li>PasswordAuthentication => maps to the :auth_methods option
+
+</li>
+<li>Port => :port
+
+</li>
+<li>PreferredAuthentications => maps to the :auth_methods option
+
+</li>
+<li>RekeyLimit => :rekey_limit
+
+</li>
+<li>User => :user
+
+</li>
+<li>UserKnownHostsFile => :user_known_hosts_file
+
+</li>
+</ul>
+<p>
+Note that you will never need to use this class directly&#8212;you can
+control whether the OpenSSH configuration files are read by passing the
+:config option to <a href="../SSH.html#M000418">Net::SSH.start</a>. (They
+are, by default.)
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>D</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000095">default_files</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>F</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000096">for</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>L</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000097">load</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000098">translate</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000095">
+                    
+                    <a name="M000095"></a><b>default_files</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Returns an array of locations of OpenSSH configuration files to parse by
+default.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/f9f486b417102d715005126ccca10eb13abbd243/lib/net/ssh/config.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000095_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/config.rb, line 39</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_files</span>
+        <span class="ruby-ivar">@@default_files</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000096">
+                    
+                    <a name="M000096"></a><b>for</b>(host, files=default_files)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Loads the configuration data for the given <tt>host</tt> from all of the
+given <tt>files</tt> (defaulting to the list of files returned by <a
+href="Config.html#M000095">default_files</a>), translates the resulting
+hash into the options recognized by <a href="../SSH.html">Net::SSH</a>, and
+returns them.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/f9f486b417102d715005126ccca10eb13abbd243/lib/net/ssh/config.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000096_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/config.rb, line 47</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">for</span>(<span class="ruby-identifier">host</span>, <span class="ruby-identifier">files</span>=<span class="ruby-identifier">default_files</span>)
+        <span class="ruby-identifier">translate</span>(<span class="ruby-identifier">files</span>.<span class="ruby-identifier">inject</span>({}) { <span class="ruby-operator">|</span><span class="ruby-identifier">settings</span>, <span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">load</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">settings</span>) })
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000097">
+                    
+                    <a name="M000097"></a><b>load</b>(file, host, settings={})
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Load the OpenSSH configuration settings in the given <tt>file</tt> for the
+given <tt>host</tt>. If <tt>settings</tt> is given, the options are merged
+into that hash, with existing values taking precedence over newly parsed
+ones. Returns a hash containing the OpenSSH options. (See <a
+href="Config.html#M000098">translate</a> for how to convert the OpenSSH
+options into <a href="../SSH.html">Net::SSH</a> options.)
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/f9f486b417102d715005126ccca10eb13abbd243/lib/net/ssh/config.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000097_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/config.rb, line 57</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">host</span>, <span class="ruby-identifier">settings</span>={})
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">file</span>)
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">settings</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+
+        <span class="ruby-identifier">in_match</span> = <span class="ruby-keyword kw">false</span>
+        <span class="ruby-constant">IO</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*(?:#.*)?$/</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\s*(\S+)\s*=(.*)$/</span>
+            <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">$1</span>, <span class="ruby-identifier">$2</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/\s+/</span>, <span class="ruby-value">2</span>)
+          <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-comment cmt"># silently ignore malformed entries</span>
+          <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+
+          <span class="ruby-identifier">key</span>.<span class="ruby-identifier">downcase!</span>
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">$1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^&quot;(.*)&quot;$/</span>
+
+          <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>
+            <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^\d+$/</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span>
+            <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^no$/i</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">false</span>
+            <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^yes$/i</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">true</span>
+            <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">value</span>
+            <span class="ruby-keyword kw">end</span>
+
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'host'</span>
+            <span class="ruby-identifier">in_match</span> = (<span class="ruby-identifier">host</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">pattern2regex</span>(<span class="ruby-identifier">value</span>))
+          <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">in_match</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'identityfile'</span>
+              <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> []
+              <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">settings</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">settings</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000098">
+                    
+                    <a name="M000098"></a><b>translate</b>(settings)
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Given a hash of OpenSSH configuration options, converts them into a hash of
+<a href="../SSH.html">Net::SSH</a> options. Unrecognized options are
+ignored. The <tt>settings</tt> hash must have Strings for keys, all
+downcased, and the returned hash will have Symbols for keys.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/f9f486b417102d715005126ccca10eb13abbd243/lib/net/ssh/config.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000098_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/config.rb, line 103</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">translate</span>(<span class="ruby-identifier">settings</span>)
+        <span class="ruby-identifier">settings</span>.<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hash</span>, (<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)<span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">key</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'ciphers'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:encryption</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'compression'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:compression</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'compressionlevel'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:compression_level</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'connecttimeout'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:timeout</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'forwardagent'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:forward_agent</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'globalknownhostsfile'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:global_known_hosts_file</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'hostbasedauthentication'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">||=</span> []
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;hostbased&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'hostkeyalgorithms'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:host_key</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'hostkeyalias'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:host_key_alias</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'hostname'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:host_name</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'identityfile'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:keys</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'macs'</span> <span class="ruby-keyword kw">then</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:hmac</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'passwordauthentication'</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">||=</span> []
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;password&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'port'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:port</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'preferredauthentications'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/,/</span>)
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'pubkeyauthentication'</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">||=</span> []
+              <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:auth_methods</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;publickey&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'rekeylimit'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:rekey_limit</span>] = <span class="ruby-identifier">interpret_size</span>(<span class="ruby-identifier">value</span>)
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'user'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:user</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'userknownhostsfile'</span>
+            <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">:user_known_hosts_file</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">hash</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

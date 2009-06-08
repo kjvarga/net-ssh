@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Authentication::TestAgent</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Authentication::TestAgent 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/authentication/test_agent_rb.html">test/authentication/test_agent.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000586">setup</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000587">teardown</a>,</li>
+                
+                <li><a href="#M000616">test_close_should_close_socket</a>,</li>
+                
+                <li><a href="#M000589">test_connect_should_raise_error_if_connection_could_not_be_established</a>,</li>
+                
+                <li><a href="#M000588">test_connect_should_use_agent_factory_to_determine_connection_type</a>,</li>
+                
+                <li><a href="#M000611">test_identities_should_augment_identities_with_comment_field</a>,</li>
+                
+                <li><a href="#M000601">test_identities_should_fail_if_SSH2_AGENT_FAILURE_recieved</a>,</li>
+                
+                <li><a href="#M000600">test_identities_should_fail_if_SSH_AGENT_FAILURE_recieved</a>,</li>
+                
+                <li><a href="#M000602">test_identities_should_fail_if_SSH_COM_AGENT2_FAILURE_recieved</a>,</li>
+                
+                <li><a href="#M000607">test_identities_should_fail_if_response_is_not_SSH2_AGENT_IDENTITIES_ANSWER</a>,</li>
+                
+                <li><a href="#M000597">test_negotiate_should_be_successful_with_expected_response</a>,</li>
+                
+                <li><a href="#M000596">test_negotiate_should_raise_error_if_response_was_unexpected</a>,</li>
+                
+                <li><a href="#M000595">test_negotiate_should_raise_error_if_ssh2_agent_response_recieved</a>,</li>
+                
+                <li><a href="#M000618">test_sign_should_fail_if_response_is_SSH2_AGENT_FAILURE</a>,</li>
+                
+                <li><a href="#M000617">test_sign_should_fail_if_response_is_SSH_AGENT_FAILURE</a>,</li>
+                
+                <li><a href="#M000627">test_sign_should_fail_if_response_is_SSH_COM_AGENT2_FAILURE</a>,</li>
+                
+                <li><a href="#M000628">test_sign_should_fail_if_response_is_not_SSH2_AGENT_SIGN_RESPONSE</a>,</li>
+                
+                <li><a href="#M000629">test_sign_should_return_signed_data_from_agent</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+    <div class="sectiontitle">Classes and Modules</div>
+    <ul>
+        
+        <li><span class="type">CLASS</span> <a href="TestAgent/MockSocket.html">Authentication::TestAgent::MockSocket</a></li>
+        
+    </ul>
+    
+
+    
+    <div class="sectiontitle">Constants</div>
+    <table border='0' cellpadding='5'>
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_REQUEST_VERSION</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_REQUEST_IDENTITIES</td>
+            <td>=</td>
+            <td class="attr-value">11</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_IDENTITIES_ANSWER</td>
+            <td>=</td>
+            <td class="attr-value">12</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_SIGN_REQUEST</td>
+            <td>=</td>
+            <td class="attr-value">13</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_SIGN_RESPONSE</td>
+            <td>=</td>
+            <td class="attr-value">14</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">30</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH2_AGENT_VERSION_RESPONSE</td>
+            <td>=</td>
+            <td class="attr-value">103</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_COM_AGENT2_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">102</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_REQUEST_RSA_IDENTITIES</td>
+            <td>=</td>
+            <td class="attr-value">1</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_RSA_IDENTITIES_ANSWER</td>
+            <td>=</td>
+            <td class="attr-value">2</td>
+        </tr>
+        
+        
+        <tr valign='top'>
+            <td class="attr-name">SSH_AGENT_FAILURE</td>
+            <td>=</td>
+            <td class="attr-value">5</td>
+        </tr>
+        
+        
+    </table>
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000586">
+                    
+                    <a name="M000586"></a><b>setup</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000586_source')" id="l_M000586_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000586_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+      <span class="ruby-ivar">@original</span>, <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'SSH_AUTH_SOCK'</span>] = <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'SSH_AUTH_SOCK'</span>], <span class="ruby-value str">&quot;/path/to/ssh.agent.sock&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000587">
+                    
+                    <a name="M000587"></a><b>teardown</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000587_source')" id="l_M000587_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000587_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown</span>
+      <span class="ruby-constant">ENV</span>[<span class="ruby-value str">'SSH_AUTH_SOCK'</span>] = <span class="ruby-ivar">@original</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000616">
+                    
+                    <a name="M000616"></a><b>test_close_should_close_socket</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000616_source')" id="l_M000616_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L113" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000616_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 113</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_close_should_close_socket</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:close</span>)
+      <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">close</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000589">
+                    
+                    <a name="M000589"></a><b>test_connect_should_raise_error_if_connection_could_not_be_established</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000589_source')" id="l_M000589_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000589_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 35</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_connect_should_raise_error_if_connection_could_not_be_established</span>
+      <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:open</span>).<span class="ruby-identifier">raises</span>(<span class="ruby-constant">SocketError</span>)
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentNotAvailable</span>) { <span class="ruby-identifier">agent</span>(<span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">connect!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000588">
+                    
+                    <a name="M000588"></a><b>test_connect_should_use_agent_factory_to_determine_connection_type</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000588_source')" id="l_M000588_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000588_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 30</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_connect_should_use_agent_factory_to_determine_connection_type</span>
+      <span class="ruby-identifier">factory</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:open</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/path/to/ssh.agent.sock&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">socket</span>)
+      <span class="ruby-identifier">agent</span>(<span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">connect!</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000611">
+                    
+                    <a name="M000611"></a><b>test_identities_should_augment_identities_with_comment_field</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000611_source')" id="l_M000611_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000611_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 97</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_identities_should_augment_identities_with_comment_field</span>
+      <span class="ruby-identifier">key1</span> = <span class="ruby-identifier">key</span>
+      <span class="ruby-identifier">key2</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">DSA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">32</span>)
+
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH2_AGENT_IDENTITIES_ANSWER</span>, <span class="ruby-identifier">:long</span>, <span class="ruby-value">2</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:key</span>, <span class="ruby-identifier">key1</span>), <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;My favorite key&quot;</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">from</span>(<span class="ruby-identifier">:key</span>, <span class="ruby-identifier">key2</span>), <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;Okay, but not the best&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">key1</span>.<span class="ruby-identifier">to_blob</span>, <span class="ruby-identifier">result</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_blob</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">key2</span>.<span class="ruby-identifier">to_blob</span>, <span class="ruby-identifier">result</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">to_blob</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;My favorite key&quot;</span>, <span class="ruby-identifier">result</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">comment</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;Okay, but not the best&quot;</span>, <span class="ruby-identifier">result</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">comment</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000601">
+                    
+                    <a name="M000601"></a><b>test_identities_should_fail_if_SSH2_AGENT_FAILURE_recieved</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000601_source')" id="l_M000601_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L73" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000601_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 73</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_identities_should_fail_if_SSH2_AGENT_FAILURE_recieved</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH2_AGENT_FAILURE</span>) 
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000600">
+                    
+                    <a name="M000600"></a><b>test_identities_should_fail_if_SSH_AGENT_FAILURE_recieved</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000600_source')" id="l_M000600_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000600_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 65</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_identities_should_fail_if_SSH_AGENT_FAILURE_recieved</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH_AGENT_FAILURE</span>) 
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000602">
+                    
+                    <a name="M000602"></a><b>test_identities_should_fail_if_SSH_COM_AGENT2_FAILURE_recieved</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000602_source')" id="l_M000602_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L81" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000602_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 81</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_identities_should_fail_if_SSH_COM_AGENT2_FAILURE_recieved</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH_COM_AGENT2_FAILURE</span>) 
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000607">
+                    
+                    <a name="M000607"></a><b>test_identities_should_fail_if_response_is_not_SSH2_AGENT_IDENTITIES_ANSWER</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000607_source')" id="l_M000607_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000607_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 89</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_identities_should_fail_if_response_is_not_SSH2_AGENT_IDENTITIES_ANSWER</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_IDENTITIES</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-value">255</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">identities</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000597">
+                    
+                    <a name="M000597"></a><b>test_negotiate_should_be_successful_with_expected_response</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000597_source')" id="l_M000597_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000597_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 57</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_negotiate_should_be_successful_with_expected_response</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_VERSION</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH_AGENT_RSA_IDENTITIES_ANSWER</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_nothing_raised</span> { <span class="ruby-identifier">agent</span>(<span class="ruby-identifier">:connect</span>).<span class="ruby-identifier">negotiate!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000596">
+                    
+                    <a name="M000596"></a><b>test_negotiate_should_raise_error_if_response_was_unexpected</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000596_source')" id="l_M000596_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000596_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 49</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_negotiate_should_raise_error_if_response_was_unexpected</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_VERSION</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-value">255</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">negotiate!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000595">
+                    
+                    <a name="M000595"></a><b>test_negotiate_should_raise_error_if_ssh2_agent_response_recieved</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000595_source')" id="l_M000595_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000595_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 40</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_negotiate_should_raise_error_if_ssh2_agent_response_recieved</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_REQUEST_VERSION</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">ServerVersion</span><span class="ruby-operator">::</span><span class="ruby-constant">PROTO_VERSION</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH2_AGENT_VERSION_RESPONSE</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">NotImplementedError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">negotiate!</span> }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000618">
+                    
+                    <a name="M000618"></a><b>test_sign_should_fail_if_response_is_SSH2_AGENT_FAILURE</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000618_source')" id="l_M000618_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L123" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000618_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 123</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sign_should_fail_if_response_is_SSH2_AGENT_FAILURE</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH2_AGENT_FAILURE</span>) }
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-value str">&quot;hello world&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000617">
+                    
+                    <a name="M000617"></a><b>test_sign_should_fail_if_response_is_SSH_AGENT_FAILURE</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000617_source')" id="l_M000617_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L118" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000617_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 118</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sign_should_fail_if_response_is_SSH_AGENT_FAILURE</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH_AGENT_FAILURE</span>) }
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-value str">&quot;hello world&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000627">
+                    
+                    <a name="M000627"></a><b>test_sign_should_fail_if_response_is_SSH_COM_AGENT2_FAILURE</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000627_source')" id="l_M000627_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L128" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000627_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 128</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sign_should_fail_if_response_is_SSH_COM_AGENT2_FAILURE</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH_COM_AGENT2_FAILURE</span>) }
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-value str">&quot;hello world&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000628">
+                    
+                    <a name="M000628"></a><b>test_sign_should_fail_if_response_is_not_SSH2_AGENT_SIGN_RESPONSE</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000628_source')" id="l_M000628_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L133" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000628_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 133</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sign_should_fail_if_response_is_not_SSH2_AGENT_SIGN_RESPONSE</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-value">255</span>) }
+      <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Authentication</span><span class="ruby-operator">::</span><span class="ruby-constant">AgentError</span>) { <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-value str">&quot;hello world&quot;</span>) }
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000629">
+                    
+                    <a name="M000629"></a><b>test_sign_should_return_signed_data_from_agent</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000629_source')" id="l_M000629_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/95f2f2e4680bc6fdeecb338681844134d06ce264/test/authentication/test_agent.rb#L138" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000629_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/authentication/test_agent.rb, line 138</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sign_should_return_signed_data_from_agent</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">expect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">type</span>,<span class="ruby-identifier">buffer</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">SSH2_AGENT_SIGN_REQUEST</span>, <span class="ruby-identifier">type</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_blob</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Buffer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_string</span>).<span class="ruby-identifier">read_key</span>.<span class="ruby-identifier">to_blob</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello world&quot;</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_string</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">read_long</span>
+
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">return</span>(<span class="ruby-constant">SSH2_AGENT_SIGN_RESPONSE</span>, <span class="ruby-identifier">:string</span>, <span class="ruby-value str">&quot;abcxyz123&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;abcxyz123&quot;</span>, <span class="ruby-identifier">agent</span>.<span class="ruby-identifier">sign</span>(<span class="ruby-identifier">key</span>, <span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

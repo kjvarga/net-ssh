@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::HMAC::TestMD5</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+    <script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::HMAC::TestMD5 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/test/transport/hmac/test_md5_rb.html">test/transport/hmac/test_md5.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000933">test_expected_digest</a>,</li>
+                
+                <li><a href="#M000930">test_expected_digest_class</a>,</li>
+                
+                <li><a href="#M000931">test_expected_key_length</a>,</li>
+                
+                <li><a href="#M000932">test_expected_mac_length</a>,</li>
+                
+                <li><a href="#M000934">test_key_should_be_truncated_to_required_length</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000933">
+                    
+                    <a name="M000933"></a><b>test_expected_digest</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000933_source')" id="l_M000933_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b42295ad9b4b778a1fecf3aa6fee4bf5091fac12/test/transport/hmac/test_md5.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000933_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/hmac/test_md5.rb, line 22</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_expected_digest</span>
+      <span class="ruby-identifier">hmac</span> = <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;1234567890123456&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;\275\345\006\307y~Oi\035&lt;.\341\031\250&lt;\257&quot;</span>, <span class="ruby-identifier">hmac</span>.<span class="ruby-identifier">digest</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000930">
+                    
+                    <a name="M000930"></a><b>test_expected_digest_class</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000930_source')" id="l_M000930_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b42295ad9b4b778a1fecf3aa6fee4bf5091fac12/test/transport/hmac/test_md5.rb#L7" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000930_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/hmac/test_md5.rb, line 7</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_expected_digest_class</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">digest_class</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">digest_class</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000931">
+                    
+                    <a name="M000931"></a><b>test_expected_key_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000931_source')" id="l_M000931_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b42295ad9b4b778a1fecf3aa6fee4bf5091fac12/test/transport/hmac/test_md5.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000931_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/hmac/test_md5.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_expected_key_length</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">16</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">key_length</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">16</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">key_length</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000932">
+                    
+                    <a name="M000932"></a><b>test_expected_mac_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000932_source')" id="l_M000932_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b42295ad9b4b778a1fecf3aa6fee4bf5091fac12/test/transport/hmac/test_md5.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000932_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/hmac/test_md5.rb, line 17</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_expected_mac_length</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">16</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">mac_length</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">16</span>, <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">mac_length</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000934">
+                    
+                    <a name="M000934"></a><b>test_key_should_be_truncated_to_required_length</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000934_source')" id="l_M000934_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b42295ad9b4b778a1fecf3aa6fee4bf5091fac12/test/transport/hmac/test_md5.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000934_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/hmac/test_md5.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_key_should_be_truncated_to_required_length</span>
+      <span class="ruby-identifier">hmac</span> = <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;12345678901234567890&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;1234567890123456&quot;</span>, <span class="ruby-identifier">hmac</span>.<span class="ruby-identifier">key</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

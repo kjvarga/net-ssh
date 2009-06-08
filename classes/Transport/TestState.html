@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Transport::TestState</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            Transport::TestState 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/test/transport/test_state_rb.html">test/transport/test_state.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>S</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001140">setup</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M001141">teardown</a>,</li>
+                
+                <li><a href="#M001159">test_compress_when_compression_is_delayed_and_auth_hint_is_set_should_return_compressed_text</a>,</li>
+                
+                <li><a href="#M001155">test_compress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</a>,</li>
+                
+                <li><a href="#M001157">test_compress_when_compression_is_enabled_should_return_compressed_text</a>,</li>
+                
+                <li><a href="#M001153">test_compress_when_no_compression_is_active_returns_text</a>,</li>
+                
+                <li><a href="#M001151">test_compressor_defaults_to_default_zlib_compression</a>,</li>
+                
+                <li><a href="#M001152">test_compressor_uses_compression_level_when_given</a>,</li>
+                
+                <li><a href="#M001142">test_constructor_should_initialize_all_values</a>,</li>
+                
+                <li><a href="#M001160">test_decompress_when_compression_is_delayed_and_auth_hint_is_set_should_return_decompressed_text</a>,</li>
+                
+                <li><a href="#M001156">test_decompress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</a>,</li>
+                
+                <li><a href="#M001158">test_decompress_when_compression_is_enabled_should_return_decompressed_text</a>,</li>
+                
+                <li><a href="#M001154">test_decompress_when_no_compression_is_active_returns_text</a>,</li>
+                
+                <li><a href="#M001145">test_increment_should_increment_counters</a>,</li>
+                
+                <li><a href="#M001162">test_needs_rekey_should_be_true_if_blocks_exceeds_max_blocks</a>,</li>
+                
+                <li><a href="#M001161">test_needs_rekey_should_be_true_if_packets_exceeds_max_packets</a>,</li>
+                
+                <li><a href="#M001146">test_reset_should_reset_counters_and_fix_defaults_for_maximums</a>,</li>
+                
+                <li><a href="#M001147">test_set_should_set_variables_and_reset_counters</a>,</li>
+                
+                <li><a href="#M001149">test_set_with_max_blocks_should_respect_max_blocks_setting</a>,</li>
+                
+                <li><a href="#M001148">test_set_with_max_packets_should_respect_max_packets_setting</a>,</li>
+                
+                <li><a href="#M001150">test_set_with_rekey_limit_should_include_rekey_limit_in_computation_of_max_blocks</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M001140">
+                    
+                    <a name="M001140"></a><b>setup</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001140_source')" id="l_M001140_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L8" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001140_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+      <span class="ruby-ivar">@socket</span> = <span class="ruby-ivar">@state</span> = <span class="ruby-ivar">@deflater</span> = <span class="ruby-ivar">@inflater</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001141">
+                    
+                    <a name="M001141"></a><b>teardown</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001141_source')" id="l_M001141_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001141_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">teardown</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@deflater</span>
+        <span class="ruby-ivar">@deflater</span>.<span class="ruby-identifier">finish</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@deflater</span>.<span class="ruby-identifier">finished?</span>
+        <span class="ruby-ivar">@deflater</span>.<span class="ruby-identifier">close</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@inflater</span>
+        <span class="ruby-ivar">@inflater</span>.<span class="ruby-identifier">finish</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@inflater</span>.<span class="ruby-identifier">finished?</span>
+        <span class="ruby-ivar">@inflater</span>.<span class="ruby-identifier">close</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">cleanup</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001159">
+                    
+                    <a name="M001159"></a><b>test_compress_when_compression_is_delayed_and_auth_hint_is_set_should_return_compressed_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001159_source')" id="l_M001159_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L126" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001159_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 126</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compress_when_compression_is_delayed_and_auth_hint_is_set_should_return_compressed_text</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">hints</span>[<span class="ruby-identifier">:authenticated</span>] = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:delayed</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;x\234\312H\315\311\311WH-K-\252L\312O\251\004\000\000\000\377\377&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001155">
+                    
+                    <a name="M001155"></a><b>test_compress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001155_source')" id="l_M001155_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L106" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001155_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 106</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:delayed</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001157">
+                    
+                    <a name="M001157"></a><b>test_compress_when_compression_is_enabled_should_return_compressed_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001157_source')" id="l_M001157_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001157_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 116</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compress_when_compression_is_enabled_should_return_compressed_text</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:standard</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;x\234\312H\315\311\311WH-K-\252L\312O\251\004\000\000\000\377\377&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001153">
+                    
+                    <a name="M001153"></a><b>test_compress_when_no_compression_is_active_returns_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001153_source')" id="l_M001153_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L98" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001153_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 98</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compress_when_no_compression_is_active_returns_text</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001151">
+                    
+                    <a name="M001151"></a><b>test_compressor_defaults_to_default_zlib_compression</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001151_source')" id="l_M001151_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L87" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001151_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 87</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compressor_defaults_to_default_zlib_compression</span>
+      <span class="ruby-identifier">expect</span> = <span class="ruby-identifier">deflater</span>.<span class="ruby-identifier">deflate</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">expect</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compressor</span>.<span class="ruby-identifier">deflate</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001152">
+                    
+                    <a name="M001152"></a><b>test_compressor_uses_compression_level_when_given</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001152_source')" id="l_M001152_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L92" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001152_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 92</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_compressor_uses_compression_level_when_given</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression_level</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">expect</span> = <span class="ruby-identifier">deflater</span>(<span class="ruby-value">1</span>).<span class="ruby-identifier">deflate</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">expect</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compressor</span>.<span class="ruby-identifier">deflate</span>(<span class="ruby-value str">&quot;hello world&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001142">
+                    
+                    <a name="M001142"></a><b>test_constructor_should_initialize_all_values</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001142_source')" id="l_M001142_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001142_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 26</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_constructor_should_initialize_all_values</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">sequence_number</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">packets</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">blocks</span>
+
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compression</span>
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compression_level</span>
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_packets</span>
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_blocks</span>
+      <span class="ruby-identifier">assert_nil</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">rekey_limit</span>
+
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;identity&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">cipher</span>.<span class="ruby-identifier">name</span>
+      <span class="ruby-identifier">assert_instance_of</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">Transport</span><span class="ruby-operator">::</span><span class="ruby-constant">HMAC</span><span class="ruby-operator">::</span><span class="ruby-constant">None</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">hmac</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001160">
+                    
+                    <a name="M001160"></a><b>test_decompress_when_compression_is_delayed_and_auth_hint_is_set_should_return_decompressed_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001160_source')" id="l_M001160_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L132" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001160_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 132</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_decompress_when_compression_is_delayed_and_auth_hint_is_set_should_return_decompressed_text</span>
+      <span class="ruby-identifier">socket</span>.<span class="ruby-identifier">hints</span>[<span class="ruby-identifier">:authenticated</span>] = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:delayed</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">decompress</span>(<span class="ruby-value str">&quot;x\234\312H\315\311\311WH-K-\252L\312O\251\004\000\000\000\377\377&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001156">
+                    
+                    <a name="M001156"></a><b>test_decompress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001156_source')" id="l_M001156_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L111" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001156_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 111</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_decompress_when_compression_is_delayed_and_no_auth_hint_is_set_should_return_text</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:delayed</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">decompress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001158">
+                    
+                    <a name="M001158"></a><b>test_decompress_when_compression_is_enabled_should_return_decompressed_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001158_source')" id="l_M001158_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L121" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001158_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 121</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_decompress_when_compression_is_enabled_should_return_decompressed_text</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:standard</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">decompress</span>(<span class="ruby-value str">&quot;x\234\312H\315\311\311WH-K-\252L\312O\251\004\000\000\000\377\377&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001154">
+                    
+                    <a name="M001154"></a><b>test_decompress_when_no_compression_is_active_returns_text</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001154_source')" id="l_M001154_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L102" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001154_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 102</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_decompress_when_no_compression_is_active_returns_text</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;hello everybody&quot;</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">decompress</span>(<span class="ruby-value str">&quot;hello everybody&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001145">
+                    
+                    <a name="M001145"></a><b>test_increment_should_increment_counters</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001145_source')" id="l_M001145_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001145_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 41</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_increment_should_increment_counters</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">24</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">sequence_number</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">packets</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">blocks</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001162">
+                    
+                    <a name="M001162"></a><b>test_needs_rekey_should_be_true_if_blocks_exceeds_max_blocks</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001162_source')" id="l_M001162_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001162_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 147</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_needs_rekey_should_be_true_if_blocks_exceeds_max_blocks</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:max_blocks</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">state</span>.<span class="ruby-identifier">needs_rekey?</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">88</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">needs_rekey?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001161">
+                    
+                    <a name="M001161"></a><b>test_needs_rekey_should_be_true_if_packets_exceeds_max_packets</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001161_source')" id="l_M001161_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L138" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001161_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 138</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_needs_rekey_should_be_true_if_packets_exceeds_max_packets</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:max_packets</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">8</span>)
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">8</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">state</span>.<span class="ruby-identifier">needs_rekey?</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">8</span>)
+      <span class="ruby-identifier">assert</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">needs_rekey?</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001146">
+                    
+                    <a name="M001146"></a><b>test_reset_should_reset_counters_and_fix_defaults_for_maximums</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001146_source')" id="l_M001146_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001146_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 48</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_reset_should_reset_counters_and_fix_defaults_for_maximums</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">increment</span>(<span class="ruby-value">24</span>)
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">reset!</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">sequence_number</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">packets</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">0</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">blocks</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2147483648</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_packets</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">134217728</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_blocks</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001147">
+                    
+                    <a name="M001147"></a><b>test_set_should_set_variables_and_reset_counters</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001147_source')" id="l_M001147_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001147_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 58</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_set_should_set_variables_and_reset_counters</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:reset!</span>)
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:cipher</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:a</span>, <span class="ruby-identifier">:hmac</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:b</span>, <span class="ruby-identifier">:compression</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:c</span>,
+        <span class="ruby-identifier">:compression_level</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:d</span>, <span class="ruby-identifier">:max_packets</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">500</span>, <span class="ruby-identifier">:max_blocks</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1000</span>,
+        <span class="ruby-identifier">:rekey_limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1500</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:a</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">cipher</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:b</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">hmac</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:c</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compression</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:d</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">compression_level</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">500</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_packets</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1000</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_blocks</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1500</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">rekey_limit</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001149">
+                    
+                    <a name="M001149"></a><b>test_set_with_max_blocks_should_respect_max_blocks_setting</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001149_source')" id="l_M001149_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L77" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001149_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 77</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_set_with_max_blocks_should_respect_max_blocks_setting</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:max_blocks</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1000</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1000</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_blocks</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001148">
+                    
+                    <a name="M001148"></a><b>test_set_with_max_packets_should_respect_max_packets_setting</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001148_source')" id="l_M001148_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001148_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 72</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_set_with_max_packets_should_respect_max_packets_setting</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:max_packets</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">500</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">500</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_packets</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M001150">
+                    
+                    <a name="M001150"></a><b>test_set_with_rekey_limit_should_include_rekey_limit_in_computation_of_max_blocks</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M001150_source')" id="l_M001150_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/b09b86cb2a3edcc7ce37799d100ed5d51107ad02/test/transport/test_state.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M001150_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/transport/test_state.rb, line 82</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_set_with_rekey_limit_should_include_rekey_limit_in_computation_of_max_blocks</span>
+      <span class="ruby-identifier">state</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:rekey_limit</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4000</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">500</span>, <span class="ruby-identifier">state</span>.<span class="ruby-identifier">max_blocks</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

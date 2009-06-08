@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>OpenSSL::BN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            OpenSSL::BN 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/net/ssh/transport/openssl_rb.html">lib/net/ssh/transport/openssl.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+    <div class="description">
+        <p>
+This class is originally defined in the <a
+href="../OpenSSL.html">OpenSSL</a> module. As needed, methods have been
+added to it by the <a href="../Net/SSH.html">Net::SSH</a> module for
+convenience in dealing with SSH functionality.
+</p>
+
+    </div>
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000347">to_ssh</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000347">
+                    
+                    <a name="M000347"></a><b>to_ssh</b>()
+                    
+                </div>
+                
+                <div class="description">
+                  <p>
+Converts a <a href="BN.html">BN</a> object to a string. The format used is
+that which is required by the SSH2 protocol.
+</p>
+
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000347_source')" id="l_M000347_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/acbe7c6eff1827aeef3dcfff70478ed66dba3c73/lib/net/ssh/transport/openssl.rb#L13" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000347_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File lib/net/ssh/transport/openssl.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_ssh</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">zero?</span>
+        <span class="ruby-keyword kw">return</span> [<span class="ruby-value">0</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;N&quot;</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">buf</span> = <span class="ruby-identifier">to_s</span>(<span class="ruby-value">2</span>)
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">buf</span>.<span class="ruby-identifier">getbyte</span>(<span class="ruby-value">0</span>)[<span class="ruby-value">7</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+          <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">buf</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">buf</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;NCA*&quot;</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">return</span> [<span class="ruby-identifier">buf</span>.<span class="ruby-identifier">length</span>, <span class="ruby-identifier">buf</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;NA*&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

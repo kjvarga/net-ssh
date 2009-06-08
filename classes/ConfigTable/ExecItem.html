@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ConfigTable::ExecItem</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+    <script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            ConfigTable::ExecItem 
+            
+                <span class="parent">&lt; 
+                    
+                    Item
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/setup_rb.html">setup.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>C</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000487">config_type</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>E</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000490">evaluate</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>N</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000486">new</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>R</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000489">resolve</a></li>
+                
+            </ul>
+        </dd>
+    
+        <dt>V</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000488">value?</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Class Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000486">
+                    
+                    <a name="M000486"></a><b>new</b>(name, selection, desc, &amp;block)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000486_source')" id="l_M000486_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L422" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000486_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 422</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">selection</span>, <span class="ruby-identifier">desc</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-keyword kw">super</span> <span class="ruby-identifier">name</span>, <span class="ruby-identifier">selection</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">desc</span>
+      <span class="ruby-ivar">@ok</span> = <span class="ruby-identifier">selection</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
+      <span class="ruby-ivar">@action</span> = <span class="ruby-identifier">block</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000487">
+                    
+                    <a name="M000487"></a><b>config_type</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000487_source')" id="l_M000487_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L428" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000487_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 428</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">config_type</span>
+      <span class="ruby-value str">'exec'</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000490">
+                    
+                    <a name="M000490"></a><b>evaluate</b>(val, table)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000490_source')" id="l_M000490_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L442" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000490_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 442</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">evaluate</span>(<span class="ruby-identifier">val</span>, <span class="ruby-identifier">table</span>)
+      <span class="ruby-identifier">v</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">downcase</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@ok</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">v</span>)
+        <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-node">&quot;invalid option --#{@name}=#{val} (use #{@template})&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@action</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">v</span>, <span class="ruby-identifier">table</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000489">
+                    
+                    <a name="M000489"></a><b>resolve</b>(table)
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000489_source')" id="l_M000489_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L436" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000489_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 436</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">resolve</span>(<span class="ruby-identifier">table</span>)
+      <span class="ruby-identifier">setup_rb_error</span> <span class="ruby-node">&quot;$#{name()} wrongly used as option value&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000488">
+                    
+                    <a name="M000488"></a><b>value?</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000488_source')" id="l_M000488_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/2aec5d4ac92b2b0230ab815c04fac1cb688cff5d/setup.rb#L432" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000488_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File setup.rb, line 432</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">value?</span>
+      <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    

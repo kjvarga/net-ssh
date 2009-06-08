@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>TestKeyFactory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+    <script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>     
+    <div class="banner">
+        <h1>
+            <span class="type">Class</span> 
+            TestKeyFactory 
+            
+                <span class="parent">&lt; 
+                    
+                    Test::Unit::TestCase
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/test/test_key_factory_rb.html">test/test_key_factory.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+    
+
+    
+
+    
+    
+
+    
+    
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+    
+        <dt>T</dt>
+        <dd>
+            <ul>
+                
+                <li><a href="#M000919">test_load_encrypted_private_DSA_key_should_prompt_for_password_and_return_key</a>,</li>
+                
+                <li><a href="#M000920">test_load_encrypted_private_DSA_key_with_password_should_not_prompt_and_return_key</a>,</li>
+                
+                <li><a href="#M000916">test_load_encrypted_private_RSA_key_should_prompt_for_password_and_return_key</a>,</li>
+                
+                <li><a href="#M000917">test_load_encrypted_private_RSA_key_with_password_should_not_prompt_and_return_key</a>,</li>
+                
+                <li><a href="#M000923">test_load_encrypted_private_key_should_give_three_tries_for_the_password_and_then_raise_exception</a>,</li>
+                
+                <li><a href="#M000924">test_load_public_rsa_key_should_return_key</a>,</li>
+                
+                <li><a href="#M000915">test_load_unencrypted_private_DSA_key_should_return_key</a>,</li>
+                
+                <li><a href="#M000914">test_load_unencrypted_private_RSA_key_should_return_key</a></li>
+                
+            </ul>
+        </dd>
+    
+    </dl>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+            <div class="sectiontitle">Instance Public methods</div>
+            
+            <div class="method">
+                <div class="title" id="M000919">
+                    
+                    <a name="M000919"></a><b>test_load_encrypted_private_DSA_key_should_prompt_for_password_and_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000919_source')" id="l_M000919_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L26" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000919_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 26</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_encrypted_private_DSA_key_should_prompt_for_password_and_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">encrypted</span>(<span class="ruby-identifier">dsa_key</span>, <span class="ruby-value str">&quot;password&quot;</span>))
+    <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:prompt</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;Enter passphrase for /key-file:&quot;</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;password&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">dsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000920">
+                    
+                    <a name="M000920"></a><b>test_load_encrypted_private_DSA_key_with_password_should_not_prompt_and_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000920_source')" id="l_M000920_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L32" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000920_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_encrypted_private_DSA_key_with_password_should_not_prompt_and_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">encrypted</span>(<span class="ruby-identifier">dsa_key</span>, <span class="ruby-value str">&quot;password&quot;</span>))
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">dsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>, <span class="ruby-value str">&quot;password&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000916">
+                    
+                    <a name="M000916"></a><b>test_load_encrypted_private_RSA_key_should_prompt_for_password_and_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000916_source')" id="l_M000916_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L15" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000916_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 15</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_encrypted_private_RSA_key_should_prompt_for_password_and_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">encrypted</span>(<span class="ruby-identifier">rsa_key</span>, <span class="ruby-value str">&quot;password&quot;</span>))
+    <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:prompt</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;Enter passphrase for /key-file:&quot;</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;password&quot;</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">rsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000917">
+                    
+                    <a name="M000917"></a><b>test_load_encrypted_private_RSA_key_with_password_should_not_prompt_and_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000917_source')" id="l_M000917_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000917_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_encrypted_private_RSA_key_with_password_should_not_prompt_and_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">encrypted</span>(<span class="ruby-identifier">rsa_key</span>, <span class="ruby-value str">&quot;password&quot;</span>))
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">rsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>, <span class="ruby-value str">&quot;password&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000923">
+                    
+                    <a name="M000923"></a><b>test_load_encrypted_private_key_should_give_three_tries_for_the_password_and_then_raise_exception</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000923_source')" id="l_M000923_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000923_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_encrypted_private_key_should_give_three_tries_for_the_password_and_then_raise_exception</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">encrypted</span>(<span class="ruby-identifier">rsa_key</span>, <span class="ruby-value str">&quot;password&quot;</span>))
+    <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:prompt</span>).<span class="ruby-identifier">times</span>(<span class="ruby-value">3</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;Enter passphrase for /key-file:&quot;</span>, <span class="ruby-keyword kw">false</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-value str">&quot;passwod&quot;</span>,<span class="ruby-value str">&quot;passphrase&quot;</span>,<span class="ruby-value str">&quot;passwd&quot;</span>)
+    <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSAError</span>) { <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>) }
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000924">
+                    
+                    <a name="M000924"></a><b>test_load_public_rsa_key_should_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000924_source')" id="l_M000924_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L43" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000924_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 43</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_public_rsa_key_should_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">public</span>(<span class="ruby-identifier">rsa_key</span>))
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">rsa_key</span>.<span class="ruby-identifier">to_blob</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_public_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">to_blob</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000915">
+                    
+                    <a name="M000915"></a><b>test_load_unencrypted_private_DSA_key_should_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000915_source')" id="l_M000915_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L10" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000915_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 10</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_unencrypted_private_DSA_key_should_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">dsa_key</span>.<span class="ruby-identifier">export</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">dsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="method">
+                <div class="title" id="M000914">
+                    
+                    <a name="M000914"></a><b>test_load_unencrypted_private_RSA_key_should_return_key</b>()
+                    
+                </div>
+                
+                
+                
+                
+                <div class="sourcecode">
+                    <p class="source-link">
+                        Source: <a href="javascript:toggleSource('M000914_source')" id="l_M000914_source">show</a>
+                        
+                        | <a href="http://github.com/delano/net-ssh/blob/979e97d10ea179036afe79e60b34d15aac011f1f/test/test_key_factory.rb#L5" target="_blank" class="github_url">on GitHub</a>
+                        
+                    </p>
+                    <div id="M000914_source" class="dyn-source">
+                        <pre><span class="ruby-comment cmt"># File test/test_key_factory.rb, line 5</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_load_unencrypted_private_RSA_key_should_return_key</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">expects</span>(<span class="ruby-identifier">:read</span>).<span class="ruby-identifier">with</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">returns</span>(<span class="ruby-identifier">rsa_key</span>.<span class="ruby-identifier">export</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">rsa_key</span>.<span class="ruby-identifier">to_der</span>, <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">SSH</span><span class="ruby-operator">::</span><span class="ruby-constant">KeyFactory</span>.<span class="ruby-identifier">load_private_key</span>(<span class="ruby-value str">&quot;/key-file&quot;</span>).<span class="ruby-identifier">to_der</span>
+  <span class="ruby-keyword kw">end</span></pre>
+                    </div>
+                </div>
+                
+            </div>
+            
+</div>
+    </div>
+  </body>
+</html>    
